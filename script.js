@@ -34,7 +34,8 @@ document.addEventListener("DOMContentLoaded", () => {
             const hexCharsMatrix = '0123456789ABCDEF';
             const fontSize = 16;
             const columns = canvas.width / fontSize;
-            let drops = Array(Math.floor(columns)).fill(1);
+            // Initialize drops randomly across the screen height so it starts fully populated
+            let drops = Array(Math.floor(columns)).fill(0).map(() => Math.floor(Math.random() * (canvas.height / fontSize)));
 
             function drawMatrix() {
                 // Determine current theme for drawing background so that canvas fades nicely
@@ -57,7 +58,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 }
             }
 
-            matrixInterval = setInterval(drawMatrix, 33);
+            matrixInterval = setInterval(drawMatrix, 20); // Sped up the interval
             
             window.addEventListener('resize', () => {
                 canvas.width = window.innerWidth;
