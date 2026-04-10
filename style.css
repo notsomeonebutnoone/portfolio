@@ -91,6 +91,31 @@ header {
     position: relative;
 }
 
+.hobbies-btn {
+    position: absolute;
+    top: 2rem;
+    right: 4.5rem; /* sits left of the theme toggle (40px btn + 0.5rem gap) */
+    background: transparent;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 1000;
+    text-decoration: none;
+}
+
+.hobbies-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--text-muted);
+    transform: scale(1.08) rotate(-8deg);
+}
+
 .theme-toggle {
     position: absolute;
     top: 2rem;

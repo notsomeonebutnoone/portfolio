@@ -48,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
                         clipPath: clipPath
                     },
                     {
-                        duration: 1300000,
+                        duration: 1200,
                         easing: 'cubic-bezier(0.22, 1, 0.36, 1)', // Gentle ease-out
                         pseudoElement: '::view-transition-new(root)'
                     }
