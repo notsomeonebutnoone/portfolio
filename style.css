@@ -384,8 +384,9 @@ h2 {
 .timeline-item::before {
     content: '';
     position: absolute;
-    left: -1.75rem;
-    top: 0.4rem;
+    left: -1.795rem;
+    top: 50%;
+    transform: translateY(-50%);
     width: 8px;
     height: 8px;
     background: var(--bg-primary);
@@ -571,9 +572,12 @@ footer {
     transform: translateY(0);
 }
 
-/* View Transition API overrides for smooth sweep animation */
-::view-transition-old(root),
-::view-transition-new(root) {
+/* View Transition API — allow the clip-path animation to run freely */
+::view-transition-old(root) {
     animation: none;
+    mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
     mix-blend-mode: normal;
 }

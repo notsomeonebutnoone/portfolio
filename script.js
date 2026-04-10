@@ -28,7 +28,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const x = e.clientX;
             const y = e.clientY;
-            
+
             // Calculate max radius needed to cover the entire screen from the click point
             const endRadius = Math.hypot(
                 Math.max(x, window.innerWidth - x),
@@ -48,8 +48,8 @@ document.addEventListener("DOMContentLoaded", () => {
                         clipPath: clipPath
                     },
                     {
-                        duration: 600, // Make it a smoother, slightly longer duration
-                        easing: 'cubic-bezier(0.25, 1, 0.5, 1)', // Smooth deceleration
+                        duration: 1300000,
+                        easing: 'cubic-bezier(0.22, 1, 0.36, 1)', // Gentle ease-out
                         pseudoElement: '::view-transition-new(root)'
                     }
                 );
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const isLight = document.documentElement.getAttribute('data-theme') === 'light';
                 ctx.fillStyle = isLight ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
-                
+
                 // Text color
                 ctx.fillStyle = isLight ? '#a1a1aa' : '#52525b';
                 ctx.font = fontSize + 'px monospace';
@@ -96,7 +96,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             matrixInterval = setInterval(drawMatrix, 20); // Sped up the interval
-            
+
             window.addEventListener('resize', () => {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
@@ -246,16 +246,16 @@ document.addEventListener("DOMContentLoaded", () => {
     function renderSkills() {
         if (!listContainer || !footerText) return;
         const data = fullSkillsData.find(d => d.category === activeCategory);
-        
+
         listContainer.style.opacity = '0';
-        
+
         setTimeout(() => {
             listContainer.innerHTML = data.skills.map((skill, i) => `
                 <div class="skill-pill" style="animation-delay: ${i * 0.02}s">
                     ${skill}
                 </div>
             `).join('');
-            
+
             footerText.textContent = `Showing ${data.skills.length} skills in ${activeCategory}`;
             listContainer.style.opacity = '1';
         }, 150);
