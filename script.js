@@ -57,6 +57,29 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
+    // Secret Hobbies Easter Egg: 5 clicks on profile image
+    const profileImg = document.querySelector('.profile-img');
+    let clickCount = 0;
+    let clickTimer = null;
+
+    if (profileImg) {
+        profileImg.style.cursor = 'pointer';
+        profileImg.addEventListener('click', () => {
+            clickCount++;
+            
+            if (clickTimer) clearTimeout(clickTimer);
+            
+            if (clickCount >= 5) {
+                clickCount = 0;
+                window.location.href = 'hobbies.html';
+            } else {
+                clickTimer = setTimeout(() => {
+                    clickCount = 0;
+                }, 2000); // Reset count after 2 seconds of inactivity
+            }
+        });
+    }
+
     const preloader = document.getElementById('preloader');
     const nameReveal = document.getElementById('name-reveal');
     const canvas = document.getElementById('matrix-canvas');
