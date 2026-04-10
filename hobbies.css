@@ -132,6 +132,27 @@
 /* ══════════════════════════════════
    CHESS SECTION
    ══════════════════════════════════ */
+.chess-intro {
+    background: var(--bg-secondary);
+    border-left: 3px solid var(--accent);
+    padding: 1.5rem;
+    border-radius: 0 10px 10px 0;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    animation: fadeIn 0.8s ease backwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.chess-intro p {
+    margin: 0;
+}
+
 .chess-grid {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
@@ -512,161 +533,250 @@
 }
 
 /* ══════════════════════════════════
-   WATCHING SECTION
+   ENTERTAINMENT TRACKER
    ══════════════════════════════════ */
-.watching-tabs {
+.entertainment-controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    margin-bottom: 2rem;
+    padding-bottom: 1.5rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.control-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+}
+
+.control-group label {
+    font-size: 0.7rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+}
+
+.status-tabs, .type-tabs {
     display: flex;
     gap: 0.5rem;
-    margin-bottom: 1.2rem;
+    background: var(--bg-secondary);
+    padding: 0.3rem;
+    border-radius: 8px;
+    border: 1px solid var(--border);
 }
 
-.watching-tab {
+.status-tab, .type-tab {
     padding: 0.4rem 1rem;
     border-radius: 6px;
-    border: 1px solid var(--border);
+    border: none;
     background: transparent;
     color: var(--text-muted);
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 500;
     cursor: pointer;
-    font-family: inherit;
     transition: all 0.2s ease;
+    font-family: inherit;
 }
 
-.watching-tab.active {
+.status-tab.active, .type-tab.active {
     background: var(--text-primary);
     color: var(--bg-primary);
-    border-color: var(--text-primary);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
 }
 
-.watching-tab:hover:not(.active) {
-    border-color: var(--text-secondary);
-    color: var(--text-secondary);
+.status-tab:hover:not(.active), .type-tab:hover:not(.active) {
+    color: var(--text-primary);
 }
 
-.watching-grid {
+/* Layout */
+.entertainment-layout {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1rem;
+    grid-template-columns: 240px 1fr;
+    gap: 2rem;
+    min-height: 400px;
 }
 
-@media (max-width: 640px) {
-    .watching-grid {
+@media (max-width: 768px) {
+    .entertainment-layout {
+        grid-template-columns: 1fr;
+    }
+    .entertainment-sidebar {
+        max-height: 150px;
+        overflow-x: auto;
+    }
+    .item-list {
+        display: flex !important;
+        flex-direction: row !important;
+        gap: 0.5rem;
+    }
+    .item-btn {
+        white-space: nowrap;
+    }
+}
+
+.entertainment-sidebar {
+    border-right: 1px solid var(--border);
+    padding-right: 1.5rem;
+}
+
+.item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+}
+
+.item-btn {
+    text-align: left;
+    padding: 0.7rem 1rem;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    background: transparent;
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.item-btn:hover {
+    background: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+.item-btn.active {
+    background: var(--bg-secondary);
+    border-color: var(--border);
+    color: var(--accent);
+    padding-left: 1.2rem;
+}
+
+.item-btn .item-year {
+    font-size: 0.7rem;
+    opacity: 0.5;
+}
+
+/* Featured Card */
+.featured-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    display: grid;
+    grid-template-columns: 240px 1fr;
+    overflow: hidden;
+    animation: slideIn 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+    position: relative;
+    backdrop-filter: blur(10px);
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+@media (max-width: 600px) {
+    .featured-card {
         grid-template-columns: 1fr;
     }
 }
 
-.watch-card {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    overflow: hidden;
-    transition: border-color 0.2s ease, transform 0.2s ease;
+.featured-poster-wrap {
     position: relative;
-    animation: fadeInCard 0.35s ease backwards;
-}
-
-.watch-card:hover {
-    border-color: var(--text-muted);
-    transform: translateY(-3px);
-}
-
-@keyframes fadeInCard {
-    from { opacity: 0; transform: translateY(12px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-
-.watch-card:nth-child(1) { animation-delay: 0.05s; }
-.watch-card:nth-child(2) { animation-delay: 0.12s; }
-.watch-card:nth-child(3) { animation-delay: 0.19s; }
-
-.watch-card-status {
-    position: absolute;
-    top: 0.6rem;
-    right: 0.6rem;
-    font-size: 0.65rem;
-    font-weight: 600;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    padding: 0.2rem 0.5rem;
-    border-radius: 4px;
-    z-index: 2;
-}
-
-.watch-card-status--watching {
-    background: rgba(34, 197, 94, 0.15);
-    color: #22c55e;
-    border: 1px solid rgba(34, 197, 94, 0.3);
-}
-
-.watch-card-status--paused {
-    background: rgba(234, 179, 8, 0.12);
-    color: #ca8a04;
-    border: 1px solid rgba(234, 179, 8, 0.3);
-}
-
-.watch-card-poster {
-    width: 100%;
-    aspect-ratio: 16/9;
+    aspect-ratio: 2/3;
+    background: var(--bg-tertiary);
     overflow: hidden;
 }
 
-.watch-poster-placeholder {
+.featured-poster {
     width: 100%;
     height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.featured-card:hover .featured-poster {
+    transform: scale(1.05);
+}
+
+.poster-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, transparent, rgba(0,0,0,0.1));
+}
+
+.featured-content {
+    padding: 2rem;
     display: flex;
-    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    font-size: 0.75rem;
-    color: rgba(255,255,255,0.5);
-    letter-spacing: 0.05em;
-    font-style: italic;
 }
 
-/* Anime gradients */
-.anime-gradient-1 { background: linear-gradient(135deg, #1a0533 0%, #3b0764 50%, #7c3aed 100%); }
-.anime-gradient-2 { background: linear-gradient(135deg, #1a0000 0%, #450a0a 50%, #991b1b 100%); }
-.anime-gradient-3 { background: linear-gradient(135deg, #001a0f 0%, #064e3b 50%, #059669 100%); }
-
-/* TV gradients */
-.tv-gradient-1 { background: linear-gradient(135deg, #0c1445 0%, #1e3a8a 50%, #1d4ed8 100%); }
-.tv-gradient-2 { background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%); }
-.tv-gradient-3 { background: linear-gradient(135deg, #1c0a00 0%, #431407 50%, #9a3412 100%); }
-
-.watch-card-info {
-    padding: 0.9rem;
+.featured-header {
+    margin-bottom: 1.5rem;
 }
 
-.watch-card-info h3 {
-    font-size: 0.9rem;
-    font-weight: 500;
+.status-badge {
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    padding: 0.25rem 0.6rem;
+    background: var(--accent);
+    color: white;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 0.8rem;
+}
+
+#featured-title {
+    font-size: 1.8rem;
+    margin: 0;
     color: var(--text-primary);
-    margin-bottom: 0.25rem;
+    letter-spacing: -0.02em;
 }
 
-.watch-meta {
-    font-size: 0.75rem;
+.featured-meta {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    margin-bottom: 1.2rem;
+}
+
+.featured-description {
+    font-size: 0.95rem;
     color: var(--text-secondary);
-    margin-bottom: 0.15rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
 }
 
-.watch-genre {
-    font-size: 0.7rem;
+/* Progress */
+.featured-progress {
+    border-top: 1px solid var(--border);
+    padding-top: 1.5rem;
+}
+
+.progress-label {
+    font-size: 0.8rem;
     color: var(--text-muted);
     margin-bottom: 0.6rem;
+    display: flex;
+    justify-content: space-between;
 }
 
-.watch-progress-bar {
-    height: 2px;
+.progress-bar {
+    height: 6px;
     background: var(--bg-tertiary);
-    border-radius: 1px;
+    border-radius: 10px;
     overflow: hidden;
 }
 
-.watch-progress-fill {
+.progress-fill {
     height: 100%;
-    background: linear-gradient(90deg, var(--accent), var(--text-secondary));
-    border-radius: 1px;
+    background: linear-gradient(90deg, var(--accent), #f472b6);
+    border-radius: 10px;
     transition: width 1s cubic-bezier(0.22, 1, 0.36, 1);
 }
 

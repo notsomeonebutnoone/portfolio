@@ -70,16 +70,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
                 // Win/loss bar
                 setTimeout(() => {
-                    document.getElementById('rapid-fill').style.width = `${winRate}%`;
+                    const bar = document.getElementById('rapid-fill');
+                    if (bar) bar.style.width = `${winRate}%`;
                 }, 300);
 
                 // Win rate ring
                 animateCount(document.getElementById('win-rate'), winRate, 900, '%');
                 setTimeout(() => {
                     const circle = document.getElementById('winrate-circle');
-                    const circumference = 201; // 2 * PI * 32
-                    const offset = circumference - (winRate / 100) * circumference;
-                    circle.style.strokeDashoffset = offset;
+                    if (circle) {
+                        const circumference = 201; // 2 * PI * 32
+                        const offset = circumference - (winRate / 100) * circumference;
+                        circle.style.strokeDashoffset = offset;
+                    }
                 }, 300);
             }
 
@@ -89,13 +92,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
         } catch (err) {
             console.error('Chess API failed:', err);
-            document.getElementById('chess-error').classList.remove('hidden');
-            // Show fallback static values from last known data
-            document.getElementById('rapid-elo').querySelector('.elo-number').textContent = '619';
-            document.getElementById('rapid-best').textContent = '1342';
-            document.getElementById('tactics-highest').textContent = '999';
-            document.getElementById('win-rate').textContent = '49%';
-            setTimeout(() => { document.getElementById('rapid-fill').style.width = '49%'; }, 300);
+            const errEl = document.getElementById('chess-error');
+            if (errEl) errEl.classList.remove('hidden');
         }
     }
 
@@ -132,13 +130,17 @@ document.addEventListener("DOMContentLoaded", () => {
             const videoId = latest.link.split('v=')[1]?.split('&')[0];
             const thumb = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`;
 
-            document.getElementById('yt-thumb').src = thumb;
-            document.getElementById('yt-thumb').alt = latest.title;
-            document.getElementById('yt-title').textContent = latest.title;
-            document.getElementById('yt-link').href = latest.link;
-            document.getElementById('yt-watch-btn').href = latest.link;
+            const thumbEl = document.getElementById('yt-thumb');
+            const titleEl = document.getElementById('yt-title');
+            const linkEl = document.getElementById('yt-link');
+            const btnEl = document.getElementById('yt-watch-btn');
+            const dateEl = document.getElementById('yt-date');
 
-            // Format date nicely
+            if (thumbEl) { thumbEl.src = thumb; thumbEl.alt = latest.title; }
+            if (titleEl) titleEl.textContent = latest.title;
+            if (linkEl) linkEl.href = latest.link;
+            if (btnEl) btnEl.href = latest.link;
+
             const pubDate = new Date(latest.pubDate);
             const now = new Date();
             const diffDays = Math.floor((now - pubDate) / (1000 * 60 * 60 * 24));
@@ -149,61 +151,194 @@ document.addEventListener("DOMContentLoaded", () => {
             else if (diffDays < 30) dateStr = `${Math.floor(diffDays / 7)} week${Math.floor(diffDays / 7) > 1 ? 's' : ''} ago`;
             else dateStr = pubDate.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
 
-            document.getElementById('yt-date').textContent = `Published ${dateStr}`;
+            if (dateEl) dateEl.textContent = `Published ${dateStr}`;
 
-            // Show card, hide loader
-            document.getElementById('yt-loading').classList.add('hidden');
-            document.getElementById('yt-card').classList.remove('hidden');
+            const loadingEl = document.getElementById('yt-loading');
+            const cardEl = document.getElementById('yt-card');
+            if (loadingEl) loadingEl.classList.add('hidden');
+            if (cardEl) cardEl.classList.remove('hidden');
 
         } catch (err) {
             console.error('YouTube RSS failed:', err);
-            // Fallback to known latest video
-            document.getElementById('yt-thumb').src = `https://i.ytimg.com/vi/spiZrXeRhzs/hqdefault.jpg`;
-            document.getElementById('yt-thumb').alt = 'The worst anime fumbles ever';
-            document.getElementById('yt-title').textContent = 'The worst anime fumbles ever';
-            document.getElementById('yt-link').href = 'https://www.youtube.com/watch?v=spiZrXeRhzs';
-            document.getElementById('yt-watch-btn').href = 'https://www.youtube.com/watch?v=spiZrXeRhzs';
-            document.getElementById('yt-date').textContent = 'Published 3 days ago';
-
-            document.getElementById('yt-loading').classList.add('hidden');
-            document.getElementById('yt-card').classList.remove('hidden');
         }
     }
 
     loadYouTubeLatest();
 
     /* ════════════════════════════════════════
-       CURRENTLY WATCHING — Tab Switcher
+       ENTERTAINMENT TRACKER — Data & Logic
        ════════════════════════════════════════ */
-    const tabs = document.querySelectorAll('.watching-tab');
-    const animeGrid = document.getElementById('watching-anime');
-    const tvGrid = document.getElementById('watching-tv');
 
-    tabs.forEach(tab => {
-        tab.addEventListener('click', () => {
-            tabs.forEach(t => t.classList.remove('active'));
-            tab.classList.add('active');
+    /**
+     * CONFIGURATION: Add your shows and movies here!
+     * visible: true/false allows you to hide certain items from the public.
+     */
+    const HOBBIES_DATA = {
+        anime: {
+            watching: [
+                { title: "Jujutsu Kaisen", status: "Watching", progress: 48, meta: "Season 2", description: "Cursed energy, incredible fights, and high stakes.", visible: true },
+                { title: "Attack on Titan", status: "Rewatching", progress: 75, meta: "Final Season", description: "The epic conclusion to a masterpiece.", visible: true },
+                { title: "Hunter x Hunter", status: "On Hold", progress: 65, meta: "2011 Version", description: "Gon's journey to find his father.", visible: true }
+            ],
+            watched: [
+                { title: "Death Note", status: "Watched", progress: 100, meta: "Complete", description: "A battle of wits between Light and L.", visible: true },
+                { title: "Your Name", status: "Watched", progress: 100, meta: "Movie", description: "A beautiful tale of connection and fate.", visible: true }
+            ]
+        },
+        tv: {
+            watching: [
+                { title: "Severance", status: "Watching", progress: 60, meta: "Season 2", description: "Corporate mystery at its finest.", visible: true },
+                { title: "Breaking Bad", status: "Rewatching", progress: 90, meta: "Season 5", description: "The chemistry teacher turned kingpin.", visible: true }
+            ],
+            watched: [
+                { title: "The Office", status: "Watched", progress: 100, meta: "Complete", description: "Dunder Mifflin's daily chaos.", visible: true },
+                { title: "Suits", status: "Watched", progress: 100, meta: "S1-S9", description: "High-stakes corporate law in NYC.", visible: true }
+            ]
+        },
+        movie: {
+            watching: [
+                { title: "Inception", status: "Watching", progress: 10, meta: "Action/Sci-Fi", description: "Dream within a dream.", visible: true }
+            ],
+            watched: [
+                { title: "Interstellar", status: "Watched", progress: 100, meta: "Sci-Fi", description: "Time, space, and a father's love.", visible: true },
+                { title: "The Dark Knight", status: "Watched", progress: 100, meta: "Action", description: "Why so serious?", visible: true }
+            ]
+        }
+    };
 
-            const target = tab.getAttribute('data-tab');
-            if (target === 'anime') {
-                tvGrid.classList.add('hidden');
-                animeGrid.classList.remove('hidden');
-                // Re-trigger animations
-                animeGrid.querySelectorAll('.watch-card').forEach((card, i) => {
-                    card.style.animation = 'none';
-                    card.offsetHeight; // reflow
-                    card.style.animation = `fadeInCard 0.35s ease ${i * 0.07}s backwards`;
-                });
-            } else {
-                animeGrid.classList.add('hidden');
-                tvGrid.classList.remove('hidden');
-                tvGrid.querySelectorAll('.watch-card').forEach((card, i) => {
-                    card.style.animation = 'none';
-                    card.offsetHeight;
-                    card.style.animation = `fadeInCard 0.35s ease ${i * 0.07}s backwards`;
-                });
+    let activeStatus = 'watching';
+    let activeType = 'anime';
+
+    // Elements
+    const statusTabs = document.querySelectorAll('.status-tab');
+    const typeTabs = document.querySelectorAll('.type-tab');
+    const itemList = document.getElementById('entertainment-list');
+    const featuredCard = document.getElementById('featured-display');
+
+    // API Functions
+    async function fetchAnimeInfo(title) {
+        try {
+            const res = await fetch(`https://api.jikan.moe/v4/anime?q=${encodeURIComponent(title)}&limit=1`);
+            const data = await res.json();
+            if (data.data && data.data.length > 0) {
+                const anime = data.data[0];
+                return {
+                    poster: anime.images.webp.large_image_url,
+                    description: anime.synopsis,
+                    year: anime.year || anime.aired?.from?.split('-')[0] || ''
+                };
             }
+        } catch (e) { console.error("Jikan API Error:", e); }
+        return null;
+    }
+
+    async function fetchTVInfo(title) {
+        try {
+            const res = await fetch(`https://api.tvmaze.com/singlesearch/shows?q=${encodeURIComponent(title)}`);
+            const data = await res.json();
+            if (data) {
+                return {
+                    poster: data.image?.original || data.image?.medium,
+                    description: data.summary?.replace(/<[^>]*>?/gm, ''),
+                    year: data.premiered?.split('-')[0] || ''
+                };
+            }
+        } catch (e) { console.error("TVmaze API Error:", e); }
+        return null;
+    }
+
+    async function fetchMovieInfo(title) {
+        // TVmaze actually handles some major movies too, let's try it as a fallback
+        return await fetchTVInfo(title);
+    }
+
+    // Render List
+    function renderList() {
+        const data = HOBBIES_DATA[activeType][activeStatus].filter(item => item.visible);
+        itemList.innerHTML = '';
+
+        data.forEach((item, index) => {
+            const btn = document.createElement('button');
+            btn.className = `item-btn ${index === 0 ? 'active' : ''}`;
+            btn.innerHTML = `
+                <span>${item.title}</span>
+                <span class="item-year">›</span>
+            `;
+            btn.addEventListener('click', () => {
+                document.querySelectorAll('.item-btn').forEach(b => b.classList.remove('active'));
+                btn.classList.add('active');
+                pullItemDetails(item);
+            });
+            itemList.appendChild(btn);
+        });
+
+        if (data.length > 0) {
+            pullItemDetails(data[0]);
+        } else {
+            resetFeatured();
+        }
+    }
+
+    async function pullItemDetails(item) {
+        // Show loading state
+        document.getElementById('featured-title').textContent = "Pulling details...";
+        document.getElementById('featured-poster').style.opacity = '0.3';
+
+        let apiData = null;
+        if (activeType === 'anime') apiData = await fetchAnimeInfo(item.title);
+        else if (activeType === 'tv') apiData = await fetchTVInfo(item.title);
+        else if (activeType === 'movie') apiData = await fetchMovieInfo(item.title);
+
+        // Update UI
+        document.getElementById('featured-poster').src = apiData?.poster || 'https://via.placeholder.com/400x600?text=No+Poster';
+        document.getElementById('featured-poster').style.opacity = '1';
+        document.getElementById('featured-title').textContent = item.title;
+        document.getElementById('featured-status-badge').textContent = item.status;
+        document.getElementById('featured-meta').textContent = `${activeType.toUpperCase()} · ${item.meta} ${apiData?.year ? '· ' + apiData.year : ''}`;
+        document.getElementById('featured-description').textContent = apiData?.description || item.description || "No description available.";
+        
+        const progressFill = document.getElementById('featured-progress-fill');
+        const progressText = document.getElementById('featured-progress-text');
+        if (progressFill && progressText) {
+            progressFill.style.width = `${item.progress}%`;
+            progressText.textContent = `${item.progress}%`;
+        }
+
+        featuredCard.classList.remove('hidden');
+        // Restart animation
+        featuredCard.style.animation = 'none';
+        featuredCard.offsetHeight;
+        featuredCard.style.animation = 'slideIn 0.5s cubic-bezier(0.22, 1, 0.36, 1)';
+    }
+
+    function resetFeatured() {
+        document.getElementById('featured-title').textContent = "No items found";
+        document.getElementById('featured-poster').src = '';
+        document.getElementById('featured-description').textContent = "Check back later or try a different category.";
+        document.getElementById('featured-progress-fill').style.width = '0%';
+        document.getElementById('featured-progress-text').textContent = '0%';
+    }
+
+    // Event Listeners
+    statusTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            statusTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            activeStatus = tab.getAttribute('data-status');
+            renderList();
         });
     });
+
+    typeTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            typeTabs.forEach(t => t.classList.remove('active'));
+            tab.classList.add('active');
+            activeType = tab.getAttribute('data-type');
+            renderList();
+        });
+    });
+
+    // Initial Render
+    renderList();
 
 });

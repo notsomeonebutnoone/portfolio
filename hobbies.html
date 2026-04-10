@@ -64,6 +64,15 @@
                 </a>
             </div>
 
+            <div class="chess-intro">
+                <p>
+                    I played some chess growing up, but now I want to get over 1500+ elo, which I want to accomplish as soon as possible. 
+                    However, I use chess primarily to wind down and have fun competing. I honestly think I will stop playing once I reach 1500+ 
+                    beyond that, there is nothing for me. For me, chess is a mental playground where strategy meets relaxation, 
+                    a way to sharpen my mind without the pressure of professional play. It's the ultimate competitive escape.
+                </p>
+            </div>
+
             <div class="chess-grid">
                 <!-- Live ELO card -->
                 <div class="chess-card chess-card--main" id="chess-rapid-card">
@@ -203,119 +212,63 @@
             </div>
         </section>
 
-        <!-- ── CURRENTLY WATCHING ── -->
-        <section class="hobby-section" id="watching-section">
+        <!-- ── ENTERTAINMENT SECTION ── -->
+        <section class="hobby-section" id="entertainment-section">
             <div class="section-label">
-                <span class="section-icon">📺</span>
-                <h2>Currently Watching</h2>
+                <span class="section-icon">🎬</span>
+                <h2>Entertainment Tracker</h2>
             </div>
 
-            <div class="watching-tabs">
-                <button class="watching-tab active" data-tab="anime" id="tab-anime">Anime</button>
-                <button class="watching-tab" data-tab="tv" id="tab-tv">TV Series</button>
-            </div>
-
-            <div class="watching-grid" id="watching-anime">
-                <div class="watch-card" id="watch-anime-1">
-                    <div class="watch-card-status watch-card-status--watching">Watching</div>
-                    <div class="watch-card-poster">
-                        <div class="watch-poster-placeholder anime-gradient-1">
-                            <span>呪術廻戦</span>
-                        </div>
-                    </div>
-                    <div class="watch-card-info">
-                        <h3>Jujutsu Kaisen</h3>
-                        <p class="watch-meta">Season 2 · Episode 23/47</p>
-                        <p class="watch-genre">Action · Supernatural</p>
-                        <div class="watch-progress-bar">
-                            <div class="watch-progress-fill" style="width: 48%;"></div>
-                        </div>
+            <div class="entertainment-controls">
+                <div class="control-group">
+                    <label>Status</label>
+                    <div class="status-tabs" id="status-tabs">
+                        <button class="status-tab active" data-status="watching">Watching</button>
+                        <button class="status-tab" data-status="watched">Watched</button>
                     </div>
                 </div>
-
-                <div class="watch-card" id="watch-anime-2">
-                    <div class="watch-card-status watch-card-status--watching">Watching</div>
-                    <div class="watch-card-poster">
-                        <div class="watch-poster-placeholder anime-gradient-2">
-                            <span>進撃の巨人</span>
-                        </div>
-                    </div>
-                    <div class="watch-card-info">
-                        <h3>Attack on Titan</h3>
-                        <p class="watch-meta">Final Season · Rewatching</p>
-                        <p class="watch-genre">Dark Fantasy · Action</p>
-                        <div class="watch-progress-bar">
-                            <div class="watch-progress-fill" style="width: 75%;"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="watch-card" id="watch-anime-3">
-                    <div class="watch-card-status watch-card-status--paused">On Hold</div>
-                    <div class="watch-card-poster">
-                        <div class="watch-poster-placeholder anime-gradient-3">
-                            <span>ハンター×ハンター</span>
-                        </div>
-                    </div>
-                    <div class="watch-card-info">
-                        <h3>Hunter x Hunter</h3>
-                        <p class="watch-meta">2011 · Episode 96/148</p>
-                        <p class="watch-genre">Adventure · Fantasy</p>
-                        <div class="watch-progress-bar">
-                            <div class="watch-progress-fill" style="width: 65%;"></div>
-                        </div>
+                <div class="control-group">
+                    <label>Category</label>
+                    <div class="type-tabs" id="type-tabs">
+                        <button class="type-tab active" data-type="anime">Anime</button>
+                        <button class="type-tab" data-type="tv">TV Shows</button>
+                        <button class="type-tab" data-type="movie">Movies</button>
                     </div>
                 </div>
             </div>
 
-            <div class="watching-grid hidden" id="watching-tv">
-                <div class="watch-card" id="watch-tv-1">
-                    <div class="watch-card-status watch-card-status--watching">Watching</div>
-                    <div class="watch-card-poster">
-                        <div class="watch-poster-placeholder tv-gradient-1">
-                            <span>BB</span>
-                        </div>
-                    </div>
-                    <div class="watch-card-info">
-                        <h3>Breaking Bad</h3>
-                        <p class="watch-meta">Season 3 · Rewatching</p>
-                        <p class="watch-genre">Crime Drama · Thriller</p>
-                        <div class="watch-progress-bar">
-                            <div class="watch-progress-fill" style="width: 60%;"></div>
-                        </div>
+            <div class="entertainment-layout">
+                <!-- List Sidebar -->
+                <div class="entertainment-sidebar">
+                    <div class="item-list" id="entertainment-list">
+                        <!-- Dynamically populated -->
                     </div>
                 </div>
 
-                <div class="watch-card" id="watch-tv-2">
-                    <div class="watch-card-status watch-card-status--watching">Watching</div>
-                    <div class="watch-card-poster">
-                        <div class="watch-poster-placeholder tv-gradient-2">
-                            <span>SEVERANCE</span>
+                <!-- Featured Display -->
+                <div class="entertainment-main">
+                    <div id="featured-display" class="featured-card">
+                        <div class="featured-poster-wrap">
+                            <img id="featured-poster" src="" alt="Select a title" class="featured-poster">
+                            <div class="poster-overlay"></div>
                         </div>
-                    </div>
-                    <div class="watch-card-info">
-                        <h3>Severance</h3>
-                        <p class="watch-meta">Season 2 · Episode 6/10</p>
-                        <p class="watch-genre">Sci-Fi · Mystery</p>
-                        <div class="watch-progress-bar">
-                            <div class="watch-progress-fill" style="width: 60%;"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="watch-card" id="watch-tv-3">
-                    <div class="watch-card-status watch-card-status--paused">On Hold</div>
-                    <div class="watch-card-poster">
-                        <div class="watch-poster-placeholder tv-gradient-3">
-                            <span>SILO</span>
-                        </div>
-                    </div>
-                    <div class="watch-card-info">
-                        <h3>Silo</h3>
-                        <p class="watch-meta">Season 1 · Episode 5/10</p>
-                        <p class="watch-genre">Dystopian · Sci-Fi</p>
-                        <div class="watch-progress-bar">
-                            <div class="watch-progress-fill" style="width: 50%;"></div>
+                        <div class="featured-content">
+                            <div class="featured-header">
+                                <span id="featured-status-badge" class="status-badge">Watching</span>
+                                <h3 id="featured-title">Select a title to view</h3>
+                            </div>
+                            <div class="featured-details">
+                                <p id="featured-meta" class="featured-meta">Category · Details</p>
+                                <p id="featured-description" class="featured-description">
+                                    Click on any title from the list on the left to "pull" its details and see the poster.
+                                </p>
+                                <div class="featured-progress" id="featured-progress-container">
+                                    <div class="progress-label">Progress: <span id="featured-progress-text">0%</span></div>
+                                    <div class="progress-bar">
+                                        <div id="featured-progress-fill" class="progress-fill" style="width: 0%;"></div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -328,7 +281,7 @@
             <ul>
                 <li><a href="#chess-section">Chess</a></li>
                 <li><a href="#youtube-section">YouTube</a></li>
-                <li><a href="#watching-section">Watching</a></li>
+                <li><a href="#entertainment-section">Entertainment</a></li>
             </ul>
         </div>
     </nav>
