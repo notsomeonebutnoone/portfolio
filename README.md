@@ -2,10 +2,13 @@
 
 A minimalist, high-performance portfolio website built with HTML, CSS, and Vanilla JavaScript. Designed with an elegant, responsive dark-mode-first aesthetic, featuring beautiful typography, interactive components, and dynamic animations.
 
+**🌍 Live Site:** [https://chiragvenkatesh.vercel.app](https://chiragvenkatesh.vercel.app)
+
+
 ## ✨ Features
 
 - **Matrix-Inspired Preloader:** A custom HTML5 Canvas generative hex-code rain animation that gracefully reveals the name and transitions smoothly into the main site layout.
-- **Light & Dark Mode:** Seamless theme switching capabilities managed via CSS variables and synced securely using `localStorage`.
+- **Light & Dark Mode:** Seamless theme switching managed via CSS variables and synced securely using `localStorage`, featuring a visually stunning, smooth sweep animation powered by the modern **View Transitions API**.
 - **Interactive Floating Navigation:** A modern, glassmorphic pill-shaped bottom dock for effortless, persistent navigation across sections seamlessly on any device.
 - **Dynamic Content Filtering:** An interactive Skills section that visually categorizes hardware and software domains (Physical Design, Verification, EDA Tools, etc.) with responsive JavaScript rendering.
 - **Performance Optimized:** Built without bulky frameworks. Pure semantic HTML, Vanilla CSS, and native JavaScript ensure instant load times and liquid-smooth 60fps animations.
