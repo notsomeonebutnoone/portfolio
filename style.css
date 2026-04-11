@@ -38,6 +38,7 @@ body {
     overflow-x: hidden;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 body.preloading {
@@ -570,14 +571,4 @@ footer {
 .reveal.active {
     opacity: 1;
     transform: translateY(0);
-}
-
-/* View Transition API — allow the clip-path animation to run freely */
-::view-transition-old(root) {
-    animation: none;
-    mix-blend-mode: normal;
-}
-
-::view-transition-new(root) {
-    mix-blend-mode: normal;
 }

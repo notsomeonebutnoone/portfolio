@@ -8,52 +8,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', (e) => {
-            const toggleTheme = () => {
-                let theme = document.documentElement.getAttribute('data-theme');
-                if (theme === 'light') {
-                    document.documentElement.removeAttribute('data-theme');
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    document.documentElement.setAttribute('data-theme', 'light');
-                    localStorage.setItem('theme', 'light');
-                }
-            };
-
-            // Setup smooth sweep animation using View Transitions API
-            if (!document.startViewTransition) {
-                toggleTheme();
-                return;
+        themeToggleBtn.addEventListener('click', () => {
+            const theme = document.documentElement.getAttribute('data-theme');
+            if (theme === 'light') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
             }
-
-            const x = e.clientX;
-            const y = e.clientY;
-
-            // Calculate max radius needed to cover the entire screen from the click point
-            const endRadius = Math.hypot(
-                Math.max(x, window.innerWidth - x),
-                Math.max(y, window.innerHeight - y)
-            );
-
-            const transition = document.startViewTransition(toggleTheme);
-
-            transition.ready.then(() => {
-                const clipPath = [
-                    `circle(0px at ${x}px ${y}px)`,
-                    `circle(${endRadius}px at ${x}px ${y}px)`
-                ];
-
-                document.documentElement.animate(
-                    {
-                        clipPath: clipPath
-                    },
-                    {
-                        duration: 1200,
-                        easing: 'cubic-bezier(0.22, 1, 0.36, 1)', // Gentle ease-out
-                        pseudoElement: '::view-transition-new(root)'
-                    }
-                );
-            });
         });
     }
 

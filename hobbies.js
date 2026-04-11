@@ -7,27 +7,15 @@ document.addEventListener("DOMContentLoaded", () => {
         document.documentElement.setAttribute('data-theme', 'light');
     }
     if (themeToggleBtn) {
-        themeToggleBtn.addEventListener('click', (e) => {
-            const toggleTheme = () => {
-                const theme = document.documentElement.getAttribute('data-theme');
-                if (theme === 'light') {
-                    document.documentElement.removeAttribute('data-theme');
-                    localStorage.setItem('theme', 'dark');
-                } else {
-                    document.documentElement.setAttribute('data-theme', 'light');
-                    localStorage.setItem('theme', 'light');
-                }
-            };
-            if (!document.startViewTransition) { toggleTheme(); return; }
-            const x = e.clientX, y = e.clientY;
-            const endRadius = Math.hypot(Math.max(x, window.innerWidth - x), Math.max(y, window.innerHeight - y));
-            const transition = document.startViewTransition(toggleTheme);
-            transition.ready.then(() => {
-                document.documentElement.animate(
-                    { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${endRadius}px at ${x}px ${y}px)`] },
-                    { duration: 1200, easing: 'cubic-bezier(0.22, 1, 0.36, 1)', pseudoElement: '::view-transition-new(root)' }
-                );
-            });
+        themeToggleBtn.addEventListener('click', () => {
+            const theme = document.documentElement.getAttribute('data-theme');
+            if (theme === 'light') {
+                document.documentElement.removeAttribute('data-theme');
+                localStorage.setItem('theme', 'dark');
+            } else {
+                document.documentElement.setAttribute('data-theme', 'light');
+                localStorage.setItem('theme', 'light');
+            }
         });
     }
 
