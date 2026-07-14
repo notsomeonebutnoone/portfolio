@@ -1,0 +1,10 @@
+{
+  "rewrites": [
+    { "source": "/hardware", "destination": "/track.html" },
+    { "source": "/software", "destination": "/track.html" },
+    { "source": "/analyst", "destination": "/track.html" }
+  ],
+  "redirects": [
+    { "source": "/hardware.html", "destination": "/hardware", "permanent": true }
+  ]
+}

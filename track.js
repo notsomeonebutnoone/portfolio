@@ -121,7 +121,10 @@ function bindTrackCardEffects() {
 }
 
 const normalizeTrack = value => value === 'hardware' || value === 'analyst' ? value : 'software';
-const currentTrack = () => normalizeTrack(new URLSearchParams(location.search).get('track'));
+const currentTrack = () => {
+  const routeTrack = location.pathname.split('/').filter(Boolean).at(-1);
+  return normalizeTrack(routeTrack || new URLSearchParams(location.search).get('track'));
+};
 
 function renderTrack(key) {
   const data = tracks[key];
@@ -155,7 +158,7 @@ document.querySelectorAll('[data-track-link]').forEach(link => link.addEventList
   positionTrackPill(link, true);
   document.body.classList.add('track-switching');
   window.setTimeout(() => {
-    history.pushState({track: next}, '', `track.html?track=${next}`);
+    history.pushState({track: next}, '', `/${next}`);
     renderTrack(next);
     window.scrollTo({top: 0, behavior: 'instant'});
     requestAnimationFrame(() => document.body.classList.remove('track-switching'));
