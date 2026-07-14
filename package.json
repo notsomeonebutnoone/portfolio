@@ -1,0 +1,28 @@
+{
+  "name": "res",
+  "version": "1.0.0",
+  "description": "A minimalist, high-performance portfolio website built with HTML, CSS, and Vanilla JavaScript. Designed with an elegant, responsive dark-mode-first aesthetic, featuring beautiful typography, interactive components, and dynamic animations.",
+  "main": "hobbies.js",
+  "scripts": {
+    "build:sphere": "esbuild ./particle-sphere.js --bundle --format=iife --platform=browser --target=es2020 --minify --outfile=./particle-sphere.bundle.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/notsomeonebutnoone/portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/notsomeonebutnoone/portfolio/issues"
+  },
+  "homepage": "https://github.com/notsomeonebutnoone/portfolio#readme",
+  "dependencies": {
+    "three": "^0.185.1"
+  },
+  "devDependencies": {
+    "esbuild": "^0.28.1"
+  }
+}

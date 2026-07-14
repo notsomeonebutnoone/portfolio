@@ -61,13 +61,11 @@ document.addEventListener("DOMContentLoaded", () => {
             let drops = Array(Math.floor(columns)).fill(0).map(() => Math.floor(Math.random() * (canvas.height / fontSize)));
 
             function drawMatrix() {
-                // Determine current theme for drawing background so that canvas fades nicely
-                const isLight = document.documentElement.getAttribute('data-theme') === 'light';
-                ctx.fillStyle = isLight ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.05)';
+                // Keep the loading field seamless and black across every portfolio track.
+                ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
                 ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-                // Text color
-                ctx.fillStyle = isLight ? '#a1a1aa' : '#52525b';
+                ctx.fillStyle = 'rgba(92, 102, 112, 0.22)';
                 ctx.font = fontSize + 'px monospace';
 
                 for (let i = 0; i < drops.length; i++) {
@@ -151,7 +149,7 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.timeline-item, .project-card, .skills-content-box').forEach(el => {
+    document.querySelectorAll('.timeline-item, .project-card, .skills-content-box, .capability-card').forEach(el => {
         el.classList.add('reveal');
         observer.observe(el);
     });
