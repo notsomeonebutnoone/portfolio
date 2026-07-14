@@ -88,6 +88,7 @@ if (canvas) {
   particles.instanceColor = new Float32BufferAttribute(instanceColors, 3);
   particles.instanceMatrix.setUsage(35048);
   const group = new Group();
+  group.position.y = 0.1;
   group.add(particles);
   scene.add(group);
 
