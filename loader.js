@@ -95,7 +95,7 @@
 // Track-card accent glow follows the pointer without moving the card.
 (() => {
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  document.querySelectorAll('.gateway-track-dock .track-card').forEach(card => {
+  document.querySelectorAll('.gateway-track-dock .track-card, .featured-writing .writing-card').forEach(card => {
     let frame = 0;
     card.addEventListener('pointermove', event => {
       if (event.pointerType === 'touch') return;

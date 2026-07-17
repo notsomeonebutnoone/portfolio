@@ -1073,6 +1073,7 @@ html[data-track="analyst"][data-theme="light"]{--accent:#d68a00;--track-accent:#
 .gateway-wordmark{left:auto;right:8%;bottom:7%;width:auto;font-size:clamp(260px,38vw,640px);letter-spacing:-.13em;opacity:.045}
 .gateway-track-dock{min-height:calc(100svh - 84px)!important;grid-template-columns:repeat(3,1fr)!important;border-bottom:1px solid var(--border);scroll-margin-top:84px}
 .gateway-page .gateway-track-dock .track-card{min-height:calc(100svh - 84px)!important;padding:clamp(24px,3vw,52px)!important;justify-content:flex-start!important}
+.gateway-page .gateway-track-dock .track-copy{margin-top:auto;margin-bottom:auto}
 .gateway-track-dock .track-illustration{display:grid!important;flex:1;min-height:240px}
 .gateway-track-dock .track-copy{display:block}
 .gateway-track-dock .track-role{margin-bottom:.5rem!important}
@@ -1093,6 +1094,38 @@ html[data-track="analyst"][data-theme="light"]{--accent:#d68a00;--track-accent:#
 .gateway-page .gateway-socials a:hover,.gateway-page .gateway-theme-toggle:hover{color:#ff0000;border-color:#ff0000}
 [data-theme="light"] .gateway-page{--accent:#e00000;--accent-soft:rgba(224,0,0,.1)}
 [data-theme="light"] .gateway-page .hardware-card{--panel-accent:#008fc4}[data-theme="light"] .gateway-page .software-card{--panel-accent:#00a86b}[data-theme="light"] .gateway-page .analyst-card{--panel-accent:#d68a00}
+
+/* Featured research on the gateway page. */
+.featured-writing{position:relative;z-index:8;padding:clamp(74px,9vw,132px) max(24px,calc((100vw - 1180px)/2));border-top:1px solid var(--border);background:var(--bg-primary);scroll-margin-top:76px}
+.featured-writing-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:48px;margin-bottom:44px}
+.featured-writing-kicker{margin:0 0 12px;color:var(--text-muted);font-size:8px;letter-spacing:.14em;text-transform:uppercase}
+.featured-writing-heading h2{margin:0;color:var(--text-primary);font:600 clamp(34px,5vw,64px)/.95 Inter,sans-serif;letter-spacing:-.06em}
+.featured-writing-heading>p{max-width:470px;margin:0;color:var(--text-secondary);font-size:11px;line-height:1.7}
+.writing-grid{display:grid;gap:16px}
+.writing-card{--writing-accent:#51d7ff;--glow-x:50%;--glow-y:50%;position:relative;isolation:isolate;display:grid;grid-template-columns:minmax(240px,34%) 1fr;min-height:360px;border:1px solid var(--border);background:var(--bg-secondary);overflow:hidden;transition:border-color .3s ease,transform .3s ease,box-shadow .3s ease}
+.writing-card-kleepay{--writing-accent:#e7d8b6}.writing-card-3one4{--writing-accent:#e8c968}
+.writing-card:hover{transform:translateY(-3px);border-color:color-mix(in srgb,var(--writing-accent) 45%,var(--border));box-shadow:0 24px 60px color-mix(in srgb,var(--writing-accent) 9%,transparent)}
+.writing-card::before{content:"";position:absolute;z-index:0;inset:0;opacity:0;pointer-events:none;background-image:linear-gradient(rgba(255,255,255,.026) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.026) 1px,transparent 1px),radial-gradient(circle at var(--glow-x) var(--glow-y),color-mix(in srgb,var(--writing-accent) 24%,transparent),transparent 42%);background-size:28px 28px,28px 28px,100% 100%;transition:opacity .22s ease}
+.writing-card:hover::before{opacity:1}
+.writing-card>*{position:relative;z-index:1}
+.writing-card-visual{position:relative;display:grid;place-items:center;min-height:290px;padding:54px 30px 30px;border-right:1px solid var(--border);background-image:linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);background-size:24px 24px}
+.writing-index{position:absolute;top:22px;left:24px;color:var(--text-muted);font-size:7px;letter-spacing:.12em;text-transform:uppercase}
+.writing-logo{width:min(74%,190px);aspect-ratio:1;display:grid;place-items:center;overflow:hidden;transition:transform .45s cubic-bezier(.2,.75,.25,1)}
+.writing-card:hover .writing-logo{transform:scale(1.035)}
+.writing-logo img{width:100%;height:100%;display:block;object-fit:contain}
+.writing-logo-defillama{border-radius:22%;background:#fff}.writing-logo-kleepay{border-radius:18%;background:#f4ecd8}.writing-logo-3one4{width:min(88%,250px);aspect-ratio:1.78;background:#000}
+.writing-card-body{display:flex;flex-direction:column;padding:clamp(28px,4vw,54px)}
+.writing-company{margin:0 0 12px;color:var(--writing-accent);font-size:8px;letter-spacing:.14em;text-transform:uppercase}
+.writing-card h3{max-width:670px;margin:0 0 8px;color:var(--text-primary);font:600 clamp(22px,3vw,38px)/1.08 Inter,sans-serif;letter-spacing:-.05em}
+.writing-subtitle{margin:0 0 24px;color:var(--text-muted);font-size:10px}
+.writing-synopsis{max-width:720px;margin:0;color:var(--text-secondary);font-size:11px;line-height:1.75}
+.writing-footer{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-top:auto;padding-top:34px}
+.writing-tags{display:flex;gap:6px;flex-wrap:wrap}.writing-tags span{padding:5px 8px;border:1px solid var(--border);color:var(--text-muted);font-size:7px;letter-spacing:.06em;text-transform:uppercase}
+.report-download{display:inline-flex;align-items:center;gap:26px;flex:none;padding:11px 14px;border:1px solid color-mix(in srgb,var(--writing-accent) 44%,var(--border));color:var(--text-primary);font-size:8px;letter-spacing:.08em;text-decoration:none;text-transform:uppercase;transition:background .25s ease,color .25s ease}
+.report-download b{font-size:12px;transition:transform .25s ease}.report-download:hover{background:var(--writing-accent);color:#050607}.report-download:hover b{transform:translateY(2px)}
+[data-theme="light"] .writing-card-visual{background-image:linear-gradient(rgba(0,0,0,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.035) 1px,transparent 1px)}
+[data-theme="light"] .writing-card::before{background-image:linear-gradient(rgba(0,0,0,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(0,0,0,.035) 1px,transparent 1px),radial-gradient(circle at var(--glow-x) var(--glow-y),color-mix(in srgb,var(--writing-accent) 18%,transparent),transparent 44%)}
+@media(max-width:760px){.featured-writing{padding:68px 18px}.featured-writing-heading{display:block;margin-bottom:30px}.featured-writing-heading>p{margin-top:18px}.writing-card{grid-template-columns:1fr}.writing-card-visual{min-height:235px;border-right:0;border-bottom:1px solid var(--border)}.writing-logo{width:min(52%,160px)}.writing-logo-3one4{width:min(68%,220px)}.writing-card-body{padding:28px 22px}.writing-footer{align-items:stretch;flex-direction:column}.report-download{justify-content:space-between;width:100%}}
 
 /* Cursor-following glow for the track tiles. */
 .gateway-track-dock{overflow:visible}
