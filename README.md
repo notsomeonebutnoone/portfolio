@@ -34,8 +34,13 @@ Since this is a fully static ecosystem without framework-dependent bundlers, get
    cd portfolio
    ```
 
-3. **Deploy Locally:**
-   Simply double-click on `index.html` to open it in any modern browser, or use VS Code's **Live Server** extension for a localized development loop.
+3. **Run locally:**
+   ```bash
+   npm install
+   npm run dev
+   ```
+
+   Open `http://127.0.0.1:4173`. The local server mirrors the production rewrites for `/hardware`, `/software`, and `/analyst`.
 
 ## 📁 Project Structure
 

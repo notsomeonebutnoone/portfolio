@@ -1,302 +1,132 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chirag Venkatesh | Electronics & Communication Engineer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <link rel="icon" type="image/png" href="2.jpg">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Choose a portfolio track for Chirag Venkatesh: hardware, software, or analyst and GTM.">
+  <title>Chirag Venkatesh | Choose a Track</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="2.jpg">
 </head>
-
-<body class="preloading">
-    <div id="preloader" class="preloader">
-        <canvas id="matrix-canvas" class="matrix-canvas"></canvas>
-        <div class="preloader-content">
-            <span id="name-reveal" class="name-reveal-text" data-name="CHIRAG VENKATESH"></span>
-        </div>
+<body class="gateway-page preloading">
+  <div id="preloader" class="preloader">
+    <canvas id="matrix-canvas" class="matrix-canvas"></canvas>
+    <div class="preloader-content"><span id="name-reveal" class="name-reveal-text" data-name="CHIRAG VENKATESH"></span></div>
+  </div>
+  <header class="gateway-overlay-header">
+    <a class="gateway-brand track-home-link" href="/?skipIntro=1" aria-label="Chirag Venkatesh home">CV<span>/</span></a>
+    <div class="gateway-socials" aria-label="Contact and social links">
+      <a href="mailto:chirag42012@gmail.com" aria-label="Email" title="Email">
+        <svg viewBox="0 0 192 192" aria-hidden="true"><path fill="url(#email-side-gradient)" d="M146 44h38v110c0 6.627-5.373 12-12 12h-20a6 6 0 0 1-6-6z"/><path fill="#fc413d" d="M46 44H8v110c0 6.627 5.373 12 12 12h20a6 6 0 0 0 6-6z"/><path fill="url(#email-flap-gradient)" d="M39.226 30.456c-8.033-6.752-20.018-5.714-26.77 2.319-6.752 8.032-5.714 20.017 2.319 26.77l76.078 63.949a8 8 0 0 0 10.295 0l76.078-63.95c8.032-6.752 9.07-18.737 2.318-26.77-6.752-8.032-18.737-9.07-26.769-2.318L96 78.18z"/><defs><linearGradient id="email-side-gradient" x1="165" x2="165" y1="44" y2="166" gradientUnits="userSpaceOnUse"><stop stop-color="#60d673"/><stop offset=".17" stop-color="#42c868"/><stop offset=".39" stop-color="#0ebc5f"/><stop offset=".62" stop-color="#00a9bb"/><stop offset=".86" stop-color="#3c90ff"/><stop offset="1" stop-color="#3186ff"/></linearGradient><linearGradient id="email-flap-gradient" x1="8" x2="184" y1="46.13" y2="46.13" gradientUnits="userSpaceOnUse"><stop offset=".08" stop-color="#ff63a0"/><stop offset=".3" stop-color="#fc413d"/><stop offset=".5" stop-color="#fc413d"/><stop offset=".65" stop-color="#fc413d"/><stop offset=".72" stop-color="#fc5c30"/><stop offset=".86" stop-color="#feb10c"/><stop offset=".91" stop-color="#fec700"/><stop offset=".96" stop-color="#ffdb0f"/></linearGradient></defs></svg>
+      </a>
+      <a href="https://github.com/notsomeonebutnoone" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
+        <svg viewBox="0 0 1024 1024" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z" transform="scale(64)" fill="#ffffff"/></svg>
+      </a>
+      <a href="https://www.linkedin.com/in/chirag-v-1aa9b9204" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
+        <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M218.123 218.127h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4-19.756 0-22.779 15.434-22.779 31.369v60.43h-37.93V95.967h36.413v16.694h.51a39.907 39.907 0 0 1 35.928-19.733c38.445 0 45.533 25.288 45.533 58.186l-.016 67.013ZM56.955 79.27c-12.157.002-22.014-9.852-22.016-22.009-.002-12.157 9.851-22.014 22.008-22.016 12.157-.003 22.014 9.851 22.016 22.008A22.013 22.013 0 0 1 56.955 79.27m18.966 138.858H37.95V95.967h37.97v122.16ZM237.033.018H18.89C8.58-.098.125 8.161-.001 18.471v219.053c.122 10.315 8.576 18.582 18.89 18.474h218.144c10.336.128 18.823-8.139 18.966-18.474V18.454c-.147-10.33-8.635-18.588-18.966-18.453" fill="#0A66C2"/></svg>
+      </a>
+      <button id="theme-toggle" class="theme-toggle gateway-theme-toggle" aria-label="Toggle light and dark theme">
+        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 11.5373 21.3065 11.4608 21.0672 11.8568C19.9289 13.7406 17.8615 15 15.5 15C11.9101 15 9 12.0899 9 8.5C9 6.13845 10.2594 4.07105 12.1432 2.93276C12.5392 2.69347 12.4627 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="currentColor"/></svg>
+        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 12C18 15.3137 15.3137 18 12 18C8.68629 18 6 15.3137 6 12C6 8.68629 8.68629 6 12 6C15.3137 6 18 8.68629 18 12Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12 1.25C12.4142 1.25 12.75 1.58579 12.75 2V3C12.75 3.41421 12.4142 3.75 12 3.75C11.5858 3.75 11.25 3.41421 11.25 3V2C11.25 1.58579 11.5858 1.25 12 1.25ZM4.39861 4.39861C4.6915 4.10572 5.16638 4.10572 5.45927 4.39861L5.85211 4.79145C6.145 5.08434 6.145 5.55921 5.85211 5.85211C5.55921 6.145 5.08434 6.145 4.79145 5.85211L4.39861 5.45927C4.10572 5.16638 4.10572 4.6915 4.39861 4.39861ZM19.6011 4.39887C19.894 4.69176 19.894 5.16664 19.6011 5.45953L19.2083 5.85237C18.9154 6.14526 18.4405 6.14526 18.1476 5.85237C17.8547 5.55947 17.8547 5.0846 18.1476 4.79171L18.5405 4.39887C18.8334 4.10598 19.3082 4.10598 19.6011 4.39887ZM1.25 12C1.25 11.5858 1.58579 11.25 2 11.25H3C3.41421 11.25 3.75 11.5858 3.75 12C3.75 12.4142 3.41421 12.75 3 12.75H2C1.58579 12.75 1.25 12.4142 1.25 12ZM20.25 12C20.25 11.5858 20.5858 11.25 21 11.25H22C22.4142 11.25 22.75 11.5858 22.75 12C22.75 12.4142 22.4142 12.75 22 12.75H21C20.5858 12.75 20.25 12.4142 20.25 12ZM18.1476 18.1476C18.4405 17.8547 18.9154 17.8547 19.2083 18.1476L19.6011 18.5405C19.894 18.8334 19.894 19.3082 19.6011 19.6011C19.3082 19.894 18.8334 19.894 18.5405 19.6011L18.1476 19.2083C17.8547 18.9154 17.8547 18.4405 18.1476 18.1476ZM5.85211 18.1479C6.145 18.4408 6.145 18.9157 5.85211 19.2086L5.45927 19.6014C5.16638 19.8943 4.6915 19.8943 4.39861 19.6014C4.10572 19.3085 4.10572 18.8336 4.39861 18.5407L4.79145 18.1479C5.08434 17.855 5.55921 17.855 5.85211 18.1479ZM12 20.25C12.4142 20.25 12.75 20.5858 12.75 21V22C12.75 22.4142 12.4142 22.75 12 22.75C11.5858 22.75 11.25 22.4142 11.25 22V21C11.25 20.5858 11.5858 20.25 12 20.25Z" fill="currentColor"/></svg>
+      </button>
     </div>
-    <header>
-        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle theme">
-            <svg class="moon-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
-            </svg>
-            <svg class="sun-icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="5"></circle>
-                <line x1="12" y1="1" x2="12" y2="3"></line>
-                <line x1="12" y1="21" x2="12" y2="23"></line>
-                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
-                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
-                <line x1="1" y1="12" x2="3" y2="12"></line>
-                <line x1="21" y1="12" x2="23" y2="12"></line>
-                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
-                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
-            </svg>
-        </button>
-        <div class="container">
-            <div class="header-content">
-                <div class="header-text-container">
-                    <div class="name-section">
-                        <h1>Chirag Venkatesh</h1>
-                        <p class="title">Electronics & Communication Engineer</p>
-                        <p class="location">Bangalore, India</p>
-                    </div>
-                    <div class="contact-links">
-                        <a href="mailto:chirag42012@gmail.com" title="Email">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path
-                                    d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
-                            </svg>
-                        </a>
-                        <a href="https://github.com/notsomeonebutnoone" target="_blank" rel="noopener noreferrer"
-                            title="GitHub">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path
-                                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                            </svg>
-                        </a>
-                        <a href="hresume.pdf" target="_blank" rel="noopener noreferrer" title="Resume">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path
-                                    d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
-                            </svg>
-                        </a>
-                        <a href="https://www.linkedin.com/in/chirag-v-1aa9b9204" target="_blank"
-                            rel="noopener noreferrer" title="LinkedIn">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path
-                                    d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-                <img src="aweraf.jpg" alt="Profile Image" class="profile-img">
-            </div>
+  </header>
+  <main class="gateway-shell gateway-hero">
+    <section class="gateway-stage" aria-labelledby="gateway-title">
+      <div class="gateway-copy">
+        <p class="gateway-eyebrow"><span></span> Hardware · Software · Strategy</p>
+        <h1 id="gateway-title">I build ideas<br>into <em>systems.</em></h1>
+        <p class="gateway-intro">Engineer, developer, and analyst turning complex technical problems into useful, measurable outcomes.</p>
+        <a class="gateway-cta" href="#featured-writing"><span>Read my work</span><b aria-hidden="true">↓</b></a>
+      </div>
+      <div class="persona-stage particle-sphere-stage" aria-label="Interactive particle sphere">
+        <canvas id="particle-sphere" aria-hidden="true"></canvas>
+      </div>
+      <div class="gateway-wordmark" aria-hidden="true">CV/</div>
+    </section>
+    <section id="featured-writing" class="featured-writing" aria-labelledby="featured-writing-title">
+      <div class="featured-writing-heading">
+        <div>
+          <p class="featured-writing-kicker">Selected research / 2026</p>
+          <h2 id="featured-writing-title">Featured Writing</h2>
         </div>
-    </header>
-
-    <nav>
-        <div class="container">
-            <ul>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#education">Education</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <main>
-        <section id="skills">
-            <div class="container">
-                <h2>Technical Skills</h2>
-                <div id="skills-tabs" class="skills-tabs-container">
-                    <!-- Tabs will be dynamically generated by JS -->
-                </div>
-
-                <div class="skills-content-box">
-                    <div id="skills-list" class="skills-list-container">
-                        <!-- Skill pills will be dynamically generated by JS -->
-                    </div>
-                    <div id="skills-footer" class="skills-footer-text">
-                        <!-- Footer text -->
-                    </div>
-                </div>
+        <p>Independent research and strategic analysis spanning digital assets, agentic payments, and venture capital.</p>
+      </div>
+      <div class="writing-grid">
+        <article class="writing-card writing-card-defillama">
+          <div class="writing-card-visual">
+            <span class="writing-index">01 / Research note</span>
+            <div class="writing-logo writing-logo-defillama"><img src="defillama-logo.jpg" alt="DefiLlama logo"></div>
+          </div>
+          <div class="writing-card-body">
+            <p class="writing-company">DefiLlama</p>
+            <h3>Wholesale Dollars</h3>
+            <p class="writing-subtitle">A Funding-Structure Theory of Stablecoin Moats</p>
+            <p class="writing-synopsis">A framework for judging stablecoin defensibility through holder composition and liquidity-graph depth—not market cap alone. The note compares USDT, USDC, DAI/USDS, USDH, and USDtb to explain why replicable incentives rarely overcome an incumbent’s embedded distribution.</p>
+            <div class="writing-footer">
+              <div class="writing-tags"><span>Stablecoins</span><span>DeFi</span><span>Market structure</span></div>
+              <a class="report-download" href="defillama-report.pdf" download="Chirag-Venkatesh-DefiLlama-Report.pdf" aria-label="Download the DefiLlama report">Download report <b aria-hidden="true">↓</b></a>
             </div>
-        </section>
-
-        <section id="experience">
-            <div class="container">
-                <h2>Professional Experience</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div>
-                                <h3>Hardware Engineer</h3>
-                                <p class="company">External Consultant</p>
-                            </div>
-                            <span class="timeline-date">Dec 2024 – Aug 2025</span>
-                        </div>
-                        <ul>
-                            <li>Performed timing and performance analysis on embedded hardware systems, applying
-                                concepts aligned with STA, including setup/hold checks and latency optimization.</li>
-                            <li>Debugged timing-related failures using structured log analysis and constraint validation
-                                techniques, aligned with SDC constraint debugging and timing closure workflows.</li>
-                            <li>Developed automation scripts in Python and TCL for validation, timing report parsing,
-                                and workflow optimization, improving debugging efficiency and turnaround time.</li>
-                            <li>Worked in multi-configuration hardware environments, ensuring deterministic timing
-                                behavior and optimizing system-level latency—aligned with MCMM analysis.</li>
-                            <li>Contributed to GAN charger hardware manufacturing and testing, focusing on performance
-                                validation, reliability, and timing consistency across operating conditions.</li>
-                            <li>Applied foundational knowledge of digital design and CMOS VLSI, including signal
-                                integrity considerations and clock behavior awareness in high-speed systems.</li>
-                        </ul>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-header">
-                            <div>
-                                <h3>Software Engineer</h3>
-                                <p class="company">Bharat Earth Movers Ltd. (Rail & Metro)</p>
-                            </div>
-                            <span class="timeline-date">Aug 2024 – Nov 2024</span>
-                        </div>
-                        <ul>
-                            <li>Worked on Train Control and Monitoring System (TCMS), integrating multiple onboard
-                                subsystems with focus on deterministic communication and real-time behavior.</li>
-                            <li>Developed and validated modules over the CAN communication network, ensuring reliable
-                                data transfer, low-latency signaling, and timing consistency across distributed nodes.
-                            </li>
-                            <li>Collaborated with hardware teams to analyze and maintain system-level timing integrity,
-                                aligned with setup/hold constraints and timing synchronization.</li>
-                            <li>Optimized communication workflows for deterministic latency and performance, analogous
-                                to timing closure and path optimization.</li>
-                            <li>Contributed to validation and verification emphasizing robustness, fault tolerance, and
-                                timing stability across operating conditions (aligned with MCMM scenarios).</li>
-                        </ul>
-                    </div>
-                </div>
+          </div>
+        </article>
+        <article class="writing-card writing-card-kleepay">
+          <div class="writing-card-visual">
+            <span class="writing-index">02 / Product intelligence</span>
+            <div class="writing-logo writing-logo-kleepay"><img src="kleepay-logo.png" alt="KleePay logo"></div>
+          </div>
+          <div class="writing-card-body">
+            <p class="writing-company">KleePay</p>
+            <h3>Product Intelligence &amp; Candidate Impact Brief</h3>
+            <p class="writing-subtitle">KleePay × Developer Marketing</p>
+            <p class="writing-synopsis">A product and market assessment of KleePay’s programmable Visa infrastructure for AI agents. It maps the company’s policy-on-card security model, USDT funding, competitive landscape, and developer-first opportunity into a practical 90-day marketing and integration roadmap.</p>
+            <div class="writing-footer">
+              <div class="writing-tags"><span>Agentic payments</span><span>GTM</span><span>Product</span></div>
+              <a class="report-download" href="kleepay-analysis.pdf" download="Chirag-Venkatesh-KleePay-Analysis.pdf" aria-label="Download the KleePay analysis">Download report <b aria-hidden="true">↓</b></a>
             </div>
-        </section>
-
-        <section id="projects">
-            <div class="container">
-                <h2>Projects</h2>
-                <div class="projects-grid">
-                    <a href="https://github.com/notsomeonebutnoone/readimentary" target="_blank"
-                        rel="noopener noreferrer" style="color: inherit; text-decoration: none; display: contents;">
-                        <div class="project-card">
-                            <h3>
-                                Readimentary (RSVP PDF Reader)
-                                <svg style="width:16px;height:16px;margin-left:5px;vertical-align:middle;fill:currentColor;"
-                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                                </svg>
-                            </h3>
-                            <ul>
-                                <li>Built a browser-based RSVP reader with ORP-centered word rendering and adjustable
-                                    WPM
-                                    for focus-optimized reading.</li>
-                                <li>Implemented chapter detection and persistent local library using IndexedDB and
-                                    localStorage.</li>
-                                <li>Developed navigation controls with progress memory, jump-to-section, and chapter
-                                    resume
-                                    logic.</li>
-                                <li>Added UI state management for pause/resume, reading history, and interactive session
-                                    controls.</li>
-                                <li>Delivered a full in-browser flow with React 19, Vite 7, Tailwind CSS, and PDF.js.
-                                </li>
-                            </ul>
-                        </div>
-                    </a>
-
-                    <a href="https://github.com/notsomeonebutnoone/sneaki" target="_blank" rel="noopener noreferrer"
-                        style="color: inherit; text-decoration: none; display: contents;">
-                        <div class="project-card">
-                            <h3>
-                                Sneaki — AI-Powered Activity to Google Calendar
-                                <svg style="width:16px;height:16px;margin-left:5px;vertical-align:middle;fill:currentColor;"
-                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                                </svg>
-                            </h3>
-                            <ul>
-                                <li>Built an automated system that logs application/window activity into Google Calendar
-                                    with AI-based task categorization.</li>
-                                <li>Processes webhook activity payloads and extracts task name, category, and
-                                    productivity
-                                    score via JSON-returning AI backends.</li>
-                                <li>Creates structured calendar events with computed durations and metadata (app name,
-                                    URL,
-                                    task, score).</li>
-                                <li>Supports local or hosted AI endpoints and resilient handling of missing data.</li>
-                            </ul>
-                        </div>
-                    </a>
-
-                    <a href="https://github.com/notsomeonebutnoone/sift_bird_classification" target="_blank"
-                        rel="noopener noreferrer" style="color: inherit; text-decoration: none; display: contents;">
-                        <div class="project-card">
-                            <h3>
-                                Statistical Aerboreal Bird Repeller
-                                <svg style="width:16px;height:16px;margin-left:5px;vertical-align:middle;fill:currentColor;"
-                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                                </svg>
-                            </h3>
-                            <ul>
-                                <li>Built a computer vision pipeline using SIFT and HOG descriptors for robust bird
-                                    detection under scale and lighting changes.</li>
-                                <li>Compared live video frames against a labeled dataset of bird species images to
-                                    compute
-                                    similarity scores.</li>
-                                <li>Designed a density estimator that aggregates detections over time to produce stable
-                                    control signals.</li>
-                                <li>Mapped density scores to PWM duty cycles for dynamic ultrasonic actuation instead of
-                                    fixed bursts.</li>
-                                <li>Documented results and field testing in a peer-reviewed conference paper.</li>
-                            </ul>
-                        </div>
-                    </a>
-
-                    <a href="https://github.com/notsomeonebutnoone/mirror-hand" target="_blank"
-                        rel="noopener noreferrer" style="color: inherit; text-decoration: none; display: contents;">
-                        <div class="project-card">
-                            <h3>
-                                Real-Time Gesture-Controlled Robotic Hand
-                                <svg style="width:16px;height:16px;margin-left:5px;vertical-align:middle;fill:currentColor;"
-                                    xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                    <path
-                                        d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
-                                </svg>
-                            </h3>
-                            <ul>
-                                <li>Built a mechanical system mirroring hand movements in real time with low-latency
-                                    feedback.</li>
-                                <li>Implemented Python-based signal processing for sensor filtering, smoothing, and
-                                    gesture
-                                    stability.</li>
-                                <li>Used MQTT messaging to stream and synchronize servo state updates across devices.
-                                </li>
-                                <li>Tuned motor response curves to reduce jitter and improve fine-grained positional
-                                    accuracy.</li>
-                            </ul>
-                        </div>
-                    </a>
-                </div>
+          </div>
+        </article>
+        <article class="writing-card writing-card-3one4">
+          <div class="writing-card-visual">
+            <span class="writing-index">03 / Portfolio intelligence</span>
+            <div class="writing-logo writing-logo-3one4"><img src="3one4-capital-logo.png" alt="3one4 Capital logo"></div>
+          </div>
+          <div class="writing-card-body">
+            <p class="writing-company">3one4 Capital</p>
+            <h3>Portfolio Intelligence &amp; Candidate Impact Brief</h3>
+            <p class="writing-subtitle">3one4 Capital × Investment Analysis</p>
+            <p class="writing-synopsis">A sector-by-sector review of 3one4 Capital’s portfolio, concentration risks, and capital allocation. The report argues for greater exposure to SaaS, deep tech, and industrial digitization, pairing portfolio evidence with a technical due-diligence and sourcing roadmap.</p>
+            <div class="writing-footer">
+              <div class="writing-tags"><span>Venture capital</span><span>Deep tech</span><span>Portfolio strategy</span></div>
+              <a class="report-download" href="3one4-capital-report.pdf" download="Chirag-Venkatesh-3one4-Capital-Report.pdf" aria-label="Download the 3one4 Capital report">Download report <b aria-hidden="true">↓</b></a>
             </div>
-        </section>
-
-        <section id="education">
-            <div class="container">
-                <h2>Education</h2>
-                <div class="education-card">
-                    <div class="education-header">
-                        <h3>PES University</h3>
-                        <span class="year">2020 – 2024</span>
-                    </div>
-                    <p class="degree">B.Tech in Electronics and Communication Engineering</p>
-                    <p class="minor">Minor in Computer Science Engineering</p>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Chirag Venkatesh. All rights reserved.</p>
-        </div>
+          </div>
+        </article>
+      </div>
+    </section>
+    <section id="tracks" class="track-grid gateway-track-dock" aria-label="Choose a portfolio track">
+      <a href="/hardware" class="track-card hardware-card">
+        <div class="track-card-top"><span>01 / Hardware</span><span class="track-arrow">↗</span></div>
+        <div class="track-copy"><p class="track-role">Silicon to systems</p><h2>Hardware</h2><p>Timing analysis, physical design, embedded systems, and hardware validation.</p><div class="track-tags"><span>STA</span><span>VLSI</span><span>Embedded</span></div><span class="enter-track">Explore hardware <b>→</b></span></div>
+      </a>
+      <a href="/software" class="track-card software-card">
+        <div class="track-card-top"><span>02 / Software</span><span class="track-arrow">↗</span></div>
+        <div class="track-copy"><p class="track-role">Logic into products</p><h2>Software</h2><p>Real-time systems, data pipelines, automation, and product-focused web applications.</p><div class="track-tags"><span>Python</span><span>React</span><span>Systems</span></div><span class="enter-track">Explore software <b>→</b></span></div>
+      </a>
+      <a href="/analyst" class="track-card analyst-card">
+        <div class="track-card-top"><span>03 / Analyst &amp; GTM</span><span class="track-arrow">↗</span></div>
+        <div class="track-copy"><p class="track-role">Signals into strategy</p><h2>Analyst / GTM</h2><p>Quantitative insight, scalable operations, workflow design, and growth execution.</p><div class="track-tags"><span>Analytics</span><span>Operations</span><span>Growth</span></div><span class="enter-track">Explore analyst / GTM <b>→</b></span></div>
+      </a>
+    </section>
+    <footer class="gateway-copyright">
+      <span>© 2026 Chirag Venkatesh</span>
+      <span>All rights reserved.</span>
     </footer>
-
-    <script src="script.js"></script>
+  </main>
+  <p class="gateway-hint fx-echo" data-text="MEMENTO MORI">MEMENTO MORI</p>
+  <script src="loader.js"></script>
+  <script src="particle-sphere.bundle.js"></script>
 </body>
-
 </html>
