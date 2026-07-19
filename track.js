@@ -164,9 +164,9 @@ async function renderGithubActivity() {
     const byDate = new Map(contributions.map(day => [day.date, day]));
     const today = new Date();
     const start = new Date(today);
-    start.setDate(today.getDate() - today.getDay() - (25 * 7));
+    start.setDate(today.getDate() - today.getDay() - (52 * 7));
 
-    const weeks = Array.from({length: 26}, (_, week) => Array.from({length: 7}, (_, day) => {
+    const weeks = Array.from({length: 53}, (_, week) => Array.from({length: 7}, (_, day) => {
       const date = new Date(start);
       date.setDate(start.getDate() + (week * 7) + day);
       const iso = date.toISOString().slice(0, 10);
@@ -182,9 +182,9 @@ async function renderGithubActivity() {
         : '';
     });
 
-    heatmap.innerHTML = `<div class="github-months"><span></span>${monthLabels.map(month => `<span>${month}</span>`).join('')}</div><div class="github-chart"><div class="github-days"><span>Mon</span><span>Wed</span><span>Fri</span></div><div class="github-weeks">${weeks.map(week => `<div class="github-week">${week.map(day => `<span class="github-day" data-level="${Math.min(day.level || 0, 4)}" title="${day.count} contribution${day.count === 1 ? '' : 's'} on ${day.iso}"></span>`).join('')}</div>`).join('')}</div></div>`;
+    heatmap.innerHTML = `<div class="github-months"><span></span>${monthLabels.map(month => `<span>${month}</span>`).join('')}</div><div class="github-chart"><div class="github-days"><span>Mon</span><span>Wed</span><span>Fri</span></div><div class="github-weeks">${weeks.map(week => `<div class="github-week">${week.map(day => `<span class="github-day" data-level="${Math.min(day.level || 0, 4)}" title="${day.count} contribution${day.count === 1 ? '' : 's'} on ${day.iso}"></span>`).join('')}</div>`).join('')}</div></div><div class="github-legend"><span>Less</span>${[0,1,2,3,4].map(level => `<i class="github-day" data-level="${level}"></i>`).join('')}<span>Many</span></div>`;
     const total = weeks.flat().reduce((sum, day) => sum + day.count, 0);
-    heatmap.setAttribute('aria-label', `${total} GitHub contributions in the last six months`);
+    heatmap.setAttribute('aria-label', `${total} GitHub contributions in the last year`);
   } catch {
     heatmap.innerHTML = '<span class="github-heatmap-status">Contribution activity available on GitHub ↗</span>';
     heatmap.removeAttribute('role');
