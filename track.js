@@ -149,7 +149,7 @@ function renderTrack(key) {
   $('work-nav-label').textContent = isAnalyst ? 'Reports' : 'Projects';
   $('analyst-reports').hidden = !isAnalyst;
   if (isAnalyst) {
-    $('report-grid').innerHTML = data.reports.map(([company,title,subtitle,desc,tags,file,logo], index) => `<article class="report-card"><div class="report-logo"><img src="${logo}" alt="${company} logo"></div><div class="report-copy"><div class="project-topline"><span>0${index + 1} / ${company}</span><span>Report</span></div><h3>${title}</h3><p class="report-subtitle">${subtitle}</p><p>${desc}</p><div class="report-footer"><span>${tags}</span><a href="${file}" download>Download ↓</a></div></div></article>`).join('');
+    $('report-grid').innerHTML = data.reports.map(([company,title,subtitle,desc,tags,file,logo], index) => `<article class="report-card project-card"><div class="project-topline"><span>0${index + 1} / Report</span><span>↓</span></div><div class="report-company"><img src="${logo}" alt=""><span>${company}</span></div><h3>${title}</h3><p class="report-subtitle">${subtitle}</p><p>${desc}</p><div class="project-tech">${tags}</div><a class="report-card-download" href="${file}" download>Download report ↓</a></article>`).join('');
     renderRecentArticles();
   }
   $('github-activity').hidden = key !== 'software';
