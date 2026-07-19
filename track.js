@@ -143,12 +143,52 @@ function renderTrack(key) {
   $('experience-list').innerHTML = data.experience.map(x => `<article class="timeline-item"><div class="timeline-header"><div><h3>${x.role}</h3><p class="company">${x.company}</p></div><span class="timeline-date">${x.date}</span></div><ul>${x.bullets.map(b=>`<li>${b}</li>`).join('')}</ul></article>`).join('');
   $('projects-grid').innerHTML = data.projects.map(([title,desc,tech,url]) => `${url?`<a href="${url}" target="_blank" rel="noopener noreferrer" class="project-link">`:''}<article class="project-card"><div class="project-topline"><span>Selected project</span>${url?'<span>↗</span>':''}</div><h3>${title}</h3><p>${desc}</p><div class="project-tech">${tech}</div></article>${url?'</a>':''}`).join('');
   $('github-activity').hidden = key !== 'software';
+  if (key === 'software') renderGithubActivity();
   document.querySelectorAll('[data-track-link]').forEach(link => link.classList.toggle('active', link.dataset.trackLink === key));
   const animatePill = trackSwitcher?.classList.contains('pill-initialized');
   requestAnimationFrame(() => positionTrackPill(document.querySelector(`[data-track-link="${key}"]`), animatePill));
   trackSwitcher?.classList.add('pill-initialized');
   document.querySelectorAll('.capability-card,.timeline-item,.project-card,.education-card').forEach(el => {el.classList.add('reveal');observer.observe(el)});
   bindTrackCardEffects();
+}
+
+async function renderGithubActivity() {
+  const heatmap = $('github-heatmap');
+  if (!heatmap || heatmap.dataset.loaded) return;
+  heatmap.dataset.loaded = 'true';
+
+  try {
+    const response = await fetch('https://github-contributions-api.jogruber.de/v4/notsomeonebutnoone?y=last');
+    if (!response.ok) throw new Error('Contribution data unavailable');
+    const {contributions = []} = await response.json();
+    const byDate = new Map(contributions.map(day => [day.date, day]));
+    const today = new Date();
+    const start = new Date(today);
+    start.setDate(today.getDate() - today.getDay() - (25 * 7));
+
+    const weeks = Array.from({length: 26}, (_, week) => Array.from({length: 7}, (_, day) => {
+      const date = new Date(start);
+      date.setDate(start.getDate() + (week * 7) + day);
+      const iso = date.toISOString().slice(0, 10);
+      const activity = byDate.get(iso) || {count: 0, level: 0};
+      return {...activity, date, iso};
+    }));
+
+    const monthLabels = weeks.map((week, index) => {
+      const currentMonth = week[0].date.getMonth();
+      const previousMonth = index ? weeks[index - 1][0].date.getMonth() : -1;
+      return currentMonth !== previousMonth
+        ? week[0].date.toLocaleDateString('en', {month: 'short'})
+        : '';
+    });
+
+    heatmap.innerHTML = `<div class="github-months"><span></span>${monthLabels.map(month => `<span>${month}</span>`).join('')}</div><div class="github-chart"><div class="github-days"><span>Mon</span><span>Wed</span><span>Fri</span></div><div class="github-weeks">${weeks.map(week => `<div class="github-week">${week.map(day => `<span class="github-day" data-level="${Math.min(day.level || 0, 4)}" title="${day.count} contribution${day.count === 1 ? '' : 's'} on ${day.iso}"></span>`).join('')}</div>`).join('')}</div></div>`;
+    const total = weeks.flat().reduce((sum, day) => sum + day.count, 0);
+    heatmap.setAttribute('aria-label', `${total} GitHub contributions in the last six months`);
+  } catch {
+    heatmap.innerHTML = '<span class="github-heatmap-status">Contribution activity available on GitHub ↗</span>';
+    heatmap.removeAttribute('role');
+  }
 }
 
 renderTrack(currentTrack());
