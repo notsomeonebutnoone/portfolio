@@ -72,11 +72,11 @@ const tracks = {
       {role:'Hardware Systems Operations Analyst', company:'External Consultant', date:'Dec 2024 — Aug 2025', bullets:['Analyzed complex integrated systems to improve processing efficiency and execution quality.','Evaluated diagnostic logs and design constraints to resolve cross-functional performance failures.','Automated multi-source validation reporting with Python and TCL, shortening optimization turnaround.','Supported manufacturing validation and technology rollouts across varied stress conditions.']},
       {role:'Software Engineer · Operations & Infrastructure', company:'BEML · Rail & Metro', date:'Aug — Nov 2024', bullets:['Coordinated integration of distributed onboard systems for real-time operational safety.','Audited CAN signaling modules to establish stable, low-latency communication pathways.','Optimized network data workflows for scalability and throughput.','Directed verification routines centered on fault tolerance, operational risk, and asset stability.']}
     ],
-    projects: [
-      ['Sneaki · Productivity Intelligence', 'Transforms raw activity signals into categorized events and time-allocation metrics for a clearer view of how work happens.', 'Operations analytics · Automation', 'https://github.com/notsomeonebutnoone/sneaki'],
-      ['Statistical Arboreal Pipeline', 'Benchmarks visual signals against reference datasets, aggregates probability over time, and drives responsive intervention.', 'Statistical modeling · Research', null],
-      ['Readimentary · Reading Analytics', 'A stateful document experience using velocity metrics, progress markers, and persistence to optimize reading flow.', 'Product analytics · React', 'https://github.com/notsomeonebutnoone/readimentary'],
-      ['Low-Latency Control Infrastructure', 'An integrated system using signal filtering, synchronized endpoints, and calibrated response curves for reliable execution.', 'Systems analysis · MQTT', null]
+    projects: [],
+    reports: [
+      ['DefiLlama', 'Wholesale Dollars', 'A Funding-Structure Theory of Stablecoin Moats', 'A framework for judging stablecoin defensibility through holder composition and liquidity-graph depth—not market cap alone.', 'Stablecoins · DeFi · Market structure', 'defillama-report.pdf', 'defillama-logo.jpg'],
+      ['KleePay', 'Product Intelligence & Candidate Impact Brief', 'KleePay × Developer Marketing', 'A product and market assessment of programmable Visa infrastructure for AI agents, competitive positioning, and developer-first growth.', 'Agentic payments · GTM · Product', 'kleepay-analysis.pdf', 'kleepay-logo.png'],
+      ['3one4 Capital', 'Portfolio Intelligence & Candidate Impact Brief', '3one4 Capital × Investment Analysis', 'A sector-by-sector review of portfolio concentration, capital allocation, and opportunities across SaaS, deep tech, and industrial digitization.', 'Venture capital · Deep tech · Strategy', '3one4-capital-report.pdf', '3one4-capital-logo.png']
     ]
   }
 };
@@ -129,6 +129,7 @@ const currentTrack = () => {
 
 function renderTrack(key) {
   const data = tracks[key];
+  const isAnalyst = key === 'analyst';
   document.documentElement.dataset.track = key;
   document.title = `Chirag Venkatesh | ${data.label}`;
   $('track-eyebrow').textContent = data.label;
@@ -142,6 +143,15 @@ function renderTrack(key) {
   $('skills-grid').innerHTML = data.skills.map(([title,items], i) => `<article class="capability-card"><span class="capability-number">0${i+1}</span><h3>${title}</h3><div>${items.map(x=>`<span>${x}</span>`).join('')}</div></article>`).join('');
   $('experience-list').innerHTML = data.experience.map(x => `<article class="timeline-item"><div class="timeline-header"><div><h3>${x.role}</h3><p class="company">${x.company}</p></div><span class="timeline-date">${x.date}</span></div><ul>${x.bullets.map(b=>`<li>${b}</li>`).join('')}</ul></article>`).join('');
   $('projects-grid').innerHTML = data.projects.map(([title,desc,tech,url]) => `${url?`<a href="${url}" target="_blank" rel="noopener noreferrer" class="project-link">`:''}<article class="project-card"><div class="project-topline"><span>Selected project</span>${url?'<span>↗</span>':''}</div><h3>${title}</h3><p>${desc}</p><div class="project-tech">${tech}</div></article>${url?'</a>':''}`).join('');
+  $('projects-grid').hidden = isAnalyst;
+  $('work-kicker').textContent = isAnalyst ? '03 / Research & writing' : '03 / Selected builds';
+  $('work-title').textContent = isAnalyst ? 'Reports' : 'Projects';
+  $('work-nav-label').textContent = isAnalyst ? 'Reports' : 'Projects';
+  $('analyst-reports').hidden = !isAnalyst;
+  if (isAnalyst) {
+    $('report-grid').innerHTML = data.reports.map(([company,title,subtitle,desc,tags,file,logo], index) => `<article class="report-card"><div class="report-logo"><img src="${logo}" alt="${company} logo"></div><div class="report-copy"><div class="project-topline"><span>0${index + 1} / ${company}</span><span>Report</span></div><h3>${title}</h3><p class="report-subtitle">${subtitle}</p><p>${desc}</p><div class="report-footer"><span>${tags}</span><a href="${file}" download>Download ↓</a></div></div></article>`).join('');
+    renderRecentArticles();
+  }
   $('github-activity').hidden = key !== 'software';
   if (key === 'software') renderGithubActivity();
   document.querySelectorAll('[data-track-link]').forEach(link => link.classList.toggle('active', link.dataset.trackLink === key));
@@ -150,6 +160,25 @@ function renderTrack(key) {
   trackSwitcher?.classList.add('pill-initialized');
   document.querySelectorAll('.capability-card,.timeline-item,.project-card,.education-card').forEach(el => {el.classList.add('reveal');observer.observe(el)});
   bindTrackCardEffects();
+}
+
+async function renderRecentArticles() {
+  const grid = $('article-grid');
+  if (!grid || grid.dataset.loaded) return;
+  grid.dataset.loaded = 'true';
+  try {
+    const response = await fetch('/api/x-articles');
+    if (!response.ok) throw new Error('Article feed unavailable');
+    const {articles = []} = await response.json();
+    if (!articles.length) {
+      grid.innerHTML = '<p class="article-status">No recent linked articles found. New posts from @wo0tz0 will appear here automatically.</p>';
+      return;
+    }
+    const escapeHtml = value => String(value).replace(/[&<>'"]/g, character => ({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[character]));
+    grid.innerHTML = articles.map(article => `<a class="article-card" href="${escapeHtml(article.url)}" target="_blank" rel="noopener noreferrer"><span>${escapeHtml(article.date)}</span><h4>${escapeHtml(article.title)}</h4><p>${escapeHtml(article.source)}</p><b>Read article ↗</b></a>`).join('');
+  } catch {
+    grid.innerHTML = '<p class="article-status">Recent articles are temporarily unavailable. View @wo0tz0 on X ↗</p>';
+  }
 }
 
 async function renderGithubActivity() {
