@@ -21,8 +21,8 @@ const tracks = {
     projects: [
       ['Readimentary · RSVP PDF Reader', 'A browser-based RSVP reader with ORP-centered rendering, adjustable WPM, chapter detection, persistent local storage, and progress-aware navigation.', 'React 19 · Vite · PDF.js', 'https://github.com/notsomeonebutnoone/readimentary'],
       ['Sneaki · AI Activity to Calendar', 'An automated activity pipeline that categorizes application usage and creates structured Google Calendar events with duration and productivity metadata.', 'Automation · Webhooks · AI backends', 'https://github.com/notsomeonebutnoone/sneaki'],
-      ['Statistical Arboreal Bird Repeller', 'A computer-vision pipeline using SIFT and HOG descriptors, temporal density estimation, and dynamic PWM control for responsive ultrasonic actuation.', 'Computer vision · Signal control · Research', null],
-      ['Real-Time Gesture-Controlled Robotic Hand', 'A low-latency hand-mirroring system using Python signal processing, MQTT-synchronized servo updates, and tuned motor response curves.', 'Python · MQTT · Embedded systems', null]
+      ['Statistical Arboreal Bird Repeller', 'A computer-vision pipeline using SIFT and HOG descriptors, temporal density estimation, and dynamic PWM control for responsive ultrasonic actuation.', 'Computer vision · Signal control · Research', 'https://github.com/notsomeonebutnoone/sift_bird_classification.git'],
+      ['Real-Time Gesture-Controlled Robotic Hand', 'A low-latency hand-mirroring system using Python signal processing, MQTT-synchronized servo updates, and tuned motor response curves.', 'Python · MQTT · Embedded systems', 'https://github.com/notsomeonebutnoone/mirror-hand.git']
     ]
   },
   software: {
@@ -49,8 +49,8 @@ const tracks = {
       ['Readimentary', 'A focus-first RSVP PDF reader with ORP rendering, adjustable WPM, chapter detection, and persistent local reading state.', 'React 19 · Vite · PDF.js', 'https://readimentary.vercel.app'],
       ['Bonk', 'An open-source software project focused on a fast, direct, and playful product experience.', 'JavaScript · Web application · Open source', 'https://github.com/notsomeonebutnoone/bonk'],
       ['Sneaki', 'An AI-assisted activity pipeline that converts app and window events into structured Google Calendar records.', 'Webhooks · AI backends · Automation', 'https://github.com/notsomeonebutnoone/sneaki'],
-      ['Statistical Arboreal Bird Repeller', 'A computer-vision pipeline using SIFT and HOG descriptors, temporal density estimation, and dynamic PWM control.', 'Python · Computer vision · Research', null],
-      ['Gesture-Controlled Robotic Hand', 'A low-latency hand-mirroring system with Python signal smoothing and MQTT-synchronized servo updates.', 'Python · MQTT · Real-time systems', null]
+      ['Statistical Arboreal Bird Repeller', 'A computer-vision pipeline using SIFT and HOG descriptors, temporal density estimation, and dynamic PWM control.', 'Python · Computer vision · Research', 'https://github.com/notsomeonebutnoone/sift_bird_classification.git'],
+      ['Gesture-Controlled Robotic Hand', 'A low-latency hand-mirroring system with Python signal smoothing and MQTT-synchronized servo updates.', 'Python · MQTT · Real-time systems', 'https://github.com/notsomeonebutnoone/mirror-hand.git']
     ]
   },
   analyst: {
