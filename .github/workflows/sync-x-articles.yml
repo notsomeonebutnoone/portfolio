@@ -1,0 +1,28 @@
+name: Sync X articles
+
+on:
+  schedule:
+    - cron: '17 * * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Scan @wo0tz0 for linked articles
+        run: node scripts/sync-x-articles.mjs
+      - name: Publish updated article list
+        run: |
+          if git diff --quiet -- data/x-articles.json; then exit 0; fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/x-articles.json
+          git commit -m "Update recent X articles"
+          git push

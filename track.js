@@ -169,7 +169,12 @@ async function renderRecentArticles() {
   try {
     const response = await fetch('/api/x-articles');
     if (!response.ok) throw new Error('Article feed unavailable');
-    const {articles = []} = await response.json();
+    let feed = await response.json();
+    if (feed.available === false) {
+      const snapshot = await fetch('/data/x-articles.json');
+      if (snapshot.ok) feed = await snapshot.json();
+    }
+    const {articles = []} = feed;
     if (!articles.length) {
       grid.innerHTML = '<p class="article-status">No recent linked articles found. New posts from @wo0tz0 will appear here automatically.</p>';
       return;

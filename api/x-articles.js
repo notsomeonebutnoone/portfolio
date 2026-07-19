@@ -30,8 +30,8 @@ export default async function handler(request, response) {
         date: new Date(tweet.created_at).toLocaleDateString('en', {month: 'short', day: 'numeric', year: 'numeric'})
       }];
     }).slice(0, 4);
-    return response.status(200).json({articles, checkedAt: new Date().toISOString()});
+    return response.status(200).json({articles, available: true, checkedAt: new Date().toISOString()});
   } catch (error) {
-    return response.status(502).json({articles: [], error: 'Recent articles are temporarily unavailable.'});
+    return response.status(200).json({articles: [], available: false, error: 'Recent articles are temporarily unavailable.'});
   }
 }
