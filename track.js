@@ -46,7 +46,8 @@ const tracks = {
       {role:'Product Development Intern', company:'Dassault Systèmes', date:'May 2022 — Jul 2023', bullets:['Designed and simulated automated systems using Modelica and electrical design tools.','Validated circuit performance under real-world constraints and supported requirements and cost optimization.']}
     ],
     projects: [
-      ['Readimentary', 'A focus-first RSVP PDF reader with ORP rendering, adjustable WPM, chapter detection, and persistent local reading state.', 'React 19 · Vite · PDF.js', 'https://github.com/notsomeonebutnoone/readimentary'],
+      ['Readimentary', 'A focus-first RSVP PDF reader with ORP rendering, adjustable WPM, chapter detection, and persistent local reading state.', 'React 19 · Vite · PDF.js', 'https://readimentary.vercel.app'],
+      ['Bonk', 'An open-source software project focused on a fast, direct, and playful product experience.', 'JavaScript · Web application · Open source', 'https://github.com/notsomeonebutnoone/bonk'],
       ['Sneaki', 'An AI-assisted activity pipeline that converts app and window events into structured Google Calendar records.', 'Webhooks · AI backends · Automation', 'https://github.com/notsomeonebutnoone/sneaki'],
       ['Statistical Arboreal Bird Repeller', 'A computer-vision pipeline using SIFT and HOG descriptors, temporal density estimation, and dynamic PWM control.', 'Python · Computer vision · Research', null],
       ['Gesture-Controlled Robotic Hand', 'A low-latency hand-mirroring system with Python signal smoothing and MQTT-synchronized servo updates.', 'Python · MQTT · Real-time systems', null]
@@ -141,6 +142,7 @@ function renderTrack(key) {
   $('skills-grid').innerHTML = data.skills.map(([title,items], i) => `<article class="capability-card"><span class="capability-number">0${i+1}</span><h3>${title}</h3><div>${items.map(x=>`<span>${x}</span>`).join('')}</div></article>`).join('');
   $('experience-list').innerHTML = data.experience.map(x => `<article class="timeline-item"><div class="timeline-header"><div><h3>${x.role}</h3><p class="company">${x.company}</p></div><span class="timeline-date">${x.date}</span></div><ul>${x.bullets.map(b=>`<li>${b}</li>`).join('')}</ul></article>`).join('');
   $('projects-grid').innerHTML = data.projects.map(([title,desc,tech,url]) => `${url?`<a href="${url}" target="_blank" rel="noopener noreferrer" class="project-link">`:''}<article class="project-card"><div class="project-topline"><span>Selected project</span>${url?'<span>↗</span>':''}</div><h3>${title}</h3><p>${desc}</p><div class="project-tech">${tech}</div></article>${url?'</a>':''}`).join('');
+  $('github-activity').hidden = key !== 'software';
   document.querySelectorAll('[data-track-link]').forEach(link => link.classList.toggle('active', link.dataset.trackLink === key));
   const animatePill = trackSwitcher?.classList.contains('pill-initialized');
   requestAnimationFrame(() => positionTrackPill(document.querySelector(`[data-track-link="${key}"]`), animatePill));

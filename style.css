@@ -1163,3 +1163,34 @@ html[data-track="analyst"][data-theme="light"]{--accent:#d68a00;--track-accent:#
 .track-switcher a{position:relative;z-index:1;background:transparent!important;transition:color .22s ease .16s!important}
 .track-switcher a.active{color:#000!important;background:transparent!important}
 [data-theme="light"] .track-switcher-pill{box-shadow:0 1px 3px rgba(0,0,0,.12)}
+
+/* Compact track layout and software contribution activity */
+.track-page header,.track-page section{border-bottom:0}
+.track-page main{padding-bottom:18px}
+.track-page section{padding:28px 0}
+.track-page .track-hero{padding:34px 0 25px}
+.track-page .hero-layout{gap:36px}
+.track-page .track-actions{margin:10px 0}
+.track-page section h2{margin-bottom:11px}
+.track-page .capability-grid{gap:7px}
+.track-page .capability-card{padding:11px 13px}
+.track-page .capability-card h3{margin:3px 0 6px}
+.track-page .timeline{gap:8px}
+.track-page .timeline-item,.track-page .project-card{padding:11px 13px}
+.track-page .timeline-header{margin-bottom:5px}
+.track-page .timeline-item li{margin-bottom:1px}
+.track-page .projects-grid{gap:8px}
+.track-page .project-topline{margin-bottom:7px}
+.track-page .project-card h3{margin-bottom:4px}
+.track-page .project-tech{margin-top:7px}
+.track-page .education-card{padding:11px 13px}
+.track-page footer{padding:18px 0 55px;border-top:0}
+.github-activity{display:block;margin-top:8px;padding:12px 13px;border:1px solid var(--border);border-radius:5px;background:#020304;color:inherit;text-decoration:none;overflow:hidden}
+.github-activity[hidden]{display:none}
+.github-activity-heading{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:9px}
+.github-activity-heading span{color:var(--track-accent);font-size:7px;text-transform:uppercase;letter-spacing:.1em}
+.github-activity-heading h3{font:600 11px Inter,sans-serif;margin:2px 0 0}
+.github-activity .github-activity-link{color:var(--text-muted);white-space:nowrap}
+.github-activity img{display:block;width:100%;height:auto;min-height:74px;object-fit:contain;object-position:left center;filter:saturate(.9)}
+.github-activity:hover{border-color:color-mix(in srgb,var(--accent) 52%,var(--border))}
+@media(max-width:520px){.track-page section{padding:22px 0}.track-page .track-hero{padding:28px 0 20px}.github-activity{overflow-x:auto}.github-activity img{width:720px;max-width:none}}
