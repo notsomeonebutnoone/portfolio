@@ -1,85 +1,479 @@
-const tracks = {
-  hardware: {
-    label: 'Electronics & Communication Engineer',
-    title: 'Hardware-minded builder working across timing analysis, embedded systems, and automation.',
-    summary: 'I like building systems that feel precise, fast, and reliable. My work sits at the intersection of hardware debugging, scripting, and product-minded engineering.',
-    resume: 'hresume.pdf',
-    profile: 'profile-hardware.jpg',
-    profileAlt: 'Chirag working at an electronics hardware bench',
-    badges: ['STA & timing closure', 'Python / TCL automation', 'Embedded & distributed systems'],
-    metrics: [['2', 'Industries bridged'], ['8+', 'Highlighted projects'], ['2024', 'Graduation year']],
-    skills: [
-      ['Physical Design', ['RTL2GDSII Flow', 'Synthesis', 'Floorplanning', 'Placement', 'CTS', 'Routing', 'Timing Closure']],
-      ['Timing Analysis', ['STA', 'Setup/Hold Analysis', 'WNS/TNS', 'SDC Constraints', 'Parasitic Extraction', 'MCMM Analysis']],
-      ['Tools & Verification', ['Cadence Virtuoso', 'Xilinx Vivado', 'PrimeTime', 'Tempus', 'DRC Concepts', 'LVS Concepts']],
-      ['Languages & Automation', ['TCL', 'Python', 'C', 'MATLAB', 'Flow Scripting', 'Report Parsing', 'Makefiles']]
+// Experience and education: resume1.pdf. Project details: public GitHub READMEs.
+// Creator metrics are a resume snapshot, not a live social feed.
+tracks = {
+  "hardware": {
+    "label": "Hardware & Systems Engineering",
+    "title": "Engineer working across system validation, embedded control, and FPGA architecture.",
+    "summary": "My work connects electronics, software, and technical operations: diagnosing integration issues, automating validation, and building systems with measurable timing behavior.",
+    "resume": "resume.pdf",
+    "profile": "profile-hardware.jpg",
+    "profileAlt": "Chirag working at an electronics hardware bench",
+    "badges": [
+      "System integration & validation",
+      "Python / TCL automation",
+      "FPGA & embedded control"
     ],
-    experience: [
-      {role:'Hardware Engineer', company:'External Consultant', date:'Dec 2024 — Aug 2025', bullets:['Performed timing and performance analysis on embedded hardware systems, applying STA concepts including setup/hold checks and latency optimization.','Debugged timing failures through structured log analysis, constraint validation, and timing-closure workflows.','Developed Python and TCL automation for validation, timing-report parsing, and workflow optimization.','Worked across multi-configuration hardware environments to ensure deterministic behavior and optimize system-level latency.','Contributed to GaN charger manufacturing and testing with a focus on reliability and timing consistency.','Applied digital-design and CMOS VLSI fundamentals, including signal integrity and clock-behavior awareness.']},
-      {role:'Software Engineer', company:'BEML · Rail & Metro', date:'Aug — Nov 2024', bullets:['Worked on Train Control and Monitoring Systems integrating multiple onboard subsystems with deterministic real-time behavior.','Developed and validated modules over the CAN network for reliable, low-latency signaling across distributed nodes.','Collaborated with hardware teams to analyze system-level timing integrity and synchronization.','Optimized communication workflows for deterministic latency and path performance.','Supported validation and verification centered on robustness, fault tolerance, and timing stability.']}
+    "metrics": [
+      [
+        "Verilog",
+        "Order book architecture"
+      ],
+      [
+        "CAN / MQTT",
+        "Distributed communication"
+      ],
+      [
+        "2024",
+        "ECE graduation"
+      ]
     ],
-    projects: [
-      ['Readimentary · RSVP PDF Reader', 'A browser-based RSVP reader with ORP-centered rendering, adjustable WPM, chapter detection, persistent local storage, and progress-aware navigation.', 'React 19 · Vite · PDF.js', 'https://github.com/notsomeonebutnoone/readimentary'],
-      ['Sneaki · AI Activity to Calendar', 'An automated activity pipeline that categorizes application usage and creates structured Google Calendar events with duration and productivity metadata.', 'Automation · Webhooks · AI backends', 'https://github.com/notsomeonebutnoone/sneaki'],
-      ['Statistical Arboreal Bird Repeller', 'A computer-vision pipeline using SIFT and HOG descriptors, temporal density estimation, and dynamic PWM control for responsive ultrasonic actuation.', 'Computer vision · Signal control · Research', 'https://github.com/notsomeonebutnoone/sift_bird_classification.git'],
-      ['Real-Time Gesture-Controlled Robotic Hand', 'A low-latency hand-mirroring system using Python signal processing, MQTT-synchronized servo updates, and tuned motor response curves.', 'Python · MQTT · Embedded systems', 'https://github.com/notsomeonebutnoone/mirror-hand.git']
+    "skills": [
+      [
+        "Hardware & control",
+        [
+          "Verilog",
+          "FPGA Architecture",
+          "Embedded Systems",
+          "CAN",
+          "MQTT",
+          "Coordinate Mapping"
+        ]
+      ],
+      [
+        "Validation & analysis",
+        [
+          "System Validation",
+          "Diagnostic Analysis",
+          "Timing Constraints",
+          "Report Parsing",
+          "Manufacturing Validation",
+          "Fault Tolerance"
+        ]
+      ],
+      [
+        "Programming",
+        [
+          "Python",
+          "TCL",
+          "C",
+          "MATLAB",
+          "Signal Filtering"
+        ]
+      ],
+      [
+        "Engineering workflows",
+        [
+          "Linux",
+          "Git",
+          "Deployment",
+          "System Integration",
+          "Technical Operations"
+        ]
+      ]
+    ],
+    "experience": [
+      {
+        "role": "Founder, Automation & Growth",
+        "company": "Tenteron",
+        "date": "2026 — Present",
+        "bullets": [
+          "Built tenteron.com, an AI automation studio developing workflow and agent systems for businesses.",
+          "Architected n8n workflows connecting APIs, LLMs, webhooks, databases, lead pipelines, and internal tools.",
+          "Own positioning, outbound GTM, customer discovery, technical sales, solution scoping, and implementation."
+        ]
+      },
+      {
+        "role": "Infrastructure & Systems Engineer",
+        "company": "Rector Infrastructure",
+        "date": "2025 — 2026",
+        "bullets": [
+          "Worked across system validation, deployment, technical operations, and hardware and software integration.",
+          "Built Python utilities for diagnostic analysis and validation.",
+          "Coordinated hardware, software, and operations teams to resolve integration issues."
+        ]
+      },
+      {
+        "role": "Hardware Systems Operations Analyst",
+        "company": "External Consultant",
+        "date": "Dec 2024 — Aug 2025",
+        "bullets": [
+          "Analyzed diagnostic logs, timing constraints, and validation reports to investigate performance and reliability.",
+          "Built Python and TCL automation for report parsing and engineering analysis.",
+          "Supported manufacturing validation."
+        ]
+      },
+      {
+        "role": "Software Engineer, Operations & Infrastructure",
+        "company": "Bharat Earth Movers Ltd. (BEML)",
+        "date": "Aug — Nov 2024",
+        "bullets": [
+          "Worked on Train Control and Monitoring Systems integrating distributed onboard railway subsystems.",
+          "Engineered and validated CAN signalling modules.",
+          "Supported integration, debugging, and fault tolerance testing."
+        ]
+      }
+    ],
+    "projects": [
+      [
+        "FPGA order book & trading simulator",
+        "Designed a configurable Verilog order book and a Python simulation spanning market feeds, strategy, execution, market making, and fills. An educational pipeline for exploring latency.",
+        "Verilog · Python · FPGA architecture",
+        "https://github.com/notsomeonebutnoone/basic_hftsim_using_fpga"
+      ],
+      [
+        "Statistical arboreal system",
+        "A bird classification and control pipeline using mathematical image descriptors, density estimation, and probability models to drive ultrasonic actuation.",
+        "Computer vision · Feature descriptors · Automated control",
+        "https://github.com/notsomeonebutnoone/sift_bird_classification"
+      ],
+      [
+        "Real-time control infrastructure",
+        "A robotic hand control system combining physical coordinate mapping, Python signal filtering, and MQTT communication across distributed physical endpoints.",
+        "Python · MQTT · Embedded control",
+        "https://github.com/notsomeonebutnoone/mirror-hand"
+      ]
     ]
   },
-  software: {
-    label: 'Software Engineering',
-    title: 'Software engineer building real-time systems, data products, and thoughtful web experiences.',
-    summary: 'I turn ambiguous system problems into dependable software—from decentralized trading infrastructure and industrial control interfaces to tools that make everyday workflows faster.',
-    resume: 'chiragV resume software.pdf',
-    profile: 'profile-software.png',
-    profileAlt: 'Chirag developing software at a dual-monitor workstation',
-    badges: ['Python & data systems', 'React / modern web', 'Real-time & distributed software'],
-    metrics: [['45%', 'Strategy efficiency gain'], ['30%', 'Compute reduction'], ['2.4', 'Sharpe ratio achieved']],
-    skills: [
-      ['Languages', ['Python', 'C', 'MATLAB', 'JavaScript']],
-      ['Web & data', ['React 19', 'Vite 7', 'Tailwind CSS', 'NumPy', 'Pandas', 'Plotly']],
-      ['Systems', ['Qt', 'MQTT', 'LIN', 'Linux', 'Wireshark']],
-      ['Foundations', ['Data Structures', 'Algorithms', 'Operating Systems', 'OOP', 'DBMS']]
+  "software": {
+    "label": "Software & AI Automation",
+    "title": "I build software products, developer tools, and AI automation workflows.",
+    "summary": "At Tenteron, I turn business workflows into API and agent systems. My projects range from a browser PDF reader and a terminal media tool to productivity intelligence and incident investigation.",
+    "resume": "resume.pdf",
+    "profile": "profile-software.png",
+    "profileAlt": "Chirag developing software at a dual-monitor workstation",
+    "badges": [
+      "React & product engineering",
+      "Python & TypeScript",
+      "n8n, APIs & AI agents"
     ],
-    experience: [
-      {role:'Project Consultant', company:'OpenFabric · Decentralized AI Infrastructure', date:'May — Jul 2025', bullets:['Designed a modular high-frequency cryptocurrency trading system in Python for decentralized AI compute.','Implemented momentum and Bollinger Bands strategies with a 2.4 Sharpe ratio and strong backtest-to-live consistency.','Built multithreaded market-data pipelines and a real-time Plotly dashboard for execution, P&L, and performance.','Improved strategy efficiency by 45% while reducing compute use by 30%.']},
-      {role:'Software Engineer', company:'BEML · Rail & Metro Division', date:'Aug — Nov 2024', bullets:['Led software visualization work for Train Control and Monitoring Systems.','Built Qt interfaces for live operational and control parameters.','Integrated LIN communication for efficient, low-latency auxiliary systems.','Debugged, tested, and deployed production-grade modules with cross-functional teams.']},
-      {role:'Product Development Intern', company:'Dassault Systèmes', date:'May 2022 — Jul 2023', bullets:['Designed and simulated automated systems using Modelica and electrical design tools.','Validated circuit performance under real-world constraints and supported requirements and cost optimization.']}
+    "metrics": [
+      [
+        "React",
+        "Browser applications"
+      ],
+      [
+        "n8n",
+        "Business automation"
+      ],
+      [
+        "Python",
+        "Systems & data pipelines"
+      ]
     ],
-    projects: [
-      ['Readimentary', 'A focus-first RSVP PDF reader with ORP rendering, adjustable WPM, chapter detection, and persistent local reading state.', 'React 19 · Vite · PDF.js', 'https://readimentary.vercel.app'],
-      ['Bonk', 'An open-source software project focused on a fast, direct, and playful product experience.', 'JavaScript · Web application · Open source', 'https://github.com/notsomeonebutnoone/bonk'],
-      ['Sneaki', 'An AI-assisted activity pipeline that converts app and window events into structured Google Calendar records.', 'Webhooks · AI backends · Automation', 'https://github.com/notsomeonebutnoone/sneaki'],
-      ['Statistical Arboreal Bird Repeller', 'A computer-vision pipeline using SIFT and HOG descriptors, temporal density estimation, and dynamic PWM control.', 'Python · Computer vision · Research', 'https://github.com/notsomeonebutnoone/sift_bird_classification.git'],
-      ['Gesture-Controlled Robotic Hand', 'A low-latency hand-mirroring system with Python signal smoothing and MQTT-synchronized servo updates.', 'Python · MQTT · Real-time systems', 'https://github.com/notsomeonebutnoone/mirror-hand.git']
+    "skills": [
+      [
+        "Programming",
+        [
+          "Python",
+          "JavaScript",
+          "TypeScript",
+          "C",
+          "MATLAB",
+          "SQL"
+        ]
+      ],
+      [
+        "Web & developer tools",
+        [
+          "React",
+          "Vite",
+          "Tailwind CSS",
+          "PDF.js",
+          "IndexedDB",
+          "Ink"
+        ]
+      ],
+      [
+        "Automation & AI",
+        [
+          "n8n",
+          "LLM Workflows",
+          "AI Agents",
+          "APIs",
+          "Webhooks",
+          "Data Pipelines"
+        ]
+      ],
+      [
+        "Systems",
+        [
+          "Linux",
+          "Git",
+          "MQTT",
+          "CAN",
+          "System Integration",
+          "Validation"
+        ]
+      ]
+    ],
+    "experience": [
+      {
+        "role": "Founder, Automation & Growth",
+        "company": "Tenteron",
+        "date": "2026 — Present",
+        "bullets": [
+          "Built tenteron.com, an AI automation studio developing workflow and agent systems for businesses.",
+          "Architected n8n workflows connecting APIs, LLMs, webhooks, databases, lead pipelines, and internal tools.",
+          "Own positioning, outbound GTM, customer discovery, technical sales, solution scoping, and implementation."
+        ]
+      },
+      {
+        "role": "GTM & Growth",
+        "company": "Pump GTM (YC-backed)",
+        "date": "2026 — Present",
+        "bullets": [
+          "Run prospect research, contextual outreach, community content, and founder-led distribution.",
+          "Helped Supermemory acquire customers by identifying relevant buyers, qualifying needs, and tailoring outreach to public conversations.",
+          "Develop Reddit posts, AMAs, and outbound guides; coordinate publishing and responses with the team.",
+          "Published a startup feedback post that received 381 comments and engaged founders in discussions about their businesses."
+        ]
+      },
+      {
+        "role": "Infrastructure & Systems Engineer",
+        "company": "Rector Infrastructure",
+        "date": "2025 — 2026",
+        "bullets": [
+          "Worked across system validation, deployment, technical operations, and hardware and software integration.",
+          "Built Python utilities for diagnostic analysis and validation.",
+          "Coordinated hardware, software, and operations teams to resolve integration issues."
+        ]
+      },
+      {
+        "role": "Hardware Systems Operations Analyst",
+        "company": "External Consultant",
+        "date": "Dec 2024 — Aug 2025",
+        "bullets": [
+          "Analyzed diagnostic logs, timing constraints, and validation reports to investigate performance and reliability.",
+          "Built Python and TCL automation for report parsing and engineering analysis.",
+          "Supported manufacturing validation."
+        ]
+      },
+      {
+        "role": "Software Engineer, Operations & Infrastructure",
+        "company": "Bharat Earth Movers Ltd. (BEML)",
+        "date": "Aug — Nov 2024",
+        "bullets": [
+          "Worked on Train Control and Monitoring Systems integrating distributed onboard railway subsystems.",
+          "Engineered and validated CAN signalling modules.",
+          "Supported integration, debugging, and fault tolerance testing."
+        ]
+      }
+    ],
+    "projects": [
+      [
+        "Sentinel · Incident commander",
+        "An incident investigation demo that gathers evidence across Slack, Vercel, GitHub, and Linear, applies rollback rules, and verifies recovery against a disposable checkout.",
+        "TypeScript · AI agents · Incident workflows",
+        "https://github.com/notsomeonebutnoone/lemma_test"
+      ],
+      [
+        "Readimentary",
+        "An RSVP speed reader with browser PDF parsing, adjustable reading speed, chapter navigation, progress tracking, and a persistent local library.",
+        "React · Vite · PDF.js · IndexedDB",
+        "https://readimentary.vercel.app"
+      ],
+      [
+        "bonk-cli",
+        "A terminal media downloader with quality selection, playlist support, and conversion to Premiere compatible H.264/AAC files. Built for creator and editing workflows.",
+        "TypeScript · Ink · yt-dlp · FFmpeg",
+        "https://github.com/notsomeonebutnoone/bonk-cli"
+      ],
+      [
+        "Gigacatalyst · Reddit content workflows",
+        "An n8n workflow system for demand research, content planning, drafting, engagement, and performance tracking, with human approval before posts and replies are published.",
+        "n8n · PostgreSQL · LLMs · Slack",
+        "https://github.com/notsomeonebutnoone/gigagtm"
+      ],
+      [
+        "Reachout",
+        "A public social profile leaderboard where bids determine ranked placement. Built hosted payment checkout and webhook transaction verification around paid profile visibility.",
+        "Payment checkout · Webhooks · Product monetization",
+        ""
+      ],
+      [
+        "Sneaki · Productivity intelligence",
+        "Captures application and window activity, categorizes it with LLMs, and turns activity streams into calendar events and time allocation metrics.",
+        "Python · LLMs · Webhooks · Google Calendar",
+        "https://github.com/notsomeonebutnoone/sneaki"
+      ],
+      [
+        "FPGA order book & trading simulator",
+        "Designed a configurable Verilog order book and a Python simulation spanning market feeds, strategy, execution, market making, and fills. An educational pipeline for exploring latency.",
+        "Verilog · Python · FPGA architecture",
+        "https://github.com/notsomeonebutnoone/basic_hftsim_using_fpga"
+      ],
+      [
+        "Statistical arboreal system",
+        "A bird classification and control pipeline using mathematical image descriptors, density estimation, and probability models to drive ultrasonic actuation.",
+        "Computer vision · Feature descriptors · Automated control",
+        "https://github.com/notsomeonebutnoone/sift_bird_classification"
+      ],
+      [
+        "Real-time control infrastructure",
+        "A robotic hand control system combining physical coordinate mapping, Python signal filtering, and MQTT communication across distributed physical endpoints.",
+        "Python · MQTT · Embedded control",
+        "https://github.com/notsomeonebutnoone/mirror-hand"
+      ]
     ]
   },
-  analyst: {
-    label: 'Analyst · Growth & GTM',
-    title: 'Analyst translating complex systems into sharper operations, measurable growth, and scalable execution.',
-    summary: 'I combine quantitative analysis with an engineer’s systems thinking—finding bottlenecks, automating reporting, managing operational risk, and turning noisy data into decisions teams can act on.',
-    resume: 'Tchirag V resume analyst.pdf',
-    profile: 'profile-analyst.png',
-    profileAlt: 'Chirag analyzing growth charts and business performance',
-    badges: ['Performance analytics', 'Workflow automation', 'Operations & growth strategy'],
-    metrics: [['Multi-source', 'Reports automated'], ['Real-time', 'Operational systems'], ['4', 'Cross-domain projects']],
-    skills: [
-      ['Analytics', ['Structured Data Analysis', 'Statistical Modeling', 'Trend Evaluation', 'Quantitative Logic']],
-      ['Operations', ['Performance Optimization', 'Risk Mitigation', 'Workflow Design', 'Cross-functional Integration']],
-      ['Automation', ['Python', 'SQL Concepts', 'Report Parsing', 'Log Validation']],
-      ['Product & GTM', ['Resource Allocation', 'Stakeholder Alignment', 'System Scalability', 'Research Communication']]
+  "analyst": {
+    "label": "Growth · GTM · Automation",
+    "title": "I connect technical products with the people who need them.",
+    "summary": "At Pump GTM, I work on prospect research, contextual outreach, and community content. As the founder of Tenteron, I combine customer discovery and technical sales with hands-on AI automation.",
+    "resume": "resume.pdf",
+    "profile": "profile-analyst.png",
+    "profileAlt": "Chirag analyzing growth charts and business performance",
+    "badges": [
+      "Prospect research & outbound",
+      "Content & creator distribution",
+      "AI automation & technical sales"
     ],
-    experience: [
-      {role:'Hardware Systems Operations Analyst', company:'External Consultant', date:'Dec 2024 — Aug 2025', bullets:['Analyzed complex integrated systems to improve processing efficiency and execution quality.','Evaluated diagnostic logs and design constraints to resolve cross-functional performance failures.','Automated multi-source validation reporting with Python and TCL, shortening optimization turnaround.','Supported manufacturing validation and technology rollouts across varied stress conditions.']},
-      {role:'Software Engineer · Operations & Infrastructure', company:'BEML · Rail & Metro', date:'Aug — Nov 2024', bullets:['Coordinated integration of distributed onboard systems for real-time operational safety.','Audited CAN signaling modules to establish stable, low-latency communication pathways.','Optimized network data workflows for scalability and throughput.','Directed verification routines centered on fault tolerance, operational risk, and asset stability.']}
+    "metrics": [
+      [
+        "381",
+        "Comments on a startup feedback post"
+      ],
+      [
+        "2.8M",
+        "Views on one Instagram reel"
+      ],
+      [
+        "~10K",
+        "Instagram followers · résumé snapshot"
+      ]
     ],
-    projects: [],
-    reports: [
-      ['DefiLlama', 'Wholesale Dollars', 'A Funding-Structure Theory of Stablecoin Moats', 'A framework for judging stablecoin defensibility through holder composition and liquidity-graph depth—not market cap alone.', 'Stablecoins · DeFi · Market structure', 'defillama-report.pdf', 'defillama-logo.jpg'],
-      ['KleePay', 'Product Intelligence & Candidate Impact Brief', 'KleePay × Developer Marketing', 'A product and market assessment of programmable Visa infrastructure for AI agents, competitive positioning, and developer-first growth.', 'Agentic payments · GTM · Product', 'kleepay-analysis.pdf', 'kleepay-logo.png'],
-      ['3one4 Capital', 'Portfolio Intelligence & Candidate Impact Brief', '3one4 Capital × Investment Analysis', 'A sector-by-sector review of portfolio concentration, capital allocation, and opportunities across SaaS, deep tech, and industrial digitization.', 'Venture capital · Deep tech · Strategy', '3one4-capital-report.pdf', '3one4-capital-logo.png']
+    "skills": [
+      [
+        "Growth & GTM",
+        [
+          "Prospect Research",
+          "Lead Qualification",
+          "Outbound",
+          "Customer Discovery",
+          "Technical Sales",
+          "Product Positioning"
+        ]
+      ],
+      [
+        "Content & distribution",
+        [
+          "Reddit",
+          "X",
+          "Community Engagement",
+          "Scriptwriting",
+          "Video Editing",
+          "Hooks & Storytelling"
+        ]
+      ],
+      [
+        "Automation & AI",
+        [
+          "n8n",
+          "LLM Workflows",
+          "AI Agents",
+          "APIs",
+          "Webhooks",
+          "Data Pipelines"
+        ]
+      ],
+      [
+        "Analysis & operations",
+        [
+          "Python",
+          "SQL",
+          "Data Analysis",
+          "Statistical Modeling",
+          "System Validation",
+          "Cross-functional Coordination"
+        ]
+      ]
+    ],
+    "experience": [
+      {
+        "role": "GTM & Growth",
+        "company": "Pump GTM (YC-backed)",
+        "date": "2026 — Present",
+        "bullets": [
+          "Run prospect research, contextual outreach, community content, and founder-led distribution.",
+          "Helped Supermemory acquire customers by identifying relevant buyers, qualifying needs, and tailoring outreach to public conversations.",
+          "Develop Reddit posts, AMAs, and outbound guides; coordinate publishing and responses with the team.",
+          "Published a startup feedback post that received 381 comments and engaged founders in discussions about their businesses."
+        ]
+      },
+      {
+        "role": "Founder, Automation & Growth",
+        "company": "Tenteron",
+        "date": "2026 — Present",
+        "bullets": [
+          "Built tenteron.com, an AI automation studio developing workflow and agent systems for businesses.",
+          "Architected n8n workflows connecting APIs, LLMs, webhooks, databases, lead pipelines, and internal tools.",
+          "Own positioning, outbound GTM, customer discovery, technical sales, solution scoping, and implementation."
+        ]
+      },
+      {
+        "role": "Infrastructure & Systems Engineer",
+        "company": "Rector Infrastructure",
+        "date": "2025 — 2026",
+        "bullets": [
+          "Worked across system validation, deployment, technical operations, and hardware and software integration.",
+          "Built Python utilities for diagnostic analysis and validation.",
+          "Coordinated hardware, software, and operations teams to resolve integration issues."
+        ]
+      },
+      {
+        "role": "Hardware Systems Operations Analyst",
+        "company": "External Consultant",
+        "date": "Dec 2024 — Aug 2025",
+        "bullets": [
+          "Analyzed diagnostic logs, timing constraints, and validation reports to investigate performance and reliability.",
+          "Built Python and TCL automation for report parsing and engineering analysis.",
+          "Supported manufacturing validation."
+        ]
+      },
+      {
+        "role": "Software Engineer, Operations & Infrastructure",
+        "company": "Bharat Earth Movers Ltd. (BEML)",
+        "date": "Aug — Nov 2024",
+        "bullets": [
+          "Worked on Train Control and Monitoring Systems integrating distributed onboard railway subsystems.",
+          "Engineered and validated CAN signalling modules.",
+          "Supported integration, debugging, and fault tolerance testing."
+        ]
+      }
+    ],
+    "projects": [
+      [
+        "Tenteron · AI automation studio",
+        "Founded an automation studio connecting business workflows, agent systems, and lead pipelines, from customer discovery and solution scoping through implementation.",
+        "n8n · APIs · AI agents · Technical GTM",
+        "https://tenteron.com"
+      ],
+      [
+        "Gigacatalyst · Reddit content workflows",
+        "An n8n workflow system for demand research, content planning, drafting, engagement, and performance tracking, with human approval before posts and replies are published.",
+        "n8n · PostgreSQL · LLMs · Slack",
+        "https://github.com/notsomeonebutnoone/gigagtm"
+      ],
+      [
+        "Reachout",
+        "A public social profile leaderboard where bids determine ranked placement. Built hosted payment checkout and webhook transaction verification around paid profile visibility.",
+        "Payment checkout · Webhooks · Product monetization",
+        ""
+      ],
+      [
+        "Sneaki · Productivity intelligence",
+        "Captures application and window activity, categorizes it with LLMs, and turns activity streams into calendar events and time allocation metrics.",
+        "Python · LLMs · Webhooks · Google Calendar",
+        "https://github.com/notsomeonebutnoone/sneaki"
+      ]
     ]
   }
 };
+tracks.analyst.reports = [
+      ['DefiLlama', 'Wholesale Dollars', 'A Funding-Structure Theory of Stablecoin Moats', 'A framework for judging stablecoin defensibility through holder composition and liquidity-graph depth—not market cap alone.', 'Stablecoins · DeFi · Market structure', 'defillama-report.pdf', 'defillama-logo.jpg'],
+      ['KleePay', 'Product Intelligence & Candidate Impact Brief', 'KleePay × Developer Marketing', 'A product and market assessment of programmable Visa infrastructure for AI agents, competitive positioning, and developer-first growth.', 'Agentic payments · GTM · Product', 'kleepay-analysis.pdf', 'kleepay-logo.png'],
+      ['3one4 Capital', 'Portfolio Intelligence & Candidate Impact Brief', '3one4 Capital × Investment Analysis', 'A sector-by-sector review of portfolio concentration, capital allocation, and opportunities across SaaS, deep tech, and industrial digitization.', 'Venture capital · Deep tech · Strategy', '3one4-capital-report.pdf', '3one4-capital-logo.png']
+    ];
 
 const $ = id => document.getElementById(id);
 const observer = new IntersectionObserver(entries => entries.forEach(e => e.isIntersecting && e.target.classList.add('active')), {threshold:.08});
@@ -132,6 +526,7 @@ function renderTrack(key) {
   const isAnalyst = key === 'analyst';
   document.documentElement.dataset.track = key;
   document.title = `Chirag Venkatesh | ${data.label}`;
+  document.querySelector('meta[name="description"]').content = `Chirag Venkatesh — ${data.summary}`;
   $('track-eyebrow').textContent = data.label;
   $('track-title').textContent = data.title;
   $('track-summary').textContent = data.summary;
@@ -143,11 +538,13 @@ function renderTrack(key) {
   $('skills-grid').innerHTML = data.skills.map(([title,items], i) => `<article class="capability-card"><span class="capability-number">0${i+1}</span><h3>${title}</h3><div>${items.map(x=>`<span>${x}</span>`).join('')}</div></article>`).join('');
   $('experience-list').innerHTML = data.experience.map(x => `<article class="timeline-item"><div class="timeline-header"><div><h3>${x.role}</h3><p class="company">${x.company}</p></div><span class="timeline-date">${x.date}</span></div><ul>${x.bullets.map(b=>`<li>${b}</li>`).join('')}</ul></article>`).join('');
   $('projects-grid').innerHTML = data.projects.map(([title,desc,tech,url]) => `${url?`<a href="${url}" target="_blank" rel="noopener noreferrer" class="project-link">`:''}<article class="project-card"><div class="project-topline"><span>Selected project</span>${url?'<span>↗</span>':''}</div><h3>${title}</h3><p>${desc}</p><div class="project-tech">${tech}</div></article>${url?'</a>':''}`).join('');
-  $('projects-grid').hidden = isAnalyst;
-  $('work-kicker').textContent = isAnalyst ? '03 / Research & writing' : '03 / Selected builds';
-  $('work-title').textContent = isAnalyst ? 'Reports' : 'Projects';
-  $('work-nav-label').textContent = isAnalyst ? 'Reports' : 'Projects';
+  $('projects-grid').hidden = false;
+  $('work-kicker').textContent = isAnalyst ? '03 / Products & research' : '03 / Selected builds';
+  $('work-title').textContent = isAnalyst ? 'Projects & reports' : 'Projects';
+  $('work-nav-label').textContent = isAnalyst ? 'Projects & reports' : 'Projects';
   $('analyst-reports').hidden = !isAnalyst;
+  $('creator').hidden = !isAnalyst;
+  $('creator-nav').hidden = !isAnalyst;
   if (isAnalyst) {
     $('report-grid').innerHTML = data.reports.map(([company,title,subtitle,desc,tags,file,logo], index) => `<article class="report-card project-card"><div class="project-topline"><span>0${index + 1} / Report</span><span>↓</span></div><div class="report-company"><img src="${logo}" alt=""><span>${company}</span></div><h3>${title}</h3><p class="report-subtitle">${subtitle}</p><p>${desc}</p><div class="project-tech">${tags}</div><a class="report-card-download" href="${file}" download>Download report ↓</a></article>`).join('');
     renderRecentArticles();
