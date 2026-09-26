@@ -4,6 +4,8 @@
 html[data-track="hardware"] { --profile-accent: #3a5992; --accent: #91afe3; --accent-ink: #ffffff; }
 html[data-track="software"] { --profile-accent: #7bdbab; --accent: #7bdbab; --accent-ink: #181818; }
 html[data-track="analyst"] { --profile-accent: #f0cc63; --accent: #f0cc63; --accent-ink: #181818; }
+html[data-track="socials"] { --accent: #c4a0ff; --profile-accent: #c4a0ff; --accent-ink: #181818; }
+html[data-theme="light"][data-track="socials"] { --accent: #7436b8; --profile-accent: #7436b8; --accent-ink: #ffffff; }
 html[data-theme="light"][data-track="hardware"] { --accent: #3a5992; }
 html[data-theme="light"][data-track="software"] { --accent: #087a4c; }
 html[data-theme="light"][data-track="analyst"] { --accent: #876800; }

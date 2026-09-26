@@ -1,106 +1,126 @@
 export function initSocials(root) {
-const platforms = [
-  { platform: 'youtube', name: 'YouTube', handle: '@creyn1um', url: 'https://www.youtube.com/@creyn1um', icon: 'youtube' },
-];
-const state = new Map(platforms.map(platform => [platform.platform, { ...platform, status: 'loading', recent: [], popular: [], metrics: [] }]));
-const $ = id => root.querySelector(`#${id}`);
-const escape = value => String(value ?? '').replace(/[&<>"']/g, character => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[character]));
-const url = value => { try { const parsed = new URL(value); return parsed.protocol === 'https:' ? escape(parsed.href) : ''; } catch { return ''; } };
-const format = value => Number.isFinite(value) ? new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 }).format(value) : '—';
-const exact = value => Number.isFinite(value) ? new Intl.NumberFormat('en').format(value) : 'Unavailable';
-const date = value => Number.isFinite(Date.parse(value)) ? new Date(value).toLocaleDateString('en', { month: 'short', day: 'numeric', year: 'numeric' }) : '';
-const statusLabels = { loading: 'Checking…', live: 'Connected', partial: 'Limited metrics', stale: 'Last saved update', unavailable: 'Updates unavailable', disconnected: 'Not connected' };
-const link = (href, text, className = '', label = '') => `<a class="${className}" href="${url(href)}"${label ? ` aria-label="${escape(label)}"` : ''} target="_blank" rel="noopener noreferrer">${text}</a>`;
-const skeleton = () => '<div class="social-skeleton" aria-label="Loading content"><span></span><span></span><span></span></div>';
+  const metrics = root.querySelector('#youtube-metrics');
+  const status = root.querySelector('#feed-status');
+  const button = root.querySelector('#refresh-socials');
+  const labels = ['Subscribers', 'Channel views', 'Videos'];
+  const format = new Intl.NumberFormat('en');
+  let saved = null;
+  let refreshing = false;
+  let lastAttempt = 0;
+  const feeds = ['latest', 'recent', 'top', 'popular'].map(name => root.querySelector('#youtube-' + name));
 
-const platformIcon = platform => {
-  const icon = platforms.find(item => item.platform === platform.platform)?.icon || 'x';
-  return `<img class="platform-icon icon-${icon}" src="/assets/social-icons/${icon}.svg" alt="" width="24" height="24" aria-hidden="true">`;
-};
-
-function empty(platform, popular = false) {
-  if (platform.status === 'loading') return skeleton();
-  const message = ['live', 'partial'].includes(platform.status)
-    ? popular ? 'No view counts are available to rank this content yet.' : 'No public uploads were returned by this platform.'
-    : platform.message || 'Live updates are currently unavailable.';
-  return `<div class="social-empty"><p>${escape(message)}</p>${link(platform.url, `Explore ${escape(platform.name)} ↗`)}</div>`;
-}
-
-function card(item, platform, index, video = false) {
-  const views = video ? item.videoViews : item.views;
-  const viewLabel = video ? 'video views' : item.viewLabel;
-  const thumbnail = url(item.thumbnail);
-  return `<article class="social-post">
-    ${link(item.url, thumbnail ? `<img src="${thumbnail}" alt="" loading="lazy" referrerpolicy="no-referrer">` : `<span class="post-placeholder" aria-hidden="true">${platformIcon(platform)}</span>`, 'post-preview', `View ${item.title} on ${platform.name}`)}
-    <div class="post-body"><div class="post-meta"><span>${escape(platform.name)} · ${escape(item.type)}</span>${index === 0 ? '<span class="social-highlight">Most recent</span>' : ''}</div>
-    <h4>${link(item.url, escape(item.title))}</h4><time datetime="${escape(item.publishedAt)}">${date(item.publishedAt)}</time>
-    <div class="post-views" title="${exact(views)} ${escape(viewLabel)}"><strong>${format(views)}</strong> ${escape(viewLabel)}${views === null ? ' unavailable' : ''}</div>
-    <p class="post-engagement">${format(item.likes)} likes · ${format(item.comments)} ${platform.platform === 'twitter' ? 'replies' : 'comments'}${Number.isFinite(item.reposts) ? ` · ${format(item.reposts)} reposts` : ''}</p>
-    ${platform.platform === 'twitter' && !video && item.type === 'video' ? `<p class="post-engagement">${format(item.videoViews)} video views</p>` : ''}
-    </div></article>`;
-}
-
-function render() {
-  const values = [...state.values()];
-  $('platform-grid').innerHTML = values.map(platform => `<article class="social-panel platform-${platform.platform}">
-    <div class="platform-heading"><span class="platform-mark" aria-hidden="true">${platformIcon(platform)}</span><span class="feed-badge" data-status="${platform.status}">${statusLabels[platform.status]}</span></div>
-    <h3>${link(platform.url, `${escape(platform.name)} ↗`)}</h3><p>${escape(platform.handle)}</p>
-    ${platform.status === 'loading' ? skeleton() : `<dl class="social-metrics">${platform.metrics.map(metric => `<div><dt>${escape(metric.label)}</dt><dd title="${exact(metric.value)}">${format(metric.value)}</dd></div>`).join('')}</dl>`}
-    ${platform.message ? `<p class="social-note">${escape(platform.message)}</p>` : ''}
-    ${platform.checkedAt ? `<p class="social-note">Updated ${escape(new Date(platform.checkedAt).toLocaleString())}</p>` : ''}
-    ${link(platform.url, 'Visit profile ↗')}
-  </article>`).join('');
-  for (const mode of ['recent', 'popular']) {
-    $(`${mode}-platforms`).innerHTML = values.map(platform => `<div class="platform-feed"><div class="platform-feed-heading"><h3>${platformIcon(platform)}${escape(platform.name)} <span>${escape(platform.handle)}</span></h3>${link(platform.url, 'View profile ↗')}</div>
-      ${mode === 'popular' && platform.coverage ? `<p class="social-note">${escape(platform.coverage)}</p>` : ''}
-      ${mode === 'popular' && platform.fetchedCount ? `<p class="social-note">${platform.rankedCount} of ${platform.fetchedCount} posts have view counts available.</p>` : ''}
-      ${mode === 'popular' ? `<div class="top-video"><h4>Top video · ${escape(platform.name)}</h4>${platform.topVideo ? card(platform.topVideo, platform, -1, true) : `<p class="social-note">${platform.status === 'loading' ? 'Checking video views…' : 'No video with an available view count to rank yet.'}</p>`}</div>` : ''}
-      <div class="social-grid">${platform[mode]?.length ? platform[mode].map((item, index) => card(item, platform, mode === 'recent' ? index : -1)).join('') : empty(platform, mode === 'popular')}</div>
-    </div>`).join('');
+  function element(tag, className, text) {
+    const node = document.createElement(tag);
+    node.className = className;
+    if (text !== undefined) node.textContent = text;
+    return node;
   }
-  const connected = values.filter(value => ['live', 'partial'].includes(value.status)).length;
-  $('feed-status').textContent = values.some(value => value.status === 'loading') ? 'Checking YouTube…' : connected ? 'YouTube connected. Checks every 15 minutes.' : 'YouTube stats unavailable. See the channel status below.';
-  $('platform-grid').setAttribute('aria-busy', String(values.some(value => value.status === 'loading')));
-  root.querySelectorAll('.post-preview img').forEach(img => img.addEventListener('error', () => {
-    const placeholder = document.createElement('span');
-    placeholder.className = 'post-placeholder';
-    placeholder.textContent = 'View on platform ↗';
-    img.replaceWith(placeholder);
-  }, { once: true }));
-}
 
-let refreshing = false;
-let lastAttempt = 0;
-async function refresh() {
-  if (refreshing) return;
-  refreshing = true;
-  lastAttempt = Date.now();
-  $('refresh-socials').disabled = true;
-  $('refresh-socials').textContent = 'Checking…';
-  await Promise.all(platforms.map(async platform => {
-    const previous = state.get(platform.platform);
-    try {
-      const response = await fetch(`/api/socials?platform=${platform.platform}`, { signal: AbortSignal.timeout(55000), cache: 'no-store' });
-      if (!response.ok) throw new Error('Feed unavailable');
-      const data = await response.json();
-      if (data.platform !== platform.platform || !Array.isArray(data.recent) || !Array.isArray(data.popular) || !Array.isArray(data.metrics)) throw new Error('Invalid feed');
-      state.set(platform.platform, data.status === 'unavailable' && previous.checkedAt
-        ? { ...previous, status: 'stale', message: 'Refresh unavailable. Showing the last successful update.' }
-        : { ...platform, ...data });
-    } catch {
-      state.set(platform.platform, { ...previous, status: previous.checkedAt ? 'stale' : 'unavailable', message: previous.checkedAt ? 'Refresh unavailable. Showing the last successful update.' : 'Live updates could not be loaded. Please try again.' });
+  function safeUrl(value) {
+    try { const url = new URL(value); return url.protocol === 'https:' ? url.href : ''; }
+    catch { return ''; }
+  }
+
+  function videoCard(video) {
+    const card = element('article', 'social-post');
+    const preview = element('a', 'post-preview');
+    preview.href = safeUrl(video.url) || 'https://www.youtube.com/@creyn1um';
+    preview.target = '_blank';
+    preview.rel = 'noopener noreferrer';
+    preview.setAttribute('aria-label', 'Watch ' + video.title);
+    const fallback = () => preview.replaceChildren(element('span', 'post-placeholder', 'Watch on YouTube ↗'));
+    if (safeUrl(video.thumbnail)) {
+      const image = element('img', '');
+      image.src = safeUrl(video.thumbnail);
+      image.alt = '';
+      image.loading = 'lazy';
+      image.referrerPolicy = 'no-referrer';
+      image.addEventListener('error', fallback, { once: true });
+      preview.append(image);
+    } else fallback();
+    const body = element('div', 'post-body');
+    const heading = element('h4', '');
+    const link = element('a', '', video.title);
+    link.href = preview.href;
+    link.target = '_blank';
+    link.rel = 'noopener noreferrer';
+    heading.append(link);
+    body.append(heading);
+    const published = new Date(video.publishedAt);
+    if (Number.isFinite(published.getTime())) {
+      const time = element('time', '', published.toLocaleDateString());
+      time.dateTime = published.toISOString();
+      body.append(time);
     }
-    render();
-  }));
-  refreshing = false;
-  $('refresh-socials').disabled = false;
-  $('refresh-socials').textContent = 'Refresh updates ↻';
-}
+    const count = value => Number.isFinite(value) ? format.format(value) : '—';
+    const views = element('p', 'post-views');
+    views.append(element('strong', '', count(video.views)), ' views');
+    body.append(views, element('p', 'post-engagement', `${count(video.likes)} likes · ${count(video.comments)} comments`));
+    card.append(preview, body);
+    return card;
+  }
 
-$('refresh-socials').addEventListener('click', refresh);
-const isVisible = () => !document.hidden && document.documentElement.dataset.track === 'socials';
-setInterval(() => { if (isVisible()) refresh(); }, 15 * 60 * 1000);
-document.addEventListener('visibilitychange', () => { if (isVisible() && Date.now() - lastAttempt >= 15 * 60 * 1000) refresh(); });
-render();
-refresh();
+  function renderFeeds(data) {
+    const groups = [data.recent.slice(0, 1), data.recent.slice(1), data.topVideo ? [data.topVideo] : [], data.popular.filter(video => video.id !== data.topVideo?.id)];
+    feeds.forEach((feed, index) => {
+      feed.replaceChildren(...(groups[index].length ? groups[index].map(videoCard) : [element('p', 'social-note', 'No videos available.')]));
+    });
+    root.querySelector('#youtube-coverage').textContent = data.coverage || '';
+  }
+
+  function render(values = []) {
+    metrics.replaceChildren(...labels.map(label => {
+      const item = document.createElement('div');
+      const title = document.createElement('dt');
+      const value = document.createElement('dd');
+      const count = values.find(metric => metric.label === label)?.value;
+      title.textContent = label === 'Channel views' ? 'Total views' : label;
+      value.textContent = Number.isFinite(count) ? format.format(count) : '—';
+      item.append(title, value);
+      return item;
+    }));
+  }
+
+  async function refresh() {
+    if (refreshing) return;
+    refreshing = true;
+    lastAttempt = Date.now();
+    button.disabled = true;
+    metrics.setAttribute('aria-busy', 'true');
+    feeds.forEach(feed => feed.setAttribute('aria-busy', 'true'));
+    status.textContent = 'Updating…';
+    try {
+      const response = await fetch('/api/socials?platform=youtube', {
+        signal: AbortSignal.timeout(55000), cache: 'no-store',
+      });
+      if (!response.ok) throw new Error('Unavailable');
+      const data = await response.json();
+      if (data.platform !== 'youtube' || !Array.isArray(data.metrics)
+          || !Array.isArray(data.recent) || !Array.isArray(data.popular)
+          || !['live', 'partial', 'stale'].includes(data.status)) throw new Error('Unavailable');
+      saved = data.metrics;
+      render(saved);
+      renderFeeds(data);
+      const checkedAt = new Date(data.checkedAt);
+      status.textContent = data.status === 'stale' ? 'Showing last saved stats.'
+        : Number.isFinite(checkedAt.getTime()) ? 'Updated ' + checkedAt.toLocaleString() : 'Stats updated.';
+    } catch {
+      if (!saved) feeds.forEach(feed => feed.replaceChildren(element('p', 'social-note', 'Videos unavailable. Try refreshing.')));
+      status.textContent = saved ? 'Refresh unavailable. Showing last saved stats.' : 'Stats unavailable. Please try again.';
+    } finally {
+      refreshing = false;
+      button.disabled = false;
+      metrics.setAttribute('aria-busy', 'false');
+      feeds.forEach(feed => feed.setAttribute('aria-busy', 'false'));
+    }
+  }
+
+  button.addEventListener('click', refresh);
+  const visible = () => !document.hidden && document.documentElement.dataset.track === 'socials';
+  setInterval(() => { if (visible()) refresh(); }, 15 * 60 * 1000);
+  document.addEventListener('visibilitychange', () => {
+    if (visible() && Date.now() - lastAttempt >= 15 * 60 * 1000) refresh();
+  });
+  render();
+  refresh();
 }

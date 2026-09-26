@@ -1,4 +1,14 @@
 .socials-page{--track-accent:var(--accent)}
+.youtube-top-label{color:var(--accent);font-size:14px;margin-top:20px}
+.socials-page .post-views strong{color:var(--accent)}
+.socials-page .youtube-channel{color:var(--accent);font:14px/20px 'Geist Mono',monospace}
+.social-profile-links{display:flex;flex-wrap:wrap;gap:16px 24px;margin-top:32px;padding-top:24px;border-top:1px solid var(--border)}
+.socials-page .social-profile-links a{color:var(--accent);font:12px/20px 'Geist Mono',monospace;text-underline-offset:4px}
+.youtube-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin:0}
+.youtube-metrics>div{padding:24px 0;border-top:2px solid var(--accent)}
+.youtube-metrics dt{color:var(--text-secondary);font:12px/16px 'Geist Mono',monospace}
+.youtube-metrics dd{margin:12px 0 0;color:var(--accent);font-size:clamp(24px,4vw,40px);line-height:1.2;font-variant-numeric:tabular-nums}
+@media(max-width:600px){.youtube-metrics{grid-template-columns:1fr;gap:8px}.youtube-metrics>div{padding:16px 0}}
 .socials-page .track-hero h1{font-size:2.25rem;line-height:2.5rem;letter-spacing:-.04em;margin:8px 0 16px;text-wrap:balance}
 .social-intro{max-width:680px;color:var(--text-secondary);font-size:.875rem;line-height:1.25rem;text-wrap:pretty}
 .social-toolbar{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-top:24px}
