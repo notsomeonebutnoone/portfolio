@@ -31,6 +31,7 @@
   const fontSize = 14;
   let drops = [];
   let matrixTimer;
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   const sizeCanvas = () => {
     const scale = window.devicePixelRatio || 1;
@@ -43,9 +44,12 @@
   };
 
   const draw = () => {
+    // Fade trails to transparency so the background can transition independently.
+    ctx.globalCompositeOperation = 'destination-out';
     ctx.fillStyle = 'rgba(0, 0, 0, 0.08)';
     ctx.fillRect(0, 0, window.innerWidth, window.innerHeight);
-    ctx.fillStyle = 'rgba(92, 102, 112, 0.22)';
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
     ctx.font = `${fontSize}px monospace`;
     drops.forEach((drop, index) => {
       ctx.fillText(characters[Math.floor(Math.random() * characters.length)], index * fontSize, drop * fontSize);
@@ -69,11 +73,13 @@
     if (iteration >= target.length * 2) {
       window.clearInterval(revealTimer);
       nameReveal.textContent = target;
+      preloader.classList.add('intro-complete');
       window.setTimeout(() => {
         preloader.classList.add('hidden');
         document.body.classList.remove('preloading');
         window.clearInterval(matrixTimer);
-      }, 650);
+        window.removeEventListener('resize', sizeCanvas);
+      }, reducedMotion ? 250 : 1400);
     }
   }, 55);
 })();

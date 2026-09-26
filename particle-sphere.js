@@ -21,7 +21,7 @@ if (canvas) {
     cursorRadiusUI: 75,
     cursorStrengthUI: 10,
     clickForce: 5,
-    sphereColor: document.documentElement.dataset.theme === 'light' ? '#FF0000' : '#ededeb'
+    sphereColor: '#FF0000'
   };
 
   const mapLinear = (value, inMin, inMax, outMin, outMax) =>
@@ -88,7 +88,7 @@ if (canvas) {
   particles.instanceColor = new Float32BufferAttribute(instanceColors, 3);
   // Keep the original particle geometry and interaction; update only the ink.
   const syncTheme = () => {
-    const color = document.documentElement.dataset.theme === 'light' ? '#FF0000' : '#ededeb';
+    const color = config.sphereColor;
     baseColor.set(color);
     for (let i = 0; i < config.particlesCount; i++) {
       particles.instanceColor.setXYZ(i, baseColor.r, baseColor.g, baseColor.b);

@@ -1,7 +1,12 @@
 /* Dedicated portfolio pages share the landing page's tokens and typography. */
-:root, html[data-track="socials"] { --accent: #f2f2ee; --bg-primary: var(--bg); --bg-secondary: var(--surface); --bg-tertiary: var(--line); --text-primary: var(--text); --text-secondary: var(--secondary); --text-muted: var(--muted); --border: var(--line); }
-html[data-theme="light"], html[data-theme="light"][data-track="socials"] { --accent: #bc332b; }
-[data-theme="light"] .socials-page { --accent: #bc332b; }
+:root { --bg-primary: var(--bg); --bg-secondary: var(--surface); --bg-tertiary: var(--line); --text-primary: var(--text); --text-secondary: var(--secondary); --text-muted: var(--muted); --border: var(--line); }
+/* Portrait background colors; text shades maintain contrast in each theme. */
+html[data-track="hardware"] { --profile-accent: #3a5992; --accent: #91afe3; --accent-ink: #ffffff; }
+html[data-track="software"] { --profile-accent: #7bdbab; --accent: #7bdbab; --accent-ink: #181818; }
+html[data-track="analyst"] { --profile-accent: #f0cc63; --accent: #f0cc63; --accent-ink: #181818; }
+html[data-theme="light"][data-track="hardware"] { --accent: #3a5992; }
+html[data-theme="light"][data-track="software"] { --accent: #087a4c; }
+html[data-theme="light"][data-track="analyst"] { --accent: #876800; }
 [hidden] { display: none !important; }
 .track-page { background: var(--bg); }
 .track-topbar { display: grid; grid-template-columns: 1fr auto; gap: 24px; padding: 32px; border-bottom: 1px solid var(--line); }
@@ -17,7 +22,7 @@ html[data-theme="light"], html[data-theme="light"][data-track="socials"] { --acc
 .hero-layout { display: grid; grid-template-columns: minmax(0, 1fr) 224px; gap: 32px; align-items: start; }
 .hero-copy { min-width: 0; }
 .eyebrow, .section-kicker, .project-topline, .project-tech, .timeline-date, .year, .capability-number, .location, .availability-note { font: 12px/16px 'Geist Mono', monospace; color: var(--muted); }
-.eyebrow { color: var(--accent); }
+.eyebrow, .section-kicker, .project-topline, .capability-number, .metric-value { color: var(--accent); }
 .track-hero h1 { margin: 16px 0; font-size: 36px; line-height: 40px; font-weight: 500; }
 .track-hero .title { font-size: 24px; line-height: 32px; letter-spacing: -.5px; text-wrap: balance; }
 .location { margin-top: 12px; }
@@ -26,15 +31,15 @@ html[data-theme="light"], html[data-theme="light"][data-track="socials"] { --acc
 .hero-badges span, .capability-card > div span { padding: 4px 8px; border: 1px solid var(--line); font-size: 12px; line-height: 16px; color: var(--secondary); }
 .track-actions { display: flex; flex-wrap: wrap; gap: 8px; }
 .primary-action, .secondary-action, .report-card-download { display: inline-flex; padding: 8px 12px; border: 1px solid var(--line); font-size: 14px; line-height: 20px; font-weight: 600; }
-.primary-action { background: var(--text); color: var(--bg); border-color: var(--text); }
-.primary-action:hover { background: var(--surface); color: var(--text); }
+.primary-action { background: var(--profile-accent, var(--accent)); color: var(--accent-ink, var(--bg)); border-color: var(--profile-accent, var(--accent)); }
+.primary-action:hover { background: var(--surface); color: var(--accent); }
 .secondary-action:hover, .report-card-download:hover { background: var(--surface); }
 .hero-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 32px; }
 .metric-value { display: block; font-size: 20px; line-height: 28px; }
 .metric-label { display: block; color: var(--muted); font-size: 12px; line-height: 16px; margin-top: 4px; }
-.profile-img { width: 100%; aspect-ratio: 4/5; object-fit: cover; filter: grayscale(1); border: 1px solid var(--line); }
-[data-theme="light"] .profile-img { filter: none; }
-.availability-note { margin-top: 12px; }
+.profile-img { display: block; width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 50%; border: 2px solid var(--profile-accent, var(--accent)); }
+.availability-note { margin-top: 12px; text-align: center; }
+.availability-note span { display: inline-block; width: 8px; height: 8px; margin-right: 4px; border-radius: 50%; background: var(--accent); }
 .track-nav { padding: 16px 0; border-block: 1px solid var(--line); }
 .track-nav ul { display: flex; flex-wrap: wrap; gap: 24px; padding: 0; list-style: none; font: 12px/16px 'Geist Mono', monospace; color: var(--secondary); }
 .track-page main > section { padding: 40px 0; scroll-margin-top: 24px; }
