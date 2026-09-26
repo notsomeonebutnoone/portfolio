@@ -7,12 +7,12 @@ A minimalist, high-performance portfolio website built with HTML, CSS, and Vanil
 
 ## ✨ Features
 
-- **Editorial landing page:** A reference-inspired two-column layout with a handwritten name, compact work index, research reports, GitHub activity, and an original engraved hero illustration. Light mode uses crimson accents; dark mode is monochrome.
+- **Unified editorial portfolio:** One continuous two-column page carries the landing theme through hardware, software, analyst and GTM, and social work. The work index and navigation scroll directly to each section.
 - **Light & Dark Mode:** Seamless theme switching managed via CSS variables and synced securely using `localStorage`, featuring a visually stunning, smooth sweep animation powered by the modern **View Transitions API**.
 - **Interactive Floating Navigation:** A modern, glassmorphic pill-shaped bottom dock for effortless, persistent navigation across sections seamlessly on any device.
 - **Dynamic Content Filtering:** An interactive Skills section that visually categorizes hardware and software domains (Physical Design, Verification, EDA Tools, etc.) with responsive JavaScript rendering.
 - **Performance Optimized:** Built without bulky frameworks. Pure semantic HTML, Vanilla CSS, and native JavaScript ensure instant load times and liquid-smooth 60fps animations.
-- **Sensible Layouts:** Clean typography powered by Google Fonts (Inter), consistent whitespace mapping, and subtle micro-interactions providing a premium UX.
+- **Sensible Layouts:** Clean typography powered by Geist, consistent whitespace, and subtle interactions across the entire portfolio.
 
 ## 🛠 Tech Stack
 
@@ -44,9 +44,9 @@ Since this is a fully static ecosystem without framework-dependent bundlers, get
 
 ## Socials and live updates
 
-All four routes render through `track.html` and share the same in-page content fade and sliding selector. Socials mounts its content once from the embedded template, retains feed state between tabs, and only refreshes automatically while visible. The legacy `socials.html` entry forwards to the shared view.
+Hardware, software, analyst and GTM, and social work now live on `index.html` as one continuous page. The legacy `/hardware`, `/software`, `/analyst`, and `/socials` routes rewrite to that page and normalize to their matching section anchors. The legacy `socials.html` entry forwards to `/#socials`.
 
-The fourth track, `/socials`, features YouTube and Instagram `@creyn1um` and Twitter / X `@wo0tz0`. The existing three career tracks keep their own experience, projects, and résumés.
+The social section links to YouTube and Instagram `@creyn1um` and Twitter / X `@wo0tz0`. The server API remains available for future live metric surfaces.
 
 Copy `.env.example` to `.env.local` and supply credentials locally, or add the variables in the linked Vercel project's environment settings and redeploy:
 

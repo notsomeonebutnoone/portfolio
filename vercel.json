@@ -1,9 +1,9 @@
 {
   "rewrites": [
-    { "source": "/hardware", "destination": "/track.html" },
-    { "source": "/software", "destination": "/track.html" },
-    { "source": "/analyst", "destination": "/track.html" },
-    { "source": "/socials", "destination": "/track.html" }
+    { "source": "/hardware", "destination": "/index.html" },
+    { "source": "/software", "destination": "/index.html" },
+    { "source": "/analyst", "destination": "/index.html" },
+    { "source": "/socials", "destination": "/index.html" }
   ],
   "functions": { "api/socials.js": { "maxDuration": 60 } },
   "redirects": [

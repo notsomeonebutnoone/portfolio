@@ -20,6 +20,29 @@ const navObserver = new IntersectionObserver(entries => {
 }, { rootMargin: '-5% 0px -60% 0px' });
 for (const link of navLinks) navObserver.observe(document.querySelector(link.hash));
 
+const legacyTrack = location.pathname.split('/').filter(Boolean).at(-1);
+if (['hardware', 'software', 'analyst', 'socials'].includes(legacyTrack)) {
+  history.replaceState(null, '', `/#${legacyTrack}`);
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    document.getElementById(legacyTrack)?.scrollIntoView({ behavior: 'instant', block: 'start' });
+  }));
+}
+
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const sections = document.querySelectorAll('.portfolio-section');
+  const sectionObserver = new IntersectionObserver(entries => {
+    for (const entry of entries) {
+      if (!entry.isIntersecting) continue;
+      entry.target.classList.add('revealed');
+      sectionObserver.unobserve(entry.target);
+    }
+  }, { rootMargin: '0px 0px -10% 0px', threshold: 0.08 });
+  sections.forEach(section => {
+    section.classList.add('motion-ready');
+    sectionObserver.observe(section);
+  });
+}
+
 if (!matchMedia('(prefers-reduced-motion: reduce)').matches) {
   const motto = document.querySelector('.memento');
   motto.classList.add('motion-ready');

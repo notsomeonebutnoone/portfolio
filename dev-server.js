@@ -12,11 +12,11 @@ const port = Number.parseInt(process.env.PORT || '4173', 10);
 const host = process.env.HOST || '127.0.0.1';
 
 const rewrites = new Map([
-  ['/hardware', '/track.html'],
-  ['/software', '/track.html'],
-  ['/analyst', '/track.html'],
-  ['/socials', '/track.html'],
-  ['/socials.html', '/track.html'],
+  ['/hardware', '/index.html'],
+  ['/software', '/index.html'],
+  ['/analyst', '/index.html'],
+  ['/socials', '/index.html'],
+  ['/socials.html', '/index.html'],
 ]);
 
 const contentTypes = {
