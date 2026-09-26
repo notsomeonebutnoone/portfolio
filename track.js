@@ -654,39 +654,7 @@ async function renderGithubActivity() {
 
 renderTrack(currentTrack());
 
-let trackSwitchTimer;
-document.querySelectorAll('[data-track-link]').forEach(link => link.addEventListener('click', event => {
-  if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-  event.preventDefault();
-  const next = link.dataset.trackLink;
-  clearTimeout(trackSwitchTimer);
-  if (next === document.documentElement.dataset.track) {
-    positionTrackPill(link, true);
-    document.body.classList.remove('track-switching');
-    return;
-  }
-  positionTrackPill(link, true);
-  document.body.classList.add('track-switching');
-  trackSwitchTimer = window.setTimeout(() => {
-    history.pushState({track: next}, '', `/${next}`);
-    renderTrack(next);
-    window.scrollTo({top: 0, behavior: 'instant'});
-    requestAnimationFrame(() => document.body.classList.remove('track-switching'));
-  }, matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 240);
-}));
-
-window.addEventListener('popstate', () => {
-  clearTimeout(trackSwitchTimer);
-  document.body.classList.add('track-switching');
-  renderTrack(currentTrack());
-  requestAnimationFrame(() => document.body.classList.remove('track-switching'));
-});
-
-document.fonts.ready.then(() => positionTrackPill(document.querySelector('[data-track-link].active'), false));
-
-window.addEventListener('resize', () => {
-  positionTrackPill(document.querySelector('[data-track-link].active'), false);
-});
+// Each track is a dedicated URL; links use normal browser navigation.
 
 const savedTheme = localStorage.getItem('theme');
 if (savedTheme === 'light') document.documentElement.dataset.theme = 'light';

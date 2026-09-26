@@ -1,0 +1,107 @@
+/* Dedicated portfolio pages share the landing page's tokens and typography. */
+:root, html[data-track="socials"] { --accent: #f2f2ee; --bg-primary: var(--bg); --bg-secondary: var(--surface); --bg-tertiary: var(--line); --text-primary: var(--text); --text-secondary: var(--secondary); --text-muted: var(--muted); --border: var(--line); }
+html[data-theme="light"], html[data-theme="light"][data-track="socials"] { --accent: #bc332b; }
+[data-theme="light"] .socials-page { --accent: #bc332b; }
+[hidden] { display: none !important; }
+.track-page { background: var(--bg); }
+.track-topbar { display: grid; grid-template-columns: 1fr auto; gap: 24px; padding: 32px; border-bottom: 1px solid var(--line); }
+.track-home-link { grid-column: 1; grid-row: 1; }
+.track-theme-toggle { grid-column: 2; grid-row: 1; }
+.track-switcher { grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: 24px; font: 12px/16px 'Geist Mono', monospace; }
+.track-switcher a { color: var(--muted); padding-block: 4px; }
+.track-switcher a:hover, .track-switcher a[aria-current] { color: var(--accent); }
+.track-switcher a[aria-current] { text-decoration: underline; text-underline-offset: 8px; }
+.track-switcher-pill { display: none; }
+.container { width: 100%; padding: 0 32px; min-width: 0; }
+.track-hero { padding: 40px 0 32px; }
+.hero-layout { display: grid; grid-template-columns: minmax(0, 1fr) 224px; gap: 32px; align-items: start; }
+.hero-copy { min-width: 0; }
+.eyebrow, .section-kicker, .project-topline, .project-tech, .timeline-date, .year, .capability-number, .location, .availability-note { font: 12px/16px 'Geist Mono', monospace; color: var(--muted); }
+.eyebrow { color: var(--accent); }
+.track-hero h1 { margin: 16px 0; font-size: 36px; line-height: 40px; font-weight: 500; }
+.track-hero .title { font-size: 24px; line-height: 32px; letter-spacing: -.5px; text-wrap: balance; }
+.location { margin-top: 12px; }
+.hero-summary, .social-intro { margin-top: 24px; color: var(--secondary); max-width: 680px; }
+.hero-badges { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0; }
+.hero-badges span, .capability-card > div span { padding: 4px 8px; border: 1px solid var(--line); font-size: 12px; line-height: 16px; color: var(--secondary); }
+.track-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.primary-action, .secondary-action, .report-card-download { display: inline-flex; padding: 8px 12px; border: 1px solid var(--line); font-size: 14px; line-height: 20px; font-weight: 600; }
+.primary-action { background: var(--text); color: var(--bg); border-color: var(--text); }
+.primary-action:hover { background: var(--surface); color: var(--text); }
+.secondary-action:hover, .report-card-download:hover { background: var(--surface); }
+.hero-metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 32px; }
+.metric-value { display: block; font-size: 20px; line-height: 28px; }
+.metric-label { display: block; color: var(--muted); font-size: 12px; line-height: 16px; margin-top: 4px; }
+.profile-img { width: 100%; aspect-ratio: 4/5; object-fit: cover; filter: grayscale(1); border: 1px solid var(--line); }
+[data-theme="light"] .profile-img { filter: none; }
+.availability-note { margin-top: 12px; }
+.track-nav { padding: 16px 0; border-block: 1px solid var(--line); }
+.track-nav ul { display: flex; flex-wrap: wrap; gap: 24px; padding: 0; list-style: none; font: 12px/16px 'Geist Mono', monospace; color: var(--secondary); }
+.track-page main > section { padding: 40px 0; scroll-margin-top: 24px; }
+.track-page h2 { font-size: 24px; line-height: 32px; font-weight: 500; margin: 8px 0 24px; letter-spacing: -.5px; }
+.track-page h3 { font-size: 18px; line-height: 28px; font-weight: 500; }
+.capability-grid, .projects-grid, .report-grid, .article-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+.capability-card, .timeline-item, .project-card, .education-card, .article-card { padding: 24px; border: 1px solid var(--line); background: var(--bg); min-width: 0; }
+.capability-card h3 { margin: 8px 0 16px; }
+.capability-card > div { display: flex; flex-wrap: wrap; gap: 8px; }
+.timeline { display: grid; gap: 16px; }
+.timeline-header, .education-header { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; }
+.timeline-date, .year { flex-shrink: 0; }
+.company { color: var(--accent); margin-top: 4px; }
+.timeline-item ul { padding-left: 16px; margin-top: 16px; color: var(--secondary); }
+.timeline-item li + li { margin-top: 8px; }
+.project-link { display: flex; }
+.project-card { width: 100%; }
+.project-topline { display: flex; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
+.project-card p, .article-card p, .degree, .minor { color: var(--secondary); margin-top: 12px; }
+.project-tech { margin-top: 24px; }
+.project-link .project-card, .article-card { transition: background-color .7s var(--ease), transform .7s var(--ease); }
+.project-link:hover .project-card, .article-card:hover { background: var(--surface); transform: translateY(-2px); }
+.analyst-reports, .recent-articles, .github-activity { margin-top: 32px; }
+.reports-heading { margin-bottom: 16px; }
+.report-company { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+.report-company img { width: 32px; height: 32px; object-fit: contain; }
+.report-card-download { margin-top: 24px; }
+.recent-articles-heading, .github-activity-heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 16px; margin-bottom: 16px; }
+.recent-articles-heading span, .github-activity-heading span, .article-card > span { color: var(--muted); font-size: 12px; line-height: 16px; }
+.article-card h4 { font-size: 16px; line-height: 24px; font-weight: 500; margin: 12px 0; }
+.article-card b { display: block; margin-top: 16px; font-size: 12px; font-weight: 500; }
+.github-activity { display: block; border: 1px solid var(--line); padding: 24px; }
+.github-heatmap { overflow-x: auto; }
+.github-months { display: grid; grid-template-columns: 32px repeat(53, 10px); gap: 2px; font-size: 12px; min-width: 680px; }
+.github-chart { display: flex; gap: 8px; margin-top: 8px; }
+.github-days { display: flex; flex-direction: column; justify-content: space-around; width: 24px; font-size: 12px; }
+.github-weeks { display: flex; gap: 2px; }
+.github-week { display: grid; gap: 2px; }
+.github-day { display: block; width: 10px; height: 10px; background: var(--line); }
+.github-day[data-level="1"] { background: var(--muted); opacity: .5; }
+.github-day[data-level="2"] { background: var(--muted); }
+.github-day[data-level="3"] { background: var(--secondary); }
+.github-day[data-level="4"] { background: var(--accent); }
+.github-legend { display: flex; justify-content: flex-end; align-items: center; gap: 4px; font-size: 12px; margin-top: 12px; }
+.track-page footer { padding: 24px 0; border-top: 1px solid var(--line); color: var(--muted); font: 12px/16px 'Geist Mono', monospace; }
+.track-page footer p { margin-bottom: 12px; }
+.social-panel, .social-post, .social-empty, .charts-grid canvas { border-radius: 0; background: var(--bg); }
+.charts-grid canvas { width: 100%; height: auto; min-width: 0; }
+.track-page .skip-link { position: fixed; top: 8px; z-index: 100; }
+.reveal { opacity: 1; }
+@media (prefers-reduced-motion: no-preference) {
+  .track-hero { animation: editorial-enter .8s var(--ease) both; }
+  @keyframes editorial-enter { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+}
+@media (max-width: 719px) {
+  .track-topbar { padding: 24px; gap: 16px; }
+  .container { padding-inline: 24px; }
+  .track-switcher, .track-nav ul { gap: 16px; }
+  .hero-layout { grid-template-columns: 1fr; gap: 24px; }
+  .track-profile-frame { max-width: 224px; }
+  .capability-grid, .projects-grid, .report-grid, .article-grid, .charts-grid { grid-template-columns: 1fr; }
+  .timeline-header, .education-header { flex-direction: column; gap: 8px; }
+  .track-hero h1 { font-size: 30px; line-height: 36px; }
+  .capability-card, .timeline-item, .project-card, .education-card, .article-card { padding: 16px; }
+}
+@media (max-width: 420px) {
+  .track-topbar { padding: 24px 16px; }
+  .container { padding-inline: 16px; }
+  .hero-metrics { grid-template-columns: 1fr; }
+}

@@ -8,16 +8,19 @@
   <title>Chirag Venkatesh | Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="landing.css">
   <link rel="stylesheet" href="socials.css">
+  <link rel="stylesheet" href="track-editorial.css">
   <link rel="icon" type="image/png" href="2.jpg">
   <link rel="stylesheet" href="navigation.css">
   <script src="navigation.js" defer></script>
 </head>
 <body class="track-page">
+  <a class="skip-link" href="#page-content">Skip to content</a>
+  <div class="page-shell">
   <div class="track-topbar">
-    <a class="track-home-link" href="/?skipIntro=1" aria-label="Back to track selection">CV<span>/</span></a>
+    <a class="track-home-link signature" href="/?skipIntro=1" aria-label="Chirag Venkatesh home">Chirag Venkatesh<span>.</span></a>
     <div class="track-switcher" aria-label="Switch portfolio track">
       <span class="track-switcher-pill" aria-hidden="true"></span>
       <a href="/hardware" data-track-link="hardware">Hardware</a>
@@ -31,6 +34,7 @@
     </button>
   </div>
 
+  <div id="page-content" tabindex="-1">
   <div id="career-view">
   <header class="track-hero">
     <div class="container">
@@ -81,6 +85,8 @@
   <footer><div class="container"><p>Chirag Venkatesh · Bangalore, India</p><p><a href="mailto:chirag42012@gmail.com">Email</a> · <a href="https://github.com/notsomeonebutnoone" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://linkedin.com/in/chiragvenkatesh" target="_blank" rel="noopener noreferrer">LinkedIn</a></p><a href="/">Explore another track ↑</a></div></footer>
   </div>
   <div id="socials-view" hidden></div>
+  </div>
+  </div>
   <template id="socials-template">
   <header class="track-hero"><div class="container">
     <p class="eyebrow">04 / Socials</p>
