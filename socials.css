@@ -12,6 +12,7 @@
 .socials-page a:focus-visible,.socials-page button:focus-visible{outline:2px solid var(--accent);outline-offset:4px}
 .socials-page a{color:inherit}
 .social-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+#platform-grid{grid-template-columns:minmax(0,1fr)}
 .social-panel,.social-post,.social-empty{border:1px solid var(--border);border-radius:8px;background:var(--bg-secondary);min-width:0;overflow:hidden}
 .social-panel{padding:16px;display:flex;flex-direction:column;align-items:flex-start}
 .social-panel h3{font-size:1.125rem;line-height:1.75rem;margin:12px 0 4px}

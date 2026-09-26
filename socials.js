@@ -1,8 +1,6 @@
 export function initSocials(root) {
 const platforms = [
   { platform: 'youtube', name: 'YouTube', handle: '@creyn1um', url: 'https://www.youtube.com/@creyn1um', icon: 'youtube' },
-  { platform: 'instagram', name: 'Instagram', handle: '@creyn1um', url: 'https://www.instagram.com/creyn1um/', icon: 'instagram' },
-  { platform: 'twitter', name: 'Twitter / X', handle: '@wo0tz0', url: 'https://x.com/wo0tz0', icon: 'x' },
 ];
 const state = new Map(platforms.map(platform => [platform.platform, { ...platform, status: 'loading', recent: [], popular: [], metrics: [] }]));
 const $ = id => root.querySelector(`#${id}`);
@@ -61,7 +59,7 @@ function render() {
     </div>`).join('');
   }
   const connected = values.filter(value => ['live', 'partial'].includes(value.status)).length;
-  $('feed-status').textContent = values.some(value => value.status === 'loading') ? 'Checking for updates…' : `${connected} of 3 live feeds connected. Checks every 15 minutes.`;
+  $('feed-status').textContent = values.some(value => value.status === 'loading') ? 'Checking YouTube…' : connected ? 'YouTube connected. Checks every 15 minutes.' : 'YouTube stats unavailable. See the channel status below.';
   $('platform-grid').setAttribute('aria-busy', String(values.some(value => value.status === 'loading')));
   root.querySelectorAll('.post-preview img').forEach(img => img.addEventListener('error', () => {
     const placeholder = document.createElement('span');
@@ -69,20 +67,6 @@ function render() {
     placeholder.textContent = 'View on platform ↗';
     img.replaceWith(placeholder);
   }, { once: true }));
-}
-
-// Charts: render simple comparative charts using Chart.js if available
-function renderCharts() {
-  try {
-    if (typeof Chart === 'undefined') return;
-    const followersCtx = document.getElementById('followers-chart');
-    const viewsCtx = document.getElementById('views-chart');
-    const labels = platforms.map(p => p.name);
-    const followerData = platforms.map(p => state.get(p.platform)?.metrics?.find(m => /followers|subscribers/i.test(m.label))?.value || 0);
-    const viewData = platforms.map(p => state.get(p.platform)?.metrics?.find(m => /views/i.test(m.label))?.value || 0);
-    if (followersCtx) new Chart(followersCtx.getContext('2d'), {type:'bar',data:{labels, datasets:[{label:'Followers / Subscribers',data:followerData,backgroundColor:['#ff6384','#36a2eb','#ffcd56']}]}, options:{responsive:true,maintainAspectRatio:false}});
-    if (viewsCtx) new Chart(viewsCtx.getContext('2d'), {type:'bar',data:{labels, datasets:[{label:'Aggregate views',data:viewData,backgroundColor:['#7b61ff','#4bd3b8','#ffd27a']}]}, options:{responsive:true,maintainAspectRatio:false}});
-  } catch (e) { console.warn('Charts unavailable', e); }
 }
 
 let refreshing = false;
