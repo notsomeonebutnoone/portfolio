@@ -1,6 +1,11 @@
 import { createReadStream, existsSync, statSync } from 'node:fs';
 import { createServer } from 'node:http';
 import { extname, resolve, sep } from 'node:path';
+import { loadEnvFile } from 'node:process';
+import socials from './api/socials.js';
+import xArticles from './api/x-articles.js';
+
+if (existsSync('.env.local')) loadEnvFile('.env.local');
 
 const root = resolve('.');
 const port = Number.parseInt(process.env.PORT || '4173', 10);
@@ -10,6 +15,8 @@ const rewrites = new Map([
   ['/hardware', '/track.html'],
   ['/software', '/track.html'],
   ['/analyst', '/track.html'],
+  ['/socials', '/track.html'],
+  ['/socials.html', '/track.html'],
 ]);
 
 const contentTypes = {
@@ -24,8 +31,16 @@ const contentTypes = {
   '.svg': 'image/svg+xml',
 };
 
-createServer((request, response) => {
+createServer(async (request, response) => {
   const url = new URL(request.url || '/', `http://${request.headers.host || host}`);
+  const api = { '/api/socials': socials, '/api/x-articles': xArticles }[url.pathname];
+  if (api) {
+    response.status = code => { response.statusCode = code; return response; };
+    response.json = value => { response.setHeader('Content-Type', 'application/json; charset=utf-8'); response.end(JSON.stringify(value)); };
+    try { await api(request, response); }
+    catch { response.status(500).json({ error: 'Request could not be completed' }); }
+    return;
+  }
   let pathname = rewrites.get(url.pathname) || url.pathname;
 
   if (pathname === '/') pathname = '/index.html';
@@ -35,6 +50,13 @@ createServer((request, response) => {
     filePath = resolve(root, `.${decodeURIComponent(pathname)}`);
   } catch {
     response.writeHead(400).end('Bad request');
+    return;
+  }
+
+  // Never serve credentials, source-only server code, or repository metadata.
+  const relative = filePath.slice(root.length + 1).split(sep);
+  if (relative.some(part => part.startsWith('.')) || ['api', 'node_modules', 'tests', 'scripts'].includes(relative[0]) || relative[0] === 'dev-server.js') {
+    response.writeHead(404).end('Not found');
     return;
   }
 

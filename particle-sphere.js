@@ -21,7 +21,7 @@ if (canvas) {
     cursorRadiusUI: 75,
     cursorStrengthUI: 10,
     clickForce: 5,
-    sphereColor: '#FF0000'
+    sphereColor: document.documentElement.dataset.theme === 'light' ? '#FF0000' : '#ededeb'
   };
 
   const mapLinear = (value, inMin, inMax, outMin, outMax) =>
@@ -86,6 +86,16 @@ if (canvas) {
     instanceColors[i * 3 + 2] = baseColor.b;
   }
   particles.instanceColor = new Float32BufferAttribute(instanceColors, 3);
+  // Keep the original particle geometry and interaction; update only the ink.
+  const syncTheme = () => {
+    const color = document.documentElement.dataset.theme === 'light' ? '#FF0000' : '#ededeb';
+    baseColor.set(color);
+    for (let i = 0; i < config.particlesCount; i++) {
+      particles.instanceColor.setXYZ(i, baseColor.r, baseColor.g, baseColor.b);
+    }
+    particles.instanceColor.needsUpdate = true;
+  };
+  new MutationObserver(syncTheme).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
   particles.instanceMatrix.setUsage(35048);
   const group = new Group();
   group.position.y = 0.1;

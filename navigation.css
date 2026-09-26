@@ -1,0 +1,14 @@
+/* Shared fades and the sliding selector work across every portfolio page. */
+#career-view, #socials-view { display: contents; }
+#career-view[hidden], #socials-view[hidden] { display: none; }
+@keyframes portfolio-out { to { opacity: 0; transform: translateY(-4px); } }
+@keyframes portfolio-in { from { opacity: 0; transform: translateY(8px); } }
+.track-page header, .track-page main, .track-page footer { transition: opacity .24s cubic-bezier(.32,.72,0,1), transform .24s cubic-bezier(.32,.72,0,1); }
+.track-page.track-switching header, .track-page.track-switching main, .track-page.track-switching footer { opacity: 0; transform: translateY(8px); }
+body.page-leaving { animation: portfolio-out .2s cubic-bezier(.32,.72,0,1) both; pointer-events: none; }
+body.page-arriving { animation: portfolio-in .4s cubic-bezier(.32,.72,0,1) both; }
+@media (prefers-reduced-motion: reduce) {
+  body.page-leaving, body.page-arriving { animation: none; }
+  .track-page header, .track-page main, .track-page footer, .track-switcher.pill-ready .track-switcher-pill { transition: none; }
+  .track-page.track-switching header, .track-page.track-switching main, .track-page.track-switching footer { transform: none; }
+}

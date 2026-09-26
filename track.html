@@ -4,12 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Chirag Venkatesh — hardware and systems engineering, software products, AI automation, and growth at Pump GTM and Tenteron.">
+  <script>try { if (localStorage.getItem("theme") === "light") document.documentElement.dataset.theme = "light"; } catch {}</script>
   <title>Chirag Venkatesh | Portfolio</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="socials.css">
   <link rel="icon" type="image/png" href="2.jpg">
+  <link rel="stylesheet" href="navigation.css">
+  <script src="navigation.js" defer></script>
 </head>
 <body class="track-page">
   <div class="track-topbar">
@@ -19,6 +23,7 @@
       <a href="/hardware" data-track-link="hardware">Hardware</a>
       <a href="/software" data-track-link="software">Software</a>
       <a href="/analyst" data-track-link="analyst">Analyst / GTM</a>
+      <a href="/socials" data-track-link="socials">Socials</a>
     </div>
     <button id="theme-toggle" class="theme-toggle track-theme-toggle" aria-label="Toggle light and dark theme">
       <svg class="moon-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 11.5373 21.3065 11.4608 21.0672 11.8568C19.9289 13.7406 17.8615 15 15.5 15C11.9101 15 9 12.0899 9 8.5C9 6.13845 10.2594 4.07105 12.1432 2.93276C12.5392 2.69347 12.4627 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="currentColor"/></svg>
@@ -26,6 +31,7 @@
     </button>
   </div>
 
+  <div id="career-view">
   <header class="track-hero">
     <div class="container">
       <div class="header-content hero-layout">
@@ -40,7 +46,8 @@
           <div class="hero-badges" id="track-badges"></div>
           <div class="track-actions">
             <a class="primary-action" id="resume-link" target="_blank" rel="noopener noreferrer">View résumé ↗</a>
-            <a class="secondary-action" href="mailto:chirag42012@gmail.com">Let’s talk</a>
+            <a class="secondary-action" href="mailto:chirag42012@gmail.com" aria-label="Email Chirag Venkatesh" title="Compose an email to chirag42012@gmail.com">Let’s talk</a>
+            <a class="secondary-action" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=chirag42012%40gmail.com" target="_blank" rel="noopener noreferrer">Open Gmail</a>
           </div>
           <div class="hero-metrics" id="track-metrics"></div>
         </div>
@@ -72,6 +79,38 @@
     <section id="education"><div class="container"><p class="section-kicker">Foundation</p><h2>Education</h2><div class="education-card"><div class="education-header"><h3>PES University</h3><span class="year">2020 — 2024</span></div><p class="degree">B.Tech in Electronics and Communication Engineering</p><p class="minor">Minor in Computer Science Engineering · Bangalore, India</p></div></div></section>
   </main>
   <footer><div class="container"><p>Chirag Venkatesh · Bangalore, India</p><p><a href="mailto:chirag42012@gmail.com">Email</a> · <a href="https://github.com/notsomeonebutnoone" target="_blank" rel="noopener noreferrer">GitHub</a> · <a href="https://linkedin.com/in/chiragvenkatesh" target="_blank" rel="noopener noreferrer">LinkedIn</a></p><a href="/">Explore another track ↑</a></div></footer>
-  <script src="track.js"></script>
+  </div>
+  <div id="socials-view" hidden></div>
+  <template id="socials-template">
+  <header class="track-hero"><div class="container">
+    <p class="eyebrow">04 / Socials</p>
+    <h1>Ideas, on the record.</h1>
+    <p class="social-intro">Videos, reels, and building in public. Follow what I’m making across YouTube, Instagram, and Twitter.</p>
+    <div class="social-toolbar"><p id="feed-status" role="status">Checking for updates…</p><button type="button" id="refresh-socials">Refresh updates ↻</button></div>
+    <div class="contact-actions container" style="margin-top:12px"><a href="mailto:chirag42012@gmail.com" class="contact-email">Email me</a></div>
+  </div></header>
+  <nav class="track-nav" aria-label="Socials sections"><div class="container"><ul>
+    <li><a href="#accounts">Platforms</a></li><li><a href="#new-uploads">New uploads</a></li><li><a href="#most-popular">Most popular</a></li><li><a href="#creator-work">Creator work</a></li>
+  </ul></div></nav>
+  <main id="social-content">
+    <section id="accounts"><div class="container"><p class="section-kicker">01 / Across the internet</p><h2>My platforms</h2><div class="social-grid" id="platform-grid" aria-busy="true"></div></div></section>
+    <section id="new-uploads"><div class="container"><p class="section-kicker">02 / The latest</p><h2>New uploads &amp; recent work</h2><p class="social-section-note">The latest videos, reels, and posts from each platform.</p><div id="recent-platforms"></div></div></section>
+    <section id="most-popular"><div class="container"><p class="section-kicker">03 / What resonated</p><h2>Most popular</h2><p class="social-section-note">Popular work and the top video on each platform. Rankings show the content compared; views and impressions stay separate.</p><div id="popular-platforms"></div></div></section>
+    <section id="creator-work"><div class="container"><p class="section-kicker">04 / Behind the work</p><h2>Content built from practice</h2><div class="social-grid">
+      <article class="social-panel"><p class="platform-label"><img class="platform-icon icon-youtube" src="/assets/social-icons/youtube.svg" alt="" width="24" height="24">YouTube</p><h3>Video &amp; livestreaming</h3><p>I create videos about technology, products, internet culture, and projects, handling scripting, structure, editing, presentation, and livestreaming.</p><a href="https://www.youtube.com/@creyn1um" target="_blank" rel="noopener noreferrer">Watch on YouTube ↗</a></article>
+      <article class="social-panel"><p class="platform-label"><img class="platform-icon icon-instagram" src="/assets/social-icons/instagram.svg" alt="" width="24" height="24">Instagram</p><h3>Short-form video</h3><p>I experiment with hooks, pacing, storytelling, editing, and captions.</p><p class="resume-milestone"><strong>2.8M</strong> views on one reel · approximately <strong>10K</strong> followers.</p><p class="social-note">Historical résumé milestone, not a live count.</p><a href="https://www.instagram.com/creyn1um/" target="_blank" rel="noopener noreferrer">Explore Instagram ↗</a></article>
+      <article class="social-panel"><p class="platform-label"><img class="platform-icon icon-x" src="/assets/social-icons/x.svg" alt="" width="24" height="24">Twitter / X</p><h3>Building in public</h3><p>I share products, technical experiments, automation workflows, and GTM observations, and use public conversations for discovery, outreach, and distribution.</p><a href="https://x.com/wo0tz0" target="_blank" rel="noopener noreferrer">Read on Twitter ↗</a></article>
+    </div></div></section>
+    <section id="analytics"><div class="container"><p class="section-kicker">05 / Analytics</p><h2>Platform metrics</h2><p class="social-section-note">Live metrics across platforms. Data refreshes when the page loads or when you click refresh.</p>
+      <div id="charts" class="charts-grid">
+        <canvas id="followers-chart" width="800" height="300" aria-label="Followers over time"></canvas>
+        <canvas id="views-chart" width="800" height="300" aria-label="Views comparison"></canvas>
+      </div>
+    </div></section>
+    <noscript><div class="container"><p>Enable JavaScript to load recent uploads and view counts. You can still visit each platform using the links above.</p></div></noscript>
+  </main>
+  <footer><div class="container"><p>Chirag Venkatesh · Bangalore, India</p><p>Connected feeds check for updates every 15 minutes while this page is open.</p><p><a href="mailto:chirag42012@gmail.com">Email me</a> &middot; <a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=chirag42012%40gmail.com" target="_blank" rel="noopener noreferrer">Open Gmail</a></p><a href="/?skipIntro=1">Explore another track ↑</a></div></footer>
+  </template>
+  <script src="track.js" type="module"></script>
 </body>
 </html>

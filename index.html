@@ -4,70 +4,84 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Chirag Venkatesh: systems engineering, software products, AI automation at Tenteron, and growth at Pump GTM.">
-  <title>Chirag Venkatesh | Choose a Track</title>
+  <meta property="og:title" content="Chirag Venkatesh | Engineer, founder &amp; creator">
+  <meta property="og:description" content="I build ideas into systems. Explore my work in hardware, software, growth, and content.">
+  <meta name="color-scheme" content="dark light">
+  <title>Chirag Venkatesh | Hardware · Software · Growth</title>
+  <script>try { if (localStorage.getItem('theme') === 'light') document.documentElement.dataset.theme = 'light'; } catch {}</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@600&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <link rel="icon" type="image/png" href="2.jpg">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@600&family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="landing.css">
+  <link rel="icon" type="image/jpeg" href="2.jpg">
+  <script src="loader.js" defer></script>
+  <script src="particle-sphere.bundle.js" defer></script>
+  <script src="landing.js" defer></script>
+  <link rel="stylesheet" href="navigation.css">
+  <script src="navigation.js" defer></script>
 </head>
-<body class="gateway-page preloading">
-  <div id="preloader" class="preloader">
-    <canvas id="matrix-canvas" class="matrix-canvas"></canvas>
+<body class="preloading">
+  <div id="preloader" class="preloader" aria-label="Loading portfolio">
+    <canvas id="matrix-canvas" class="matrix-canvas" aria-hidden="true"></canvas>
     <div class="preloader-content"><span id="name-reveal" class="name-reveal-text" data-name="CHIRAG VENKATESH"></span></div>
   </div>
-  <header class="gateway-overlay-header">
-    <a class="gateway-brand track-home-link" href="/?skipIntro=1" aria-label="Chirag Venkatesh home">CV<span>/</span></a>
-    <div class="gateway-socials" aria-label="Contact and social links">
-      <a href="mailto:chirag42012@gmail.com" aria-label="Email" title="Email">
-        <svg viewBox="0 0 192 192" aria-hidden="true"><path fill="url(#email-side-gradient)" d="M146 44h38v110c0 6.627-5.373 12-12 12h-20a6 6 0 0 1-6-6z"/><path fill="#fc413d" d="M46 44H8v110c0 6.627 5.373 12 12 12h20a6 6 0 0 0 6-6z"/><path fill="url(#email-flap-gradient)" d="M39.226 30.456c-8.033-6.752-20.018-5.714-26.77 2.319-6.752 8.032-5.714 20.017 2.319 26.77l76.078 63.949a8 8 0 0 0 10.295 0l76.078-63.95c8.032-6.752 9.07-18.737 2.318-26.77-6.752-8.032-18.737-9.07-26.769-2.318L96 78.18z"/><defs><linearGradient id="email-side-gradient" x1="165" x2="165" y1="44" y2="166" gradientUnits="userSpaceOnUse"><stop stop-color="#60d673"/><stop offset=".17" stop-color="#42c868"/><stop offset=".39" stop-color="#0ebc5f"/><stop offset=".62" stop-color="#00a9bb"/><stop offset=".86" stop-color="#3c90ff"/><stop offset="1" stop-color="#3186ff"/></linearGradient><linearGradient id="email-flap-gradient" x1="8" x2="184" y1="46.13" y2="46.13" gradientUnits="userSpaceOnUse"><stop offset=".08" stop-color="#ff63a0"/><stop offset=".3" stop-color="#fc413d"/><stop offset=".5" stop-color="#fc413d"/><stop offset=".65" stop-color="#fc413d"/><stop offset=".72" stop-color="#fc5c30"/><stop offset=".86" stop-color="#feb10c"/><stop offset=".91" stop-color="#fec700"/><stop offset=".96" stop-color="#ffdb0f"/></linearGradient></defs></svg>
-      </a>
-      <a href="https://github.com/notsomeonebutnoone" target="_blank" rel="noopener noreferrer" aria-label="GitHub" title="GitHub">
-        <svg viewBox="0 0 1024 1024" aria-hidden="true"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8C0 11.54 2.29 14.53 5.47 15.59C5.87 15.66 6.02 15.42 6.02 15.21C6.02 15.02 6.01 14.39 6.01 13.72C4 14.09 3.48 13.23 3.32 12.78C3.23 12.55 2.84 11.84 2.5 11.65C2.22 11.5 1.82 11.13 2.49 11.12C3.12 11.11 3.57 11.7 3.72 11.94C4.44 13.15 5.59 12.81 6.05 12.6C6.12 12.08 6.33 11.73 6.56 11.53C4.78 11.33 2.92 10.64 2.92 7.58C2.92 6.71 3.23 5.99 3.74 5.43C3.66 5.23 3.38 4.41 3.82 3.31C3.82 3.31 4.49 3.1 6.02 4.13C6.66 3.95 7.34 3.86 8.02 3.86C8.7 3.86 9.38 3.95 10.02 4.13C11.55 3.09 12.22 3.31 12.22 3.31C12.66 4.41 12.38 5.23 12.3 5.43C12.81 5.99 13.12 6.7 13.12 7.58C13.12 10.65 11.25 11.33 9.47 11.53C9.76 11.78 10.01 12.26 10.01 13.01C10.01 14.08 10 14.94 10 15.21C10 15.42 10.15 15.67 10.55 15.59C13.71 14.53 16 11.53 16 8C16 3.58 12.42 0 8 0Z" transform="scale(64)" fill="#ffffff"/></svg>
-      </a>
-      <a href="https://linkedin.com/in/chiragvenkatesh" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" title="LinkedIn">
-        <svg viewBox="0 0 256 256" aria-hidden="true"><path d="M218.123 218.127h-37.931v-59.403c0-14.165-.253-32.4-19.728-32.4-19.756 0-22.779 15.434-22.779 31.369v60.43h-37.93V95.967h36.413v16.694h.51a39.907 39.907 0 0 1 35.928-19.733c38.445 0 45.533 25.288 45.533 58.186l-.016 67.013ZM56.955 79.27c-12.157.002-22.014-9.852-22.016-22.009-.002-12.157 9.851-22.014 22.008-22.016 12.157-.003 22.014 9.851 22.016 22.008A22.013 22.013 0 0 1 56.955 79.27m18.966 138.858H37.95V95.967h37.97v122.16ZM237.033.018H18.89C8.58-.098.125 8.161-.001 18.471v219.053c.122 10.315 8.576 18.582 18.89 18.474h218.144c10.336.128 18.823-8.139 18.966-18.474V18.454c-.147-10.33-8.635-18.588-18.966-18.453" fill="#0A66C2"/></svg>
-      </a>
-      <button id="theme-toggle" class="theme-toggle gateway-theme-toggle" aria-label="Toggle light and dark theme">
-        <svg class="moon-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 22C17.5228 22 22 17.5228 22 12C22 11.5373 21.3065 11.4608 21.0672 11.8568C19.9289 13.7406 17.8615 15 15.5 15C11.9101 15 9 12.0899 9 8.5C9 6.13845 10.2594 4.07105 12.1432 2.93276C12.5392 2.69347 12.4627 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" fill="currentColor"/></svg>
-        <svg class="sun-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M18 12C18 15.3137 15.3137 18 12 18C8.68629 18 6 15.3137 6 12C6 8.68629 8.68629 6 12 6C15.3137 6 18 8.68629 18 12Z" fill="currentColor"/><path fill-rule="evenodd" clip-rule="evenodd" d="M12 1.25C12.4142 1.25 12.75 1.58579 12.75 2V3C12.75 3.41421 12.4142 3.75 12 3.75C11.5858 3.75 11.25 3.41421 11.25 3V2C11.25 1.58579 11.5858 1.25 12 1.25ZM4.39861 4.39861C4.6915 4.10572 5.16638 4.10572 5.45927 4.39861L5.85211 4.79145C6.145 5.08434 6.145 5.55921 5.85211 5.85211C5.55921 6.145 5.08434 6.145 4.79145 5.85211L4.39861 5.45927C4.10572 5.16638 4.10572 4.6915 4.39861 4.39861ZM19.6011 4.39887C19.894 4.69176 19.894 5.16664 19.6011 5.45953L19.2083 5.85237C18.9154 6.14526 18.4405 6.14526 18.1476 5.85237C17.8547 5.55947 17.8547 5.0846 18.1476 4.79171L18.5405 4.39887C18.8334 4.10598 19.3082 4.10598 19.6011 4.39887ZM1.25 12C1.25 11.5858 1.58579 11.25 2 11.25H3C3.41421 11.25 3.75 11.5858 3.75 12C3.75 12.4142 3.41421 12.75 3 12.75H2C1.58579 12.75 1.25 12.4142 1.25 12ZM20.25 12C20.25 11.5858 20.5858 11.25 21 11.25H22C22.4142 11.25 22.75 11.5858 22.75 12C22.75 12.4142 22.4142 12.75 22 12.75H21C20.5858 12.75 20.25 12.4142 20.25 12ZM18.1476 18.1476C18.4405 17.8547 18.9154 17.8547 19.2083 18.1476L19.6011 18.5405C19.894 18.8334 19.894 19.3082 19.6011 19.6011C19.3082 19.894 18.8334 19.894 18.5405 19.6011L18.1476 19.2083C17.8547 18.9154 17.8547 18.4405 18.1476 18.1476ZM5.85211 18.1479C6.145 18.4408 6.145 18.9157 5.85211 19.2086L5.45927 19.6014C5.16638 19.8943 4.6915 19.8943 4.39861 19.6014C4.10572 19.3085 4.10572 18.8336 4.39861 18.5407L4.79145 18.1479C5.08434 17.855 5.55921 17.855 5.85211 18.1479ZM12 20.25C12.4142 20.25 12.75 20.5858 12.75 21V22C12.75 22.4142 12.4142 22.75 12 22.75C11.5858 22.75 11.25 22.4142 11.25 22V21C11.25 20.5858 11.5858 20.25 12 20.25Z" fill="currentColor"/></svg>
-      </button>
-    </div>
-  </header>
-  <main class="gateway-shell gateway-hero">
-    <section class="gateway-stage" aria-labelledby="gateway-title">
-      <div class="gateway-copy">
-        <p class="gateway-eyebrow"><span></span> Hardware · Software · Growth</p>
-        <h1 id="gateway-title">I build ideas<br>into <em>systems.</em></h1>
-        <p class="gateway-intro">Engineer, founder of Tenteron, and GTM builder at Pump GTM. I build software, automate workflows, and help technical products find their customers.</p>
-        <a class="gateway-cta" href="#tracks"><span>Explore my work</span><b aria-hidden="true">↓</b></a>
+  <noscript><style>.preloader{display:none}body.preloading{overflow:auto;height:auto}</style></noscript>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="page-shell">
+    <header class="site-header">
+      <div class="header-top">
+        <a class="signature" href="/" aria-label="Chirag Venkatesh home">Chirag Venkatesh<span>.</span></a>
+        <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Switch to light mode" title="Switch to light mode">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5"/></svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><path d="M20.5 13.1A8.5 8.5 0 0 1 10.9 3.5a8.5 8.5 0 1 0 9.6 9.6Z"/></svg>
+        </button>
       </div>
-      <div class="persona-stage particle-sphere-stage" aria-label="Interactive particle sphere">
-        <canvas id="particle-sphere" aria-hidden="true"></canvas>
+      <p class="header-description">Hardware · Software · Growth</p>
+      <nav class="main-nav" aria-label="Main navigation"><a href="#about" aria-current="location">about</a><a href="/software">software</a><a href="/hardware">hardware</a><a href="/analyst">analyst/gtm</a><a href="/socials">socials</a></nav>
+    </header>
+    <main id="main" class="page-layout">
+      <div class="main-column">
+        <section id="about" class="about-section" aria-labelledby="about-title">
+          <div class="section-label"><h2 id="about-title"><span>~/</span>about</h2><span class="section-note">a little introduction</span></div>
+          <h1>I build ideas<br>into <span>systems.</span></h1>
+          <p class="intro">Engineer, founder of <a href="https://tenteron.com" target="_blank" rel="noopener noreferrer">Tenteron</a>, and GTM builder at <a href="https://pumpgtm.com/" target="_blank" rel="noopener noreferrer">Pump GTM</a>. I build software, automate workflows, and help technical products find their customers.</p>
+          <a class="text-link explore-link" href="#tracks">Explore my work <span aria-hidden="true">↓</span></a>
+          <figure class="hero-figure">
+            <a class="hero-image-link" href="assets/meteor-shower-red.png" target="_blank" rel="noopener noreferrer" aria-label="View the full meteor shower engraving"><img class="hero-image" src="assets/meteor-shower-red.png" alt="An antique engraving of a meteor shower over a village, with people looking up at the falling stars." fetchpriority="high"></a>
+            <figcaption><span>01 / A space for perspective</span><a href="assets/meteor-shower-red.png" target="_blank" rel="noopener noreferrer">View image ↗</a></figcaption>
+          </figure>
+        </section>
+        <section id="tracks" class="work-section" aria-labelledby="work-title">
+          <div class="section-label"><h2 id="work-title"><span>~/</span>work</h2><span class="section-note">choose a portfolio track</span></div>
+          <a href="/hardware" class="work-entry"><span class="work-index">01</span><div class="work-copy"><p class="track-role">Silicon to systems</p><h3>Hardware</h3><p>FPGA order books, embedded control, system integration, and hardware validation.</p><div class="track-tags"><span>FPGA</span><span>Validation</span><span>Embedded</span></div><span class="entry-link">Explore hardware <b aria-hidden="true">→</b></span></div><span class="work-arrow" aria-hidden="true">↗</span></a>
+          <a href="/software" class="work-entry"><span class="work-index">02</span><div class="work-copy"><p class="track-role">Logic into products</p><h3>Software</h3><p>Browser products, developer tools, AI agents, and business workflow automation.</p><div class="track-tags"><span>Python</span><span>React</span><span>AI agents</span></div><span class="entry-link">Explore software <b aria-hidden="true">→</b></span></div><span class="work-arrow" aria-hidden="true">↗</span></a>
+          <a href="/analyst" class="work-entry"><span class="work-index">03</span><div class="work-copy"><p class="track-role">Signals into strategy</p><h3>Analyst / GTM</h3><p>Prospect research, contextual outreach, creator content, and technical sales.</p><div class="track-tags"><span>GTM</span><span>Content</span><span>Automation</span></div><span class="entry-link">Explore analyst / GTM <b aria-hidden="true">→</b></span></div><span class="work-arrow" aria-hidden="true">↗</span></a>
+          <a href="/socials" class="work-entry"><span class="work-index">04</span><div class="work-copy"><p class="track-role">Ideas into stories</p><h3>Socials</h3><p>Videos, reels, and building in public. Latest uploads and popular work across my channels.</p><div class="track-tags"><span>YouTube</span><span>Instagram</span><span>Twitter</span></div><span class="entry-link">Explore socials <b aria-hidden="true">→</b></span></div><span class="work-arrow" aria-hidden="true">↗</span></a>
+        </section>
+        <section class="memento-section" aria-label="Memento Mori"><p class="memento"><span>MEMENTO</span><br><span>MORI</span><span class="memento-period" aria-hidden="true">.</span></p><span class="memento-mark" aria-hidden="true">✳</span></section>
       </div>
-      <div class="gateway-wordmark" aria-hidden="true">CV/</div>
-    </section>
-    <section id="tracks" class="track-grid gateway-track-dock" aria-label="Choose a portfolio track">
-      <a href="/hardware" class="track-card hardware-card">
-        <div class="track-card-top"><span>01 / Hardware</span><span class="track-arrow">↗</span></div>
-        <div class="track-copy"><p class="track-role">Silicon to systems</p><h2>Hardware</h2><p>FPGA order books, embedded control, system integration, and hardware validation.</p><div class="track-tags"><span>FPGA</span><span>Validation</span><span>Embedded</span></div><span class="enter-track">Explore hardware <b>→</b></span></div>
-      </a>
-      <a href="/software" class="track-card software-card">
-        <div class="track-card-top"><span>02 / Software</span><span class="track-arrow">↗</span></div>
-        <div class="track-copy"><p class="track-role">Logic into products</p><h2>Software</h2><p>Browser products, developer tools, AI agents, and business workflow automation.</p><div class="track-tags"><span>Python</span><span>React</span><span>AI agents</span></div><span class="enter-track">Explore software <b>→</b></span></div>
-      </a>
-      <a href="/analyst" class="track-card analyst-card">
-        <div class="track-card-top"><span>03 / Analyst &amp; GTM</span><span class="track-arrow">↗</span></div>
-        <div class="track-copy"><p class="track-role">Signals into strategy</p><h2>Analyst / GTM</h2><p>Prospect research, contextual outreach, creator content, and technical sales.</p><div class="track-tags"><span>GTM</span><span>Content</span><span>Automation</span></div><span class="enter-track">Explore analyst / GTM <b>→</b></span></div>
-      </a>
-    </section>
-    <footer class="gateway-copyright">
-      <span>© 2026 Chirag Venkatesh</span>
-      <span>All rights reserved.</span>
-    </footer>
-  </main>
-  <p class="gateway-hint fx-echo" data-text="MEMENTO MORI">MEMENTO MORI</p>
-  <script src="loader.js"></script>
-  <script src="particle-sphere.bundle.js"></script>
+      <aside class="sidebar" aria-label="Interactive sphere and links">
+        <section class="sidebar-section sphere-section" aria-labelledby="sphere-title">
+          <h2 id="sphere-title">Interactive sphere</h2>
+          <div class="particle-sphere-stage" aria-label="Interactive particle sphere. Drag to rotate; click to scatter.">
+            <canvas id="particle-sphere" aria-hidden="true"></canvas>
+          </div>
+          <p class="sphere-hint">Drag to rotate &middot; click to scatter</p>
+        </section>
+        <section class="sidebar-section" aria-labelledby="status-title"><h2 id="status-title">Current status</h2><ul class="status-list"><li>founder, automation &amp; growth at <a href="https://tenteron.com" target="_blank" rel="noopener noreferrer">Tenteron</a></li><li>GTM &amp; growth at <a href="https://pumpgtm.com/" target="_blank" rel="noopener noreferrer">Pump GTM</a></li><li class="location">Bangalore, India</li></ul></section>
+        <section class="sidebar-section" aria-labelledby="links-title"><h2 id="links-title">Links</h2><ul class="text-links">
+          <li><a href="https://x.com/wo0tz0" target="_blank" rel="noopener noreferrer">twitter<span> @wo0tz0</span></a></li>
+          <li><a href="https://www.youtube.com/@creyn1um" target="_blank" rel="noopener noreferrer">youtube<span> @creyn1um</span></a></li>
+          <li><a href="https://www.instagram.com/creyn1um/" target="_blank" rel="noopener noreferrer">instagram<span> @creyn1um</span></a></li>
+          <li><a href="https://linkedin.com/in/chiragvenkatesh" target="_blank" rel="noopener noreferrer">linkedin<span> /in/chiragvenkatesh</span></a></li>
+          <li><a href="mailto:chirag42012@gmail.com" aria-label="Email Chirag Venkatesh" title="Compose an email to chirag42012@gmail.com">email<span> chirag42012@gmail.com</span></a></li>
+          <li><a href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=chirag42012%40gmail.com" target="_blank" rel="noopener noreferrer">open in gmail <span>compose in your browser &#8599;</span></a></li>
+        </ul></section>
+        <section class="sidebar-section" aria-labelledby="pages-title"><h2 id="pages-title">Explore</h2><ul class="page-links"><li><a href="/hardware">/hardware <span>silicon to systems</span></a></li><li><a href="/software">/software <span>logic into products</span></a></li><li><a href="/analyst">/analyst <span>signals into strategy</span></a></li><li><a href="/socials">/socials <span>ideas into stories</span></a></li></ul></section>
+        <p class="sidebar-motto">MEMENTO MORI <span aria-hidden="true">✳</span></p>
+      </aside>
+    </main>
+    <footer class="site-footer"><span>© 2026 Chirag Venkatesh</span><span>All rights reserved.</span><a href="#about">Back to top ↑</a></footer>
+  </div>
 </body>
 </html>

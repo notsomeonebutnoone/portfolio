@@ -2,8 +2,10 @@
   "rewrites": [
     { "source": "/hardware", "destination": "/track.html" },
     { "source": "/software", "destination": "/track.html" },
-    { "source": "/analyst", "destination": "/track.html" }
+    { "source": "/analyst", "destination": "/track.html" },
+    { "source": "/socials", "destination": "/track.html" }
   ],
+  "functions": { "api/socials.js": { "maxDuration": 60 } },
   "redirects": [
     { "source": "/hardware.html", "destination": "/hardware", "permanent": true }
   ]

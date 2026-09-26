@@ -1,6 +1,8 @@
+import { initSocials } from './socials.js';
+
 // Experience and education: resume1.pdf. Project details: public GitHub READMEs.
 // Creator metrics are a resume snapshot, not a live social feed.
-tracks = {
+const tracks = {
   "hardware": {
     "label": "Hardware & Systems Engineering",
     "title": "Engineer working across system validation, embedded control, and FPGA architecture.",
@@ -515,13 +517,36 @@ function bindTrackCardEffects() {
   });
 }
 
-const normalizeTrack = value => value === 'hardware' || value === 'analyst' ? value : 'software';
+const normalizeTrack = value => value === 'hardware' || value === 'analyst' || value === 'socials' ? value : 'software';
 const currentTrack = () => {
   const routeTrack = location.pathname.split('/').filter(Boolean).at(-1);
-  return normalizeTrack(routeTrack || new URLSearchParams(location.search).get('track'));
+  return normalizeTrack(['hardware', 'software', 'analyst', 'socials'].includes(routeTrack) ? routeTrack : new URLSearchParams(location.search).get('track'));
 };
 
 function renderTrack(key) {
+  const isSocials = key === 'socials';
+  document.documentElement.dataset.track = key;
+  document.body.classList.toggle('socials-page', isSocials);
+  $('career-view').hidden = isSocials;
+  $('socials-view').hidden = !isSocials;
+  if (isSocials) {
+    if (!$('socials-view').dataset.mounted) {
+      $('socials-view').append($('socials-template').content.cloneNode(true));
+      $('socials-view').dataset.mounted = 'true';
+      initSocials($('socials-view'));
+    }
+    document.title = 'Chirag Venkatesh | Socials';
+    document.querySelector('meta[name="description"]').content = 'Videos, reels, and building in public by Chirag Venkatesh across YouTube, Instagram, and Twitter.';
+    document.querySelectorAll('[data-track-link]').forEach(link => {
+      link.classList.toggle('active', link.dataset.trackLink === key);
+      if (link.dataset.trackLink === key) link.setAttribute('aria-current', 'page');
+      else link.removeAttribute('aria-current');
+    });
+    const animate = trackSwitcher?.classList.contains('pill-initialized');
+    requestAnimationFrame(() => positionTrackPill(document.querySelector('[data-track-link="socials"]'), animate));
+    trackSwitcher?.classList.add('pill-initialized');
+    return;
+  }
   const data = tracks[key];
   const isAnalyst = key === 'analyst';
   document.documentElement.dataset.track = key;
@@ -537,6 +562,7 @@ function renderTrack(key) {
   $('track-metrics').innerHTML = data.metrics.map(([value,label]) => `<div class="metric-card"><span class="metric-value">${value}</span><span class="metric-label">${label}</span></div>`).join('');
   $('skills-grid').innerHTML = data.skills.map(([title,items], i) => `<article class="capability-card"><span class="capability-number">0${i+1}</span><h3>${title}</h3><div>${items.map(x=>`<span>${x}</span>`).join('')}</div></article>`).join('');
   $('experience-list').innerHTML = data.experience.map(x => `<article class="timeline-item"><div class="timeline-header"><div><h3>${x.role}</h3><p class="company">${x.company}</p></div><span class="timeline-date">${x.date}</span></div><ul>${x.bullets.map(b=>`<li>${b}</li>`).join('')}</ul></article>`).join('');
+  document.querySelector('#experience h2').textContent = `${key === 'analyst' ? 'Analyst / GTM' : key === 'hardware' ? 'Hardware' : 'Software'} work experience`;
   $('projects-grid').innerHTML = data.projects.map(([title,desc,tech,url]) => `${url?`<a href="${url}" target="_blank" rel="noopener noreferrer" class="project-link">`:''}<article class="project-card"><div class="project-topline"><span>Selected project</span>${url?'<span>↗</span>':''}</div><h3>${title}</h3><p>${desc}</p><div class="project-tech">${tech}</div></article>${url?'</a>':''}`).join('');
   $('projects-grid').hidden = false;
   $('work-kicker').textContent = isAnalyst ? '03 / Products & research' : '03 / Selected builds';
@@ -551,7 +577,11 @@ function renderTrack(key) {
   }
   $('github-activity').hidden = key !== 'software';
   if (key === 'software') renderGithubActivity();
-  document.querySelectorAll('[data-track-link]').forEach(link => link.classList.toggle('active', link.dataset.trackLink === key));
+  document.querySelectorAll('[data-track-link]').forEach(link => {
+    link.classList.toggle('active', link.dataset.trackLink === key);
+    if (link.dataset.trackLink === key) link.setAttribute('aria-current', 'page');
+    else link.removeAttribute('aria-current');
+  });
   const animatePill = trackSwitcher?.classList.contains('pill-initialized');
   requestAnimationFrame(() => positionTrackPill(document.querySelector(`[data-track-link="${key}"]`), animatePill));
   trackSwitcher?.classList.add('pill-initialized');
@@ -624,25 +654,35 @@ async function renderGithubActivity() {
 
 renderTrack(currentTrack());
 
+let trackSwitchTimer;
 document.querySelectorAll('[data-track-link]').forEach(link => link.addEventListener('click', event => {
+  if (event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
   event.preventDefault();
   const next = link.dataset.trackLink;
-  if (next === document.documentElement.dataset.track) return;
+  clearTimeout(trackSwitchTimer);
+  if (next === document.documentElement.dataset.track) {
+    positionTrackPill(link, true);
+    document.body.classList.remove('track-switching');
+    return;
+  }
   positionTrackPill(link, true);
   document.body.classList.add('track-switching');
-  window.setTimeout(() => {
+  trackSwitchTimer = window.setTimeout(() => {
     history.pushState({track: next}, '', `/${next}`);
     renderTrack(next);
     window.scrollTo({top: 0, behavior: 'instant'});
     requestAnimationFrame(() => document.body.classList.remove('track-switching'));
-  }, 150);
+  }, matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 240);
 }));
 
 window.addEventListener('popstate', () => {
+  clearTimeout(trackSwitchTimer);
   document.body.classList.add('track-switching');
   renderTrack(currentTrack());
   requestAnimationFrame(() => document.body.classList.remove('track-switching'));
 });
+
+document.fonts.ready.then(() => positionTrackPill(document.querySelector('[data-track-link].active'), false));
 
 window.addEventListener('resize', () => {
   positionTrackPill(document.querySelector('[data-track-link].active'), false);
